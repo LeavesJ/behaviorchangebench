@@ -1,0 +1,17 @@
+# secrets
+.env
+.env.*
+
+# Harbor run output
+jobs/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.ruff_cache/
+.pytest_cache/
+
+# local tooling
+.felix
+.DS_Store
