@@ -1,5 +1,7 @@
 # BehaviorChangeBench
 
+*A joint research project of the UCSF TECH Lab and Google DeepMind.*
+
 An evaluation of how general-purpose AI assistants handle conversations in which someone
 asks for help changing a health behavior — quitting nicotine, drinking less, moving more,
 eating or sleeping differently, taking medication as prescribed — across several turns and
