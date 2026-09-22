@@ -339,7 +339,7 @@ Our long-run target resembles HealthBench Professional: 525 tasks drawn from 15,
 
 <div class="callout note" markdown="1">
 
-**How these were checked.** Each was opened and checked in an AI-assisted research pass (Sep 18-21); F25 and the updated F03, F06, F08, F18 and F23 were re-opened on Sep 21. Per CONTRIBUTING, a teammate re-opens each before this merges. F22 is cited second-hand until the original paper is opened. Page numbers for MITI and TIP 35 are the documents' own.
+**How these were checked.** Each was opened and checked in an AI-assisted research pass (Sep 18-21); F25 and the updated F03, F06, F08, F18 and F23 were re-opened on Sep 21. Per CONTRIBUTING, a teammate re-opens each before this merges. F22 was re-opened at the original paper on Sep 22: it reports 64.7%, which the later paper we first cited it through had rounded up to over two-thirds. Page numbers for MITI and TIP 35 are the documents' own.
 
 </div>
 

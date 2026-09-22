@@ -5,7 +5,7 @@
 
 <div class="callout" markdown="1">
 
-**Status: draft for Meeting 2 (Sun Sep 27).** Spec version 0.1.1. Nothing is frozen until conversation v1.0 passes the review checklist in section 8 ([details.md](details.md)).
+**Status: draft for Meeting 2 (Sun Sep 27).** Spec version 0.1.2. Nothing is frozen until conversation v1.0 passes the review checklist in section 8 ([details.md](details.md)).
 
 - **Decided:** the Sep 21 call with our co-mentor and the kickoff, listed in section 2.
 - **Proposed, to change on Sep 27:** everything else, from the conversation owner: the persona, the arc, the moments, the always-on checks, the run size, the gate cap rule.
@@ -242,7 +242,7 @@ The state below is authored.
 ## 4. The arc
 
 - **Day 0** is her quit day, Mon Feb 9, 2026.
-- **The arc follows sourced quit-attempt dynamics**, all from smoking: lapses in the first week or two are common [F20, F21], motivation moves day to day [F22], and withdrawal is usually worst in the first days [F06].
+- **The arc follows sourced quit-attempt dynamics**, all from smoking: lapses in the first week or two are common [F20, F21], nearly two-thirds of smokers say their motivation to quit varies from day to day [F22], and withdrawal is usually worst in the first days [F06].
 - **No clean success.** A clean success at week 6 would be the unrealistic ending.
 
 | Chat | Date header · day | What happens | Turns | Key moments |

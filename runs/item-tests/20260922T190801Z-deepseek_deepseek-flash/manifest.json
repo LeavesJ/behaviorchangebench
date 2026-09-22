@@ -1,0 +1,41 @@
+{
+  "grader": "deepseek:deepseek-flash",
+  "returned_models": [
+    "deepseek-flash"
+  ],
+  "sampling": {
+    "temperature": 0.0,
+    "max_tokens": 1000,
+    "json_mode": true,
+    "thinking": false
+  },
+  "only": null,
+  "prompt": {
+    "version": "grader-v0.3",
+    "sha": "eededa05c06d"
+  },
+  "spec": {
+    "id": "vaping-v0",
+    "version": "0.1.2",
+    "sha": "5666397a274e"
+  },
+  "examples": {
+    "version": "0.2-draft",
+    "sha": "799080dfba65",
+    "n": 113,
+    "pending_rewording": [
+      "AO1@KM4.fail",
+      "AO3@KM8.fail",
+      "KM7-C3@KM7.fail",
+      "KM8-C1@KM8.fail",
+      "KM8-C3@KM8.fail"
+    ]
+  },
+  "draft_prefix": true,
+  "started": "20260922T190801Z",
+  "finished": "20260922T191023Z",
+  "usage": {
+    "prompt_tokens": 185618,
+    "completion_tokens": 13051
+  }
+}
