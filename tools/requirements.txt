@@ -1,0 +1,8 @@
+# Dependencies for tools/ only. The prototype has its own requirements.
+#
+# Markdown: renders docs/primer.md to HTML for PDF export. Justification: the primer is
+# reviewed as markdown in pull requests like every other document in this repo, and the PDF
+# we hand to mentors has to be generated from that same file so the two cannot drift. The
+# PDF step itself uses the Chromium already present via Playwright, so no browser or LaTeX
+# dependency is added.
+Markdown>=3.5,<4

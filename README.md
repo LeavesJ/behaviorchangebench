@@ -10,6 +10,11 @@ Taxonomy, COM-B, CBT), graded by LLM judges that are validated against expert hu
 **Status: pre-work.** Nothing here is final. Everything marked *strawman* exists to be
 argued with.
 
+**New here?** Read [`docs/primer.md`](docs/primer.md) (also built as
+[`docs/primer.pdf`](docs/primer.pdf)): the project explained from scratch, current after the
+Sep 21 call with our co-mentor. Note that the rest of this repository was written before that
+call, so its Harbor plan is on hold; the primer says what changed.
+
 ## Milestones
 
 | Date | What |
@@ -21,10 +26,13 @@ argued with.
 
 ```
 docs/
+  primer.md, primer.pdf      the project from scratch; read this first
   anthropic-conformance.md   the guidance every design decision answers to
-  architecture-proposal.md   how the pipeline could fit together (proposal)
+  architecture-proposal.md   how the pipeline could fit together (on hold, see the primer)
   design/                    six sections, one owner each
   meetings/                  agendas and notes
+tools/
+  build_primer_pdf.py        rebuilds docs/primer.pdf from docs/primer.md
 rubrics/                     rubric items as data files        (to come)
 trajectories/                conversation specs                (to come)
 ```
