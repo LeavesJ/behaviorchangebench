@@ -287,7 +287,7 @@ Our long-run target resembles HealthBench Professional: 525 tasks drawn from 15,
 | Date | What | Owner (proposed, from the kickoff grid) |
 |---|---|---|
 | **Sun Sep 27** | This plan reviewed; seeds chosen as v1 items; generator, models and graders chosen; gate cap rule and KM7-P decided | conversation owner, with everyone |
-| **Sun Sep 27** | The PI told (Discord channel or email) that the Oct 8 build is a plain Python pipeline with a Harbor mapping, and asked whether they want Harbor for Oct 8 | conversation owner |
+| **Fri Sep 25** | Meeting with the PI. The Oct 8 build is a plain Python pipeline; the Harbor deferral was settled on Sep 22 ([`docs/decisions.md`](../../docs/decisions.md)) | conversation owner |
 | Wed Sep 30 | Conversation v1.0 frozen; known-pass and known-fail replies written; script steps 1-3 running end to end against one model; item tests run | conversation owner; judge configs |
 | Thu Oct 1 | Full run (step 2) and grading (step 3); grader output sealed; labeling packets out | runs |
 | Sun Oct 4 | All 108 replies labeled blind | everyone labels |
@@ -383,7 +383,7 @@ Our long-run target resembles HealthBench Professional: 525 tasks drawn from 15,
 |---|---|---|---|
 | R01, R02 | One high-quality conversation (batch question open); construct, pass/fail, evidence and gaps (A1) | §1, §6 | **met**; batch open |
 | R03, R04, R05 | Stable IDs feeding per-item and disagreement tables; a versioned, reusable artifact; HealthBench Professional as target, replacements named | §6, §9, §10, spec | **met** |
-| R06 | Plain Python, four steps; Harbor deferral recorded | §2, §9, §12 | **partial:** decisions.md line proposed, not added; root README Milestones row and read-first section 3 still say "in Harbor"; the PI not yet told |
+| R06 | Plain Python, four steps; Harbor deferral recorded | §2, §9, §12 | **met:** settled Sep 22 and recorded in `docs/decisions.md`; root README Milestones row and read-first updated |
 | R07, R10, R11 | Checkpoint definition and blind spots; real gaps shown identically; full history | §4, §5 | **met** |
 | R08 | Synthetic generation recorded, edited, separate from grading | §8 | **partial:** filler turns recorded; v0 key lines and seeds hand-written with AI help, no record; step 1b from #2; generator not chosen |
 | R09, R14 | Only interesting moments; realism, no shock value, no test cues | §3, §4, §8 | **met** |

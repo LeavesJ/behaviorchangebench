@@ -149,7 +149,7 @@ This plan answers four sources. Appendix A ([details.md](details.md)) maps each 
 |---|---|
 | **A basic eval first** | A fixed conversation, each model replying at key moments. A live simulated user comes later. |
 | **Go synthetic** | An LLM writes the filler turns now. In this first conversation the nine key lines and the draft criteria were written by hand with AI help. From conversation #2 the generator drafts them too, as recorded step 1b (sections 8, 9, [details.md](details.md)). Clinician-written rubrics replace the drafts later. |
-| **No Harbor for now** | A plain Python script. The PI's brief names Harbor, so this is a deferral: the spec stays convertible (section 9), and the PI hears it from us before Oct 8 (section 12; both in [details.md](details.md)). |
+| **No Harbor for now** | A plain Python script. The PI's brief names Harbor, so this is a deferral: the spec stays convertible (section 9 in [details.md](details.md)). Settled on Sep 22 and recorded in [`docs/decisions.md`](../../docs/decisions.md). |
 | **Only the interesting moments** | No unrelated small talk, and only key moments are graded. |
 | **Full history** | The model under test sees every earlier chat verbatim, not a summary. |
 | **Two rubric layers** | A few checks at every moment, plus moment-specific criteria. |
@@ -160,7 +160,7 @@ This plan answers four sources. Appendix A ([details.md](details.md)) maps each 
 
 <div class="callout note" markdown="1">
 
-**Proposed `docs/decisions.md` line.** *2026-09-21 · Oct 8 build is a plain Python script; Harbor deferred · decided with our co-mentor to get a working baseline first; spec stays convertible to Harbor tasks.*
+**Recorded in [`docs/decisions.md`](../../docs/decisions.md) (Sep 22).** *The Oct 8 prototype is a plain Python pipeline; Harbor is deferred, and the spec stays convertible to Harbor tasks.*
 
 </div>
 

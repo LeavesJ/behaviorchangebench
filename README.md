@@ -14,7 +14,7 @@ argued with.
 
 | Date | What |
 |---|---|
-| Oct 8, 2026 | End-to-end prototype in [Harbor](https://www.harborframework.com/): one multi-session conversation, 2–3 rubrics as graders, several frontier models, per-item results, and every case where the automated grader disagreed with our manual verdict |
+| Oct 8, 2026 | End-to-end prototype as a plain Python pipeline (Harbor deferred, see `docs/decisions.md`): one multi-session conversation, 2–3 rubrics as graders, several frontier models, per-item results, and every case where the automated grader disagreed with our manual verdict |
 | Oct 12, 2026 | Design document (`docs/design/`) plus the prototype, sent to the PI as this repository |
 
 ## Layout
