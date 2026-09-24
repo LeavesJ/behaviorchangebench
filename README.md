@@ -55,6 +55,24 @@ crash. Results land in `runs/item-tests/`, with the grader's model ID, the promp
 examples versions, and the date. Until the conversation is generated, the earlier assistant
 turns the grader sees are marked placeholders, and the summary says so.
 
+## Generating the conversation
+
+Step 1 of the pipeline: a generator model writes the turns the spec does not pin, one chat at
+a time, and a script checks the draft before anyone freezes it. Meeting 2 picks the generator;
+it is never from the grader's family.
+
+```bash
+make preflight                  # check the spec itself: dates, pinned lines, drafts, no API call
+make generate-prompts           # see exactly what the generator will be sent, no API call
+make generate GENERATOR=openrouter:<vendor>/<model>   # needs that provider's key
+```
+
+Each run lands in `runs/generate/` with the draft conversation, a record of the model, prompt
+and spec versions and every raw output, and `checks.md`: errors to fix, flags to read, and a
+checklist for the human read. Freezing a reviewed draft is done by hand (see `bcb/generate.py`).
+Once it is frozen, `python -m bcb.item_tests --conversation <file>` reruns the item tests on the
+real conversation instead of placeholders.
+
 ## Ground rules for the eval itself
 
 1. Every design decision names the row of `docs/anthropic-conformance.md` it satisfies.

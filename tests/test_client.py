@@ -1,3 +1,4 @@
+import http.client
 import io
 import json
 import os
@@ -58,6 +59,19 @@ class ChatTest(unittest.TestCase):
         with mock.patch.dict(os.environ, {}, clear=True), mock.patch.object(client, "ROOT", client.ROOT / "nowhere"):
             with self.assertRaises(client.CallError):
                 client.chat("deepseek:deepseek-flash", [])
+
+    def test_a_dropped_connection_or_a_bad_body_is_a_call_error(self):
+        # urllib wraps only the send in URLError: a reset during the response, a short read or a non-JSON body escape it
+        def reset(req, timeout):
+            raise ConnectionResetError("peer reset")
+
+        def short(req, timeout):
+            raise http.client.IncompleteRead(b"{")
+        for urlopen in (reset, short, lambda req, timeout: FakeResponse(b"<html>busy</html>"),
+                        lambda req, timeout: FakeResponse(b"[]")):
+            with mock.patch.dict(os.environ, {"OPENROUTER_API_KEY": "or-test-key"}), \
+                    mock.patch("urllib.request.urlopen", urlopen), self.assertRaises(client.CallError):
+                client.chat("openrouter:some/model", [{"role": "user", "content": "hi"}])
 
     def test_bad_target(self):
         with self.assertRaises(ValueError):
