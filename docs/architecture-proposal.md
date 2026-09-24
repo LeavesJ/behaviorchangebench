@@ -1,6 +1,10 @@
 # Architecture proposal
 
-**Status: proposal, for the group and our mentors to argue with. Nothing here is decided.**
+**Status: Harbor deferred (see [`decisions.md`](decisions.md)).** The Oct 8 prototype is a plain
+Python pipeline instead. The loop, the design rules and the run manifest below still describe
+it; the Harbor task shapes in section 2 are kept for converting to Harbor later.
+
+**Original status: proposal, for the group and our mentors to argue with.**
 Harbor details are from its docs and source at v0.23 (Sept 2026), read but not yet run. The
 project moves fast; smoke-test every feature named here on day one and pin versions.
 

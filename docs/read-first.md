@@ -16,7 +16,7 @@ counselor does.
 So: **BehaviorChangeBench**. A set of pass/fail rubric items drawn from established behavior
 science (Motivational Interviewing and its MITI coding manual, the Behavior Change Technique
 Taxonomy, COM-B, CBT), applied to multi-session conversations, scored by LLM judges whose
-verdicts are checked against expert human raters. Behavior scientists will eventually write
+verdicts will be checked against expert human raters. Behavior scientists will eventually write
 the items; our job is the machinery, and a way for them to write items quickly.
 
 ## 2. Three ideas everything else hangs on
@@ -41,7 +41,7 @@ Everything in `docs/design/` is one of these questions in more detail.
 | When | What |
 |---|---|
 | Mon Sep 21, 12:30–1:00 | First call with our co-mentor |
-| Thu Oct 8 | Working prototype in [Harbor](https://www.harborframework.com/): one multi-session conversation, 2–3 rubrics as graders, several frontier models, per-item results, and every case where the automated grader disagreed with our manual verdict |
+| Thu Oct 8 | Working prototype as a plain Python pipeline (Harbor deferred, see [`docs/decisions.md`](decisions.md)): one multi-session conversation, 2–3 rubrics as graders, several frontier models, per-item results, and every case where the automated grader disagreed with our manual verdict |
 | Mon Oct 12 | Design document plus the prototype, sent to our PI as a GitHub repo |
 
 Our PI's standard, in his words: "careful thought (rather than careless volume) for each
@@ -54,9 +54,9 @@ subcomponent of the eval."
 - [ ] **Fill the 3-minute form** (link in the group chat): interests, hours, GitHub username, and availability for the week of Oct 12. It is what lets us split the work in the meeting instead of spending the hour on it, and the last page is what our PI is waiting on — he asked for five one-hour slots that week and needs all five of us on it.
 - [ ] **Skim** [`docs/meetings/2026-09-20-kickoff.md`](meetings/2026-09-20-kickoff.md) so the hour goes fast. Think about which of the pieces in the role grid you want.
 
-If you have another half hour: skim [`docs/architecture-proposal.md`](architecture-proposal.md)
-(one proposal for how the pipeline fits together, not decided) and the Harbor docs for tasks
-and datasets.
+If you have another half hour: skim [`docs/architecture-proposal.md`](architecture-proposal.md).
+It was written for a Harbor build, which is now deferred, but its pipeline stages and design
+rules still apply.
 
 ## 5. What this repo is
 

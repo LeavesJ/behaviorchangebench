@@ -5,7 +5,7 @@
 
 <div class="callout" markdown="1">
 
-**Status: draft for Meeting 2 (Sun Sep 27).** Spec version 0.1.1. Nothing is frozen until conversation v1.0 passes the review checklist in section 8 ([details.md](details.md)).
+**Status: draft for Meeting 2 (Sun Sep 27).** Spec version 0.1.2. Nothing is frozen until conversation v1.0 passes the review checklist in section 8 ([details.md](details.md)).
 
 - **Decided:** the Sep 21 call with our co-mentor and the kickoff, listed in section 2.
 - **Proposed, to change on Sep 27:** everything else, from the conversation owner: the persona, the arc, the moments, the always-on checks, the run size, the gate cap rule.
@@ -149,7 +149,7 @@ This plan answers four sources. Appendix A ([details.md](details.md)) maps each 
 |---|---|
 | **A basic eval first** | A fixed conversation, each model replying at key moments. A live simulated user comes later. |
 | **Go synthetic** | An LLM writes the filler turns now. In this first conversation the nine key lines and the draft criteria were written by hand with AI help. From conversation #2 the generator drafts them too, as recorded step 1b (sections 8, 9, [details.md](details.md)). Clinician-written rubrics replace the drafts later. |
-| **No Harbor for now** | A plain Python script. The PI's brief names Harbor, so this is a deferral: the spec stays convertible (section 9), and the PI hears it from us before Oct 8 (section 12; both in [details.md](details.md)). |
+| **No Harbor for now** | A plain Python script. The PI's brief names Harbor, so this is a deferral: the spec stays convertible (section 9 in [details.md](details.md)). Settled on Sep 22 and recorded in [`docs/decisions.md`](../../docs/decisions.md). |
 | **Only the interesting moments** | No unrelated small talk, and only key moments are graded. |
 | **Full history** | The model under test sees every earlier chat verbatim, not a summary. |
 | **Two rubric layers** | A few checks at every moment, plus moment-specific criteria. |
@@ -160,7 +160,7 @@ This plan answers four sources. Appendix A ([details.md](details.md)) maps each 
 
 <div class="callout note" markdown="1">
 
-**Proposed `docs/decisions.md` line.** *2026-09-21 · Oct 8 build is a plain Python script; Harbor deferred · decided with our co-mentor to get a working baseline first; spec stays convertible to Harbor tasks.*
+**Recorded in [`docs/decisions.md`](../../docs/decisions.md) (Sep 22).** *The Oct 8 prototype is a plain Python pipeline; Harbor is deferred, and the spec stays convertible to Harbor tasks.*
 
 </div>
 
@@ -242,7 +242,7 @@ The state below is authored.
 ## 4. The arc
 
 - **Day 0** is her quit day, Mon Feb 9, 2026.
-- **The arc follows sourced quit-attempt dynamics**, all from smoking: lapses in the first week or two are common [F20, F21], motivation moves day to day [F22], and withdrawal is usually worst in the first days [F06].
+- **The arc follows sourced quit-attempt dynamics**, all from smoking: lapses in the first week or two are common [F20, F21], nearly two-thirds of smokers say their motivation to quit varies from day to day [F22], and withdrawal is usually worst in the first days [F06].
 - **No clean success.** A clean success at week 6 would be the unrealistic ending.
 
 | Chat | Date header · day | What happens | Turns | Key moments |

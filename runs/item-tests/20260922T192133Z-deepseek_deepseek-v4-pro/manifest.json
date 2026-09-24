@@ -1,0 +1,41 @@
+{
+  "grader": "deepseek:deepseek-v4-pro",
+  "returned_models": [
+    "deepseek-v4-pro"
+  ],
+  "sampling": {
+    "temperature": 0.0,
+    "max_tokens": 1000,
+    "json_mode": true,
+    "thinking": false
+  },
+  "only": [
+    "AO3",
+    "KM5-C5",
+    "KM6-C4"
+  ],
+  "prompt": {
+    "version": "grader-v0.3",
+    "sha": "eededa05c06d"
+  },
+  "spec": {
+    "id": "vaping-v0",
+    "version": "0.1.2",
+    "sha": "5666397a274e"
+  },
+  "examples": {
+    "version": "0.2-draft",
+    "sha": "799080dfba65",
+    "n": 12,
+    "pending_rewording": [
+      "AO3@KM8.fail"
+    ]
+  },
+  "draft_prefix": true,
+  "started": "20260922T192133Z",
+  "finished": "20260922T192202Z",
+  "usage": {
+    "prompt_tokens": 20933,
+    "completion_tokens": 1495
+  }
+}

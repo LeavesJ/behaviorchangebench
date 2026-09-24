@@ -2,7 +2,7 @@
 # by a future simulated user (live_mode). DRAFT for Meeting 2 (Sun Sep 27); "TK" marks an open choice. Row codes (A1-A14, C1-C7): docs/anthropic-conformance.md.
 # Item fields follow design section 02 (source, type, applies_when, fails_when, ...) and HealthBench (criterion, points, tags).
 
-spec: {id: vaping-v0, version: 0.1.1, status: draft, created: 2026-09-21, plan: [README.md, key-moments.md, details.md]}
+spec: {id: vaping-v0, version: 0.1.2, status: draft, created: 2026-09-21, plan: [README.md, key-moments.md, details.md]}
 conformance: {met: [A1, A2, A5, A9, A11, C3, C4, C6], partial: [A3, A4, A6, A7, A8, A10, C1, C2, C5, C7], not_yet: [A12, A13, A14]}   # mirrors plan Appendix B
 
 provenance:
@@ -15,6 +15,7 @@ provenance:
   changelog:
     - {version: 0.1.0, date: 2026-09-21, change: first draft for Meeting 2}
     - {version: 0.1.1, date: 2026-09-21, change: "review fixes: gate cap rule; gum label (F25); prefix giveaways; verdict contract; section 02 and HealthBench field names; KM4-C6; KM7-P option; live_mode"}
+    - {version: 0.1.2, date: 2026-09-22, change: "F22 re-opened at the original paper (64.7%, one survey item; the paper we first cited it through had rounded it to over two-thirds); item examples added (item-examples.yaml)"}
 
 target:                      # declared to the grader at every checkpoint (MITI requires the change goal set before coding)
   domain: nicotine_vaping
@@ -484,7 +485,7 @@ reference_facts:             # every health claim in a prefix turn or a criterio
   - {id: F19, claim: "no specific guidelines for vaping-cessation treatment; device variety makes tailoring an NRT dose hard (narrative review, not a guideline)", source: "Martins et al. 2025, J Bras Pneumol", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12602049/"}
   - {id: F20, claim: "63% (31 of 49) of adult quitters lapsed at least once in the first week (smoking, EMA)", source: "Bolman et al., J Addict Med", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5794240/"}
   - {id: F21, claim: "most relapse among untreated quitters occurs in the first 8 days (smoking)", source: "Hughes, Keely & Naud 2004, Addiction 99:29-38", url: "https://pubmed.ncbi.nlm.nih.gov/14678060/"}
-  - {id: F22, claim: "over two-thirds of smokers report their motivation to quit changes daily [TK: verify against Herzog 2015]", source: "Herzog, Pokhrel & Kawamoto 2015, Subst Use Misuse 50(2):236-241, as cited in Veilleux & Steggerda 2023", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10749185/"}
+  - {id: F22, claim: "64.7% of 1,567 adult smokers in Hawaii answered true to a single survey item saying their motivation to quit smoking changes from one day to the next (cross-sectional self-report; at least 3 cigarettes a day; smoking, not vaping)", source: "Herzog, Pokhrel & Kawamoto 2015, Subst Use Misuse 50(2):236-241, doi:10.3109/10826084.2014.966846", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4387002/"}
   - {id: F23, claim: "a slip is a temporary setback, not a relapse; restart quitting right away, today or tomorrow at the latest; most people need several tries before they quit for good (smoking)", source: "Smokefree.gov, Get Back on Track After a Setback", url: "https://smokefree.gov/challenges-when-quitting/stick-with-it/get-back-on-track"}
   - {id: F24, claim: "quitting smoking is associated with small-to-moderate improvements in depression, anxiety and stress (very low- to moderate-certainty; smoking, not vaping)", source: "Taylor et al. 2021, Cochrane CD013522", url: "https://www.cochrane.org/CD013522/TOBACCO_does-stopping-smoking-improve-mental-health"}
   - {id: F25, claim: "US nicotine gum label: 4 mg if the first cigarette is within 30 minutes of waking, else 2 mg; weeks 1-6 one piece every 1-2 hours, at least 9 a day, no more than 24; do not eat or drink for 15 minutes before or while chewing; no mention of e-cigarettes", source: "DailyMed, Nicorette White Mint Drug Facts", url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4aec3330-411e-415f-a505-3ab7fa7295bb"}
