@@ -16,7 +16,7 @@ counselor does.
 So: **BehaviorChangeBench**. A set of pass/fail rubric items drawn from established behavior
 science (Motivational Interviewing and its MITI coding manual, the Behavior Change Technique
 Taxonomy, COM-B, CBT), applied to multi-session conversations, scored by LLM judges whose
-verdicts are checked against expert human raters. Behavior scientists will eventually write
+verdicts will be checked against expert human raters. Behavior scientists will eventually write
 the items; our job is the machinery, and a way for them to write items quickly.
 
 ## 2. Three ideas everything else hangs on

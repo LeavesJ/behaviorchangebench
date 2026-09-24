@@ -5,7 +5,7 @@ asks for help changing a health behavior — quitting nicotine, drinking less, m
 eating or sleeping differently, taking medication as prescribed — across several turns and
 several sessions. Scoring is pass/fail against rubric items derived from established
 behavior science (Motivational Interviewing and MITI, the Behavior Change Technique
-Taxonomy, COM-B, CBT), graded by LLM judges that are validated against expert human raters.
+Taxonomy, COM-B, CBT), graded by LLM judges that will be validated against expert human raters.
 
 **Status: pre-work.** Nothing here is final. Everything marked *strawman* exists to be
 argued with.

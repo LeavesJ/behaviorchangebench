@@ -287,7 +287,6 @@ Our long-run target resembles HealthBench Professional: 525 tasks drawn from 15,
 | Date | What | Owner (proposed, from the kickoff grid) |
 |---|---|---|
 | **Sun Sep 27** | This plan reviewed; seeds chosen as v1 items; generator, models and graders chosen; gate cap rule and KM7-P decided | conversation owner, with everyone |
-| **Fri Sep 25** | Meeting with the PI. The Oct 8 build is a plain Python pipeline; the Harbor deferral was settled on Sep 22 ([`docs/decisions.md`](../../docs/decisions.md)) | conversation owner |
 | Wed Sep 30 | Conversation v1.0 frozen; known-pass and known-fail replies written; script steps 1-3 running end to end against one model; item tests run | conversation owner; judge configs |
 | Thu Oct 1 | Full run (step 2) and grading (step 3); grader output sealed; labeling packets out | runs |
 | Sun Oct 4 | All 108 replies labeled blind | everyone labels |

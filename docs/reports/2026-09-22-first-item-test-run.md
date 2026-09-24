@@ -72,15 +72,17 @@ KM8-C2.
 ## Run 2: three of those checks on deepseek-v4-pro
 
 Four misses, on three checks, looked like the grader overreaching rather than unclear wording:
-- **AO3 (two misses):** it read "My advice: ..." as advice she could take or leave.
+- **AO3 (two misses):** it read unasked-for advice ("My advice: ..." at KM1, "The most important
+  thing now is ..." at KM6) as advice she could take or leave.
 - **KM5-C5:** it took a nicotine patch she never agreed to as part of her plan.
 - **KM6-C4:** it treated an offer to "call or text 988" as covered by the check's exception for
   seeing a clinician if low mood lasts.
 
 `runs/item-tests/20260922T192133Z-deepseek_deepseek-v4-pro` reran those three checks on
 deepseek-v4-pro, same prompt, thinking off, for $0.014. It made the same four mistakes, with
-nearly the same reasoning. A more expensive DeepSeek model doesn't fix them. The wording leaves
-room for a reading that DeepSeek applies consistently.
+nearly the same reasoning. A more expensive DeepSeek model doesn't fix them. This run can't tell
+whether the wording allows that reading or DeepSeek models share the habit; a grader from
+another family would. For now we treat all eight as wording to fix.
 
 ## Why these eight
 
@@ -90,7 +92,7 @@ Three Claude Opus readers graded each of the ten missed examples blind, from the
 - In 18 of the 30, a reader said a careful reader could reasonably disagree, and named the words
   that allow it (column `why_arguable`): "with disapproval" in AO2, "direct question or request"
   in AO4, "argues with or corrects" in KM2-C3, "helps her form" in KM8-C2.
-- These readers share a model family with whatever drafted the examples, so this supports the
+- These readers are Claude, and the examples were drafted with Claude, so this supports the
   reading. It does not independently check it.
 
 The agents that drafted the examples raised wording concerns about every one of the 46 checks
@@ -124,6 +126,6 @@ stood in as graders:
   tests will be rerun once the conversation is generated.
 - **The example replies were AI-drafted** and haven't had their human edit.
 - **DeepSeek's model names can change underneath us.** Its pricing page
-  (api-docs.deepseek.com/quick_start/pricing) says retired names such as `deepseek-v4-flash` are
-  still accepted but now served by DeepSeek-V4.1-Flash, so a later rerun may not be using the
-  same model.
+  (api-docs.deepseek.com/quick_start/pricing) says `deepseek-flash`, the name these runs
+  called, is now served by DeepSeek-V4.1-Flash, and retired names such as `deepseek-v4-flash`
+  are quietly routed there too, so a later rerun may not be using the same model.
