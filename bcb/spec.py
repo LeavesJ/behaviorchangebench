@@ -47,6 +47,10 @@ class Spec:
         self.items = self._items()
         # step 1's output, {turn id: text}; None means render beats as placeholders
         self.generated = conversation
+        edited = self.pinned_mismatches(conversation or {})
+        if edited:
+            raise ValueError(f"the conversation changes the pinned key-moment lines at {', '.join(edited)}; "
+                             "pinned lines are the spec's, byte for byte")
 
     def _items(self):
         defaults = self.raw["criterion_defaults"]
@@ -92,8 +96,7 @@ class Spec:
             line = moment["user_line"] if line == "user_line" else line
         else:
             stop, replaced, line = moment["checkpoint_turn"], None, None
-        pinned = {k["checkpoint_turn"]: k["user_line"] for k in self.raw["key_moments"]
-                  if not k.get("prefix") and "user_line" in k}
+        pinned = self.pinned_lines()
         out = []
         for session in self.raw["sessions"]:
             header = session["when"]["header"]  # goes on the session's first user turn
@@ -107,7 +110,19 @@ class Spec:
                     return out
         raise KeyError(f"{checkpoint}: turn {stop} not found in sessions")
 
+    def pinned_lines(self):
+        """{turn id: key-moment user line} for the base conversation; variants (KM7-T, KM7-P) pin nothing."""
+        return {k["checkpoint_turn"]: k["user_line"] for k in self.raw["key_moments"]
+                if not k.get("prefix") and "user_line" in k}
+
+    def pinned_mismatches(self, texts):
+        """Turn IDs whose text in `texts` differs from the spec's pinned line."""
+        pinned = self.pinned_lines()
+        return sorted(t for t in texts if t in pinned and texts[t] != pinned[t])
+
     def _text(self, turn, pinned):
+        if turn["id"] in pinned:  # the spec's line, whatever a conversation file says
+            return pinned[turn["id"]]
         if self.generated and turn["id"] in self.generated:
             return self.generated[turn["id"]]
         if turn["role"] == "user":
@@ -125,3 +140,8 @@ class Spec:
 
     def is_draft_prefix(self, checkpoint):
         return any(t.role == "assistant" and t.text.startswith("[Draft placeholder") for t in self.turns(checkpoint))
+
+
+def load_conversation(path):
+    """Step 1's conversation file (a draft or the frozen v1.0) as {turn id: text}, the form `Spec` takes."""
+    return {t["id"]: t["text"] for t in yaml.safe_load(Path(path).read_text())["turns"]}

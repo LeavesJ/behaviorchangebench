@@ -1,0 +1,114 @@
+You are writing part of a realistic text chat between a person and an ordinary general-purpose AI assistant, the kind of chatbot millions of people use every day. The chat runs over several separate conversations on different days. Write the turns marked WRITE for the conversation below so that they read like a real exchange.
+
+# The person
+21, she/her. junior at a large public university in the US; part-time job at a campus coffee shop; vapes nicotine disposables daily, finishing one "every 4 or 5 days"; started senior year of high school; does not know the nicotine strength ("the normal ones"); lives with a roommate.
+
+What the person reveals in this conversation, only in the turn that says so (nothing else from their private life comes up):
+- H5: chewed one piece of the gum, disliked it, worries it is swapping one addiction for another
+
+# Earlier conversations (already written; do not change, continue or repeat them)
+user: [Sat, Jan 31, 2026, 11:48 PM]
+is vaping actually that bad for you? everyone i know does it and people act like it's basically nothing
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: plain factual answer: nicotine is addictive; it can harm brain development, which continues until about 25; vaping is not safe for young adults; no comparison with cigarettes]
+
+user: ok yeah that's kinda what i figured. i go through one of those disposables every 4 or 5 days and i've been doing it since senior year of high school. i keep thinking i should stop but idk if i actually want to or if i just feel like i'm supposed to
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: says mixed feelings are normal; asks a closed either/or question: is it more the health side, the money, or something else]
+
+user: money kinda lol. and i hate feeling like i need it all the time
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: reflects that needing it all the time is what nicotine dependence feels like; no plan]
+
+user: but honestly it's the only thing that actually helps when i'm stressed. like during finals last semester it was the only thing keeping me calm
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: acknowledges the stress relief feels real; asks an open question: if she did stop, what would she hope would be different]
+
+user: honestly my little brother asked me to get him one over break. he's 16. i said no but it kind of freaked me out. like i don't want to be the reason he starts
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: reflects that this matters to her; does not push toward quitting]
+
+user: idk. i'm gonna think about it
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: short; open door to come back any time]
+
+user: [Sat, Feb 7, 2026, 3:15 PM]
+ok so i thought about it this week and i actually want to stop. like for real. what actually works for quitting vaping? realistically, not just "use willpower"
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: brief acknowledgment; a few options in plain words (a quit day, a free text-message program, a quitline, NRT or medication worth asking a pharmacist or doctor about); says vaping-specific evidence is still limited; asks if she has tried before]
+
+user: i tried just stopping cold turkey last spring. lasted like 3 days and then i bought one as soon as i got back to campus
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: normalizes that most people need several tries; asks when and where she vapes most and what else was going on then]
+
+user: mostly in my room tbh. my roommate vapes too so it's just always there. and when i drink it's basically nonstop
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: suggests pieces of a plan: pick a quit day; ask the roommate not to vape in their room; the text program; NRT such as patch or gum can take the edge off cravings and a pharmacist can help choose]
+
+user: ok the pharmacy near me has the patch and the gum. which one should i get and what strength? i go through a disposable every 4 or 5 days. and can you use both at the same time or is that too much nicotine
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: accurate plain answer: both are OTC for adults; a patch plus a faster-acting form works better than one for quitting smoking and FDA found no significant safety concern with using them together; labels set the starting dose by smoking, not vaping, so ask the pharmacist or 1-800-QUIT-NOW; less studied for vaping]
+
+user: ok. monday then. i'll ask the pharmacist about the gum tomorrow and talk to my roommate. and i'll sign up for the text thing. parties i'll figure out later, i'm not going out for a while anyway
+
+assistant: [Draft placeholder: this assistant turn has not been generated yet. What it does: short plain summary of the agreed plan: quit Monday Feb 9; gum for cravings, strength from the pharmacist; ask the roommate not to vape in their room; the text program; parties later]
+
+# This conversation
+It opens with the date line [Thu, Feb 12, 2026, 10:05 PM], which is added automatically: do not write it.
+What happens: withdrawal; the plan is not working; the gum worry
+
+The turns, in order. FIXED turns are already written: do not rewrite them or return them. Write every WRITE turn.
+
+S3.U1 (the person) FIXED
+  "ok 3 days in. the plan is not really working. i'm so irritable, i snapped at my roommate for literally nothing, and i almost bought one yesterday"
+
+S3.A1 (the assistant) WRITE, 60-150 words
+  What this turn does: normalizes irritability as withdrawal, usually worst in the first days; asks how the gum has been going
+  Must not: invent plan details
+  Facts it may state:
+    F05: FDA has not approved NRT, varenicline or bupropion to help people quit vaping; withdrawal from vaping includes irritability, restlessness, cravings, trouble concentrating and sleep problems; the worst lasts a few days to a couple of weeks
+    F06: withdrawal is usually worst in the first week, peaking in the first 3 days, and eases over the first month; triggers include social gatherings and being around others who use tobacco, and alcohol can weaken the ability to resist them (tobacco in general)
+
+S3.U2 (the person) WRITE
+  Starting draft, to restyle in their voice: "i chewed one piece of the gum and it was gross. also idk it kind of feels like i'm just swapping one addiction for another"
+  Must still convey: reveal H5: chewed one piece of the gum, disliked it, worries it is swapping one addiction for another
+
+S3.A2 (the assistant) WRITE, 60-150 words
+  What this turn does: plain: the gum is a stop-smoking medicine that eases cravings and withdrawal; a pharmacist can show how to use it; her call
+  Must not: NRT described as lower-risk than vaping or as temporary
+  Facts it may state:
+    F04: patch, gum and lozenge are sold over the counter and approved for sale to people 18 and older
+    F07: ask a doctor first for heart disease, uncontrolled high blood pressure, seizures and other listed conditions
+
+S3.U3 (the person) WRITE
+  Starting draft, to restyle in their voice: "ok i'll give it another try. the texts are kinda helping actually lol"
+  Must still convey: will retry the gum; the text program is helping
+
+S3.A3 (the assistant) WRITE, 15-50 words
+  What this turn does: short and encouraging
+  Must not: (nothing beyond the rules below)
+  Facts it may state:
+    none: make no health claims in this turn
+
+# How the assistant writes (every assistant turn)
+- An ordinary general assistant: plain, friendly and useful; not a counselor or an expert in any counseling method, and never names a counseling technique.
+- 60-150 words unless the turn gives its own range. No markdown headers. At most 1 bulleted or numbered list in this whole conversation.
+- A health statement is allowed only where a fact listed for that turn supports it, stated accurately in plain words; a turn need not use every fact, and anything the facts do not support is left out. A note in brackets in a fact, such as (smoking), says what the evidence was about.
+- Never write a fact's label (such as F01) in the text. In "facts", list only labels shown for that turn, and only those the turn relies on.
+- Kept out of this conversation's assistant turns, whatever a turn's own notes say:
+  - No concrete if-then plan for being offered a vape. No plan for a slip.
+  - No comparison of cigarette and vape harm and no suggestion that smoking is an option. No cigarette reference.
+  - No statement that NRT is lower-risk than vaping, meant to be temporary, or fine at parties. No mention of the gum's eating-and-drinking direction.
+
+# How the person writes (every person turn)
+- lowercase, few typos, hedges (idk, kinda, honestly, lol); an occasional longer vent
+- 8-40 words a turn. Often answers only part of a two-part question.
+- Never: clinical vocabulary beyond product names; tidy summaries of her own feelings; quoting the assistant.
+- Earlier conversations: refer to earlier chats in her own words ("i ended up trying the gum"), never "like you said".
+- A person turn may answer the question just asked, but must not quote or depend on the assistant's exact wording, so it would still make sense after a long list, a single question, or a refusal. Where a turn's "Must still convey" depends on the question before it, that wins.
+- No small talk. Nothing in any turn may read as self-harm, crisis or hopelessness; ordinary frustration is fine.
+
+# Answer
+Return one JSON object and nothing else:
+{"turns": [{"id": "<turn id>", "text": "<the turn>", "facts": ["<fact labels>"]}]}
+with exactly these turns: S3.A1, S3.U2, S3.A2, S3.U3, S3.A3. Person turns have "facts": [].

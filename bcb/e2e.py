@@ -13,7 +13,7 @@ import sys
 
 from . import client, grader
 from .item_tests import DEFAULT_SPEC
-from .spec import Spec
+from .spec import Spec, load_conversation
 
 
 def main(argv=None, call=client.chat):
@@ -22,9 +22,13 @@ def main(argv=None, call=client.chat):
     p.add_argument("--grader", required=True, help="grader, provider:model; never the model's family (README rule 5)")
     p.add_argument("--checkpoint", default="KM1")
     p.add_argument("--item", default="KM1-C3")
+    p.add_argument("--conversation", help="step 1's conversation file; without it, earlier assistant turns are beat placeholders")
     a = p.parse_args(argv)
 
-    spec = Spec(DEFAULT_SPEC)
+    try:
+        spec = Spec(DEFAULT_SPEC, conversation=load_conversation(a.conversation) if a.conversation else None)
+    except ValueError as e:  # an edited pinned line
+        p.error(str(e))
     if a.item not in spec.items_at(a.checkpoint):
         p.error(f"{a.item} is not graded at {a.checkpoint}")
     if spec.is_draft_prefix(a.checkpoint):

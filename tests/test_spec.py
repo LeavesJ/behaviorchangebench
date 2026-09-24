@@ -49,6 +49,16 @@ class RenderTest(unittest.TestCase):
         self.assertFalse(generated.is_draft_prefix("KM1"))
         self.assertTrue(SPEC.is_draft_prefix("KM1"))
 
+    def test_pinned_lines_come_from_the_spec_whatever_a_conversation_says(self):
+        line = SPEC.pinned_lines()["S1.U2"]
+        with self.assertRaises(ValueError):  # a file whose pinned line was edited is refused
+            Spec(DEFAULT_SPEC, conversation={"S1.U2": "EDITED KM1 LINE"})
+        self.assertTrue(Spec(DEFAULT_SPEC, conversation={"S1.U2": line}).messages("KM1")[-1]["content"].endswith(line))
+        spec = Spec(DEFAULT_SPEC)
+        spec.generated = {"S1.U2": "EDITED KM1 LINE", "S2.U1": "EDITED KM3 LINE"}  # even past the constructor
+        self.assertTrue(spec.messages("KM1")[-1]["content"].endswith(line))
+        self.assertNotIn("EDITED", spec.transcript("KM3"))
+
 
 class ItemsTest(unittest.TestCase):
     def test_every_item_is_graded_somewhere(self):

@@ -3,6 +3,7 @@
     python -m bcb.item_tests --grader deepseek:deepseek-flash
     python -m bcb.item_tests --dry-run                # write the prompts, call nothing
     python -m bcb.item_tests --grader ... --only KM4-*,AO3
+    python -m bcb.item_tests --grader ... --conversation <step-1 conversation file>   # the real prefix
 
 Writes results.jsonl, summary.md and manifest.json under runs/item-tests/. A grader error
 (bad JSON, a `met` with no quote from the reply, a timeout) is retried once and then
@@ -19,7 +20,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import client, examples as ex_mod, grader
-from .spec import Spec
+from .spec import Spec, load_conversation
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SPEC = ROOT / "trajectories/vaping-v0/spec.yaml"
@@ -99,11 +100,15 @@ def main(argv=None, call=client.chat):
     p.add_argument("--only", help="comma-separated item IDs or patterns, e.g. KM4-*,AO3")
     p.add_argument("--out", type=Path, default=ROOT / "runs/item-tests")
     p.add_argument("--dry-run", action="store_true", help="write the prompts; call nothing")
+    p.add_argument("--conversation", type=Path, help="step 1's conversation file; without it, earlier assistant turns are beat placeholders")
     a = p.parse_args(argv)
     if not a.dry_run and not a.grader:
         p.error("--grader is required unless --dry-run")
 
-    spec = Spec(a.spec)
+    try:
+        spec = Spec(a.spec, conversation=load_conversation(a.conversation) if a.conversation else None)
+    except ValueError as e:  # an edited pinned line
+        p.error(str(e))
     raw, examples = ex_mod.load(a.examples)
     bad = ex_mod.problems(spec, examples)
     if bad:
@@ -143,6 +148,8 @@ def main(argv=None, call=client.chat):
         "started": started, "finished": datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"),
         "usage": {k: sum(r.get("usage", {}).get(k, 0) or 0 for r in rows) for k in ("prompt_tokens", "completion_tokens")},
     }
+    if a.conversation:
+        manifest["conversation"] = {"path": str(a.conversation), "sha": _sha(a.conversation)}
     (out / "results.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     (out / "summary.md").write_text(_summary_md(table, manifest))

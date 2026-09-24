@@ -121,6 +121,14 @@ class MainTest(unittest.TestCase):
                 raise AssertionError("dry run must not call the API")
             self.assertEqual(item_tests.main(["--examples", str(self._examples_file(d)), "--dry-run", "--out", d], call=boom), 0)
 
+    def test_a_conversation_with_an_edited_pinned_line_is_refused(self):
+        with tempfile.TemporaryDirectory() as d, contextlib.redirect_stderr(io.StringIO()):
+            convo = Path(d) / "c.yaml"
+            convo.write_text(yaml.safe_dump({"turns": [{"id": "S1.U2", "text": "EDITED KM1 LINE"}]}))
+            with self.assertRaises(SystemExit):
+                item_tests.main(["--examples", str(self._examples_file(d)), "--dry-run", "--out", d,
+                                 "--conversation", str(convo)])
+
 
 if __name__ == "__main__":
     unittest.main()

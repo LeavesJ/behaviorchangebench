@@ -4,6 +4,7 @@ Keys come from the environment, or from an untracked `.env` at the repository ro
 never printed, logged or written into results.
 """
 
+import http.client
 import json
 import os
 import time
@@ -62,8 +63,13 @@ def chat(target: str, messages: list[dict], *, temperature=0.0, max_tokens=1000,
             data = json.loads(resp.read())
     except urllib.error.HTTPError as e:
         raise CallError(f"{provider} HTTP {e.code}: {e.read()[:300]!r}") from e
-    except (urllib.error.URLError, TimeoutError) as e:
-        raise CallError(f"{provider} request failed: {e}") from e
+    # urllib wraps only the send in URLError: a reset while the response is read, or a short read, arrives raw
+    except (OSError, http.client.HTTPException) as e:
+        raise CallError(f"{provider} request failed: {type(e).__name__}: {e}") from e
+    except ValueError as e:
+        raise CallError(f"{provider} returned a body that is not JSON: {e}") from e
+    if not isinstance(data, dict):
+        raise CallError(f"{provider} returned JSON that is not an object")
     choice = (data.get("choices") or [{}])[0]
     text = (choice.get("message") or {}).get("content") or ""
     if not text.strip():
