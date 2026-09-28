@@ -26,12 +26,15 @@ docs/
   design/                    six sections, one owner each
   meetings/                  agendas and notes
 rubrics/                     rubric items as data files        (to come)
-trajectories/                conversation specs                (to come)
+trajectories/                conversation specs, including vaping-v0 and alcohol-relapse-prevention-v0
 ```
 
 The harness (Harbor tasks, the chat-model agent, judge configs, the agreement and
 disagreement report) lands once the group has agreed the encoding. See
 `docs/design/README.md` for how sections are written and `CONTRIBUTING.md` for how we work.
+
+The alcohol scaffold's self-efficacy item is in
+[`trajectories/alcohol-relapse-prevention-v0/`](trajectories/alcohol-relapse-prevention-v0/).
 
 ## Ground rules for the eval itself
 
