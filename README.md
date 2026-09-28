@@ -25,13 +25,41 @@ docs/
   architecture-proposal.md   how the pipeline could fit together (proposal)
   design/                    six sections, one owner each
   meetings/                  agendas and notes
-rubrics/                     rubric items as data files        (to come)
-trajectories/                conversation specs                (to come)
+trajectories/<id>/           conversation spec, plan, conversation file, item examples
+src/bcb/                     the pipeline: plain Python, steps 1-4 of the vaping-v0 plan
+prompts/                     generator and grader prompts (hashed into every result)
+configs/                     one run config per run; run.smoke.yaml is offline and mock-only
+tests/                       pytest; the smoke pipeline runs end to end with no API keys
+runs/                        pipeline output (gitignored)
 ```
 
-The harness (Harbor tasks, the chat-model agent, judge configs, the agreement and
-disagreement report) lands once the group has agreed the encoding. See
-`docs/design/README.md` for how sections are written and `CONTRIBUTING.md` for how we work.
+See `docs/design/README.md` for how sections are written and `CONTRIBUTING.md` for how we work.
+
+## Running the pipeline
+
+The Oct 8 build is a plain Python pipeline (`trajectories/vaping-v0/details.md` section 9);
+Harbor is deferred. Python 3.11+. Code runs from `src/` and is never installed.
+
+```bash
+python -m venv .venv && . .venv/bin/activate && pip install -r requirements-dev.txt
+export PYTHONPATH=src
+python -m pytest                                  # includes a full mock run of every step
+
+C=configs/run.vaping-v0.yaml                      # or configs/run.smoke.yaml, no keys needed
+python -m bcb draft   --config $C                 # 1  generator writes conversation.draft.yaml
+cp trajectories/vaping-v0/conversation.draft.yaml trajectories/vaping-v0/conversation.v1.0.yaml
+python -m bcb check   --config $C                 #    every scriptable constraint; edit until clean
+python -m bcb freeze  --config $C --draft trajectories/vaping-v0/conversation.draft.yaml --realism-reviewer NAME
+python -m bcb replies --config $C                 # 2  models x checkpoints x samples; resumable
+python -m bcb packets --config $C                 #    blind labeling packets; the key goes to sealed/
+python -m bcb itemtest --config $C --grader primary   # rule 4: examples graded before real grading
+python -m bcb grade   --config $C --grader primary    # 3  one call per (reply, item)
+python -m bcb tabulate --config $C                # 4  tables/, disagreements, run_manifest.json
+```
+
+A step that needs a choice still marked `TK` in the config refuses to run and names it. With the
+smoke config, skip `cp` and `freeze` (its conversation is the draft itself), and pass
+`--allow-untested-items` to `grade`, since no item examples are written yet.
 
 ## Ground rules for the eval itself
 
