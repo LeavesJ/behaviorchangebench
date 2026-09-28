@@ -38,11 +38,13 @@ See `docs/design/README.md` for how sections are written and `CONTRIBUTING.md` f
 ## Running the pipeline
 
 The Oct 8 build is a plain Python pipeline (`trajectories/vaping-v0/details.md` section 9);
-Harbor is deferred. Python 3.11+. Code runs from `src/` and is never installed.
+Harbor is deferred. Code runs from `src/` and is never installed. It needs Python 3.11 or newer:
+check `python3 --version`, and on a Mac with an older one, `brew install python@3.12` and use
+`python3.12` in the first line below. Run everything from the repository root.
 
 ```bash
-python -m venv .venv && . .venv/bin/activate && pip install -r requirements-dev.txt
-export PYTHONPATH=src
+python3 -m venv .venv && source .venv/bin/activate && python -m pip install -r requirements-dev.txt
+export PYTHONPATH=src                             # every new shell: activate .venv and set this again
 python -m pytest                                  # includes a full mock run of every step
 
 C=configs/run.vaping-v0.yaml                      # or configs/run.smoke.yaml, no keys needed
