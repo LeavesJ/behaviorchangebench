@@ -1,0 +1,4 @@
+# Pinned for reproducibility (A11); the run manifest records the versions actually used.
+pyyaml==6.0.3     # the spec, configs and conversation files are YAML
+anthropic==1.9.0  # official SDK for the Anthropic model under test
+openai==3.20.0    # official SDK for every chat-completions endpoint: OpenAI, DeepSeek, and hosts named by base_url

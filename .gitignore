@@ -5,6 +5,10 @@
 # Harbor run output
 jobs/
 
+# pipeline output: replies, sealed grades, packets, tables. Kept out of git so labelers
+# never see grader output; publish a run deliberately once labeling is done.
+runs/
+
 # python
 __pycache__/
 *.pyc

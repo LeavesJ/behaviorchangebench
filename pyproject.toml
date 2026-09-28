@@ -1,0 +1,9 @@
+# Metadata and test settings only. Run code with PYTHONPATH=src; the package is never installed.
+[project]
+name = "behaviorchangebench"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

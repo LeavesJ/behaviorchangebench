@@ -1,0 +1,50 @@
+# Run config for the Oct 8 prototype (trajectories/vaping-v0). One file drives every step:
+#   PYTHONPATH=src python -m bcb <command> --config configs/run.vaping-v0.yaml
+# "TK" marks a choice still open (details.md section 12). A step that needs an unset value
+# refuses to run and names it. Results land in runs/<run_id>/ (gitignored until labeling is done,
+# so grader output stays sealed from labelers).
+
+run_id: vaping-v0-r1
+spec: trajectories/vaping-v0/spec.yaml
+conversation: trajectories/vaping-v0/conversation.v1.0.yaml
+examples: trajectories/vaping-v0/examples.yaml
+prompts:
+  generator: prompts/generator.v0.1.md
+  grader: prompts/grader.v0.1.md
+output_dir: runs
+
+checkpoints: default        # spec run.checkpoints; add KM7-P by listing checkpoints explicitly if adopted
+samples: 3
+system_prompt: null         # spec run.system_prompt; the one-line variant is a separate run_id
+items: all                  # or the v1 subset as a list of item IDs (Meeting 2 question 6)
+packet_seed: 20261001       # seeds the reply shuffle in labeling packets
+
+# Models under test: one per family, none from a grader's family (README rule 5). Pin exact IDs.
+# `params` go to the API verbatim and are recorded on every row; empty means vendor defaults.
+# Credentials come from the environment (see api_key_env), never from this file.
+models:
+  - {slot: M1, family: anthropic, provider: anthropic, model_id: TK, max_output_tokens: 16000, params: {}}
+  - {slot: M2, family: openai, provider: openai_compat, model_id: TK, base_url: null,
+     api_key_env: OPENAI_API_KEY, token_limit_param: max_completion_tokens, max_output_tokens: 16000, params: {}}
+  - {slot: M3, family: google, provider: openai_compat, model_id: TK, base_url: TK,
+     api_key_env: GEMINI_API_KEY, token_limit_param: max_tokens, max_output_tokens: 16000, params: {}}
+  - {slot: M4, family: TK, provider: openai_compat, model_id: TK, base_url: TK,
+     api_key_env: TK, token_limit_param: max_tokens, max_output_tokens: 16000, params: {}}
+
+graders:
+  primary:                  # proposed Sep 21: DeepSeek, one inexpensive grader for everything
+    {family: deepseek, provider: openai_compat, model_id: TK, base_url: TK, api_key_env: DEEPSEEK_API_KEY,
+     token_limit_param: max_tokens, max_output_tokens: 8000, params: {}}
+  second:                   # another family not under test; regrades the same saved replies
+    {family: TK, provider: openai_compat, model_id: TK, base_url: TK, api_key_env: TK,
+     token_limit_param: max_tokens, max_output_tokens: 8000, params: {}}
+
+# Never a grader; prefer a family not under test (spec generation.generator). If its family is
+# under test, the generation record says so (self-preference).
+generator:
+  {family: TK, provider: openai_compat, model_id: TK, base_url: TK, api_key_env: TK,
+   token_limit_param: max_tokens, max_output_tokens: 16000, params: {}}
+
+# USD per million tokens, from the pinned models' price sheets, keyed by model_id. A model with no
+# entry gets cost null in the manifest; nothing is estimated.
+prices: {}

@@ -1,0 +1,31 @@
+# Offline smoke run: every model, grader and generator is a deterministic mock. It exercises the
+# whole pipeline on the real spec with no API keys and costs nothing. Its output is not a result:
+# the manifest marks it contains_mock_output and `tabulate` says so.
+#   PYTHONPATH=src python -m bcb draft --config configs/run.smoke.yaml
+#   ... then replies, packets, grade --allow-untested-items, tabulate (README "Running the pipeline")
+
+run_id: smoke
+spec: trajectories/vaping-v0/spec.yaml
+conversation: runs/smoke/conversation.draft.yaml
+examples: trajectories/vaping-v0/examples.yaml
+prompts:
+  generator: prompts/generator.v0.1.md
+  grader: prompts/grader.v0.1.md
+output_dir: runs
+
+checkpoints: default
+samples: 3
+system_prompt: null
+items: all
+packet_seed: 20261001
+
+models:
+  - {slot: M1, family: mock-a, provider: mock, mock: reply, model_id: mock-reply-a}
+  - {slot: M2, family: mock-b, provider: mock, mock: reply, model_id: mock-reply-b}
+
+graders:
+  primary: {family: mock-judge, provider: mock, mock: grader, model_id: mock-grader-v0}
+
+generator: {family: mock-writer, provider: mock, mock: generator, model_id: mock-generator-v0}
+
+prices: {}
