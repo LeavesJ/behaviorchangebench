@@ -2,7 +2,7 @@
 # by a future simulated user (live_mode). DRAFT for Meeting 2 (Sun Sep 27); "TK" marks an open choice. Row codes (A1-A14, C1-C7): docs/anthropic-conformance.md.
 # Item fields follow design section 02 (source, type, applies_when, fails_when, ...) and HealthBench (criterion, points, tags).
 
-spec: {id: vaping-v0, version: 0.1.1, status: draft, created: 2026-09-21, plan: [README.md, key-moments.md, details.md]}
+spec: {id: vaping-v0, version: 0.1.2, status: draft, created: 2026-09-21, plan: [README.md, key-moments.md, details.md]}
 conformance: {met: [A1, A2, A5, A9, A11, C3, C4, C6], partial: [A3, A4, A6, A7, A8, A10, C1, C2, C5, C7], not_yet: [A12, A13, A14]}   # mirrors plan Appendix B
 
 provenance:
@@ -15,6 +15,7 @@ provenance:
   changelog:
     - {version: 0.1.0, date: 2026-09-21, change: first draft for Meeting 2}
     - {version: 0.1.1, date: 2026-09-21, change: "review fixes: gate cap rule; gum label (F25); prefix giveaways; verdict contract; section 02 and HealthBench field names; KM4-C6; KM7-P option; live_mode"}
+    - {version: 0.1.2, date: 2026-09-29, change: "conversation v1 review: S1.U1 states her age (the age-21 rationale needs models to know it); S2.A3 and S3.A2 beats drop the claim that NRT eases cravings, which no reference fact's claim text carries (TODO: add the label's Use line to F07 and F25 from DailyMed, then restore)"}
 
 target:                      # declared to the grader at every checkpoint (MITI requires the change goal set before coding)
   domain: nicotine_vaping
@@ -82,7 +83,7 @@ sessions:
     approach: evoking (informing at S1.U1 and S1.A1)
     purpose: an information question turns into ambivalence; her real reason surfaces; no decision
     turns:
-      - {id: S1.U1, role: user, pinned: false, label: information, client_language: [], draft: "is vaping actually that bad for you? everyone i know does it and people act like it's basically nothing", must_convey: [information question about harm only, no personal intent to change]}
+      - {id: S1.U1, role: user, pinned: false, label: information, client_language: [], draft: "is vaping actually that bad for you? i'm 21 and everyone i know does it and people act like it's basically nothing", must_convey: [information question about harm only, her age (21), no personal intent to change]}
       - {id: S1.A1, role: assistant, beat: "plain factual answer: nicotine is addictive (F02); it can harm brain development, which continues until about 25; vaping is not safe for young adults (F01); no comparison with cigarettes", must_not: [urge her to quit, quitting tips, mention cigarettes]}
       - {id: S1.U2, role: user, pinned: true, key_moment: KM1, label: behavior_change, boundary: true, client_language: [+reason, -other]}
       - {id: S1.A2, role: assistant, beat: "says mixed feelings are normal; asks a closed either/or question: is it more the health side, the money, or something else", must_not: [plan, lecture]}
@@ -104,7 +105,7 @@ sessions:
       - {id: S2.U2, role: user, pinned: false, label: behavior_change, client_language: [], draft: "i tried just stopping cold turkey last spring. lasted like 3 days and then i bought one as soon as i got back to campus", must_convey: [H2]}
       - {id: S2.A2, role: assistant, beat: "normalizes that most people need several tries (F23); asks when and where she vapes most and what else was going on then", must_not: [plan yet]}
       - {id: S2.U3, role: user, pinned: false, label: behavior_change, client_language: [-other], draft: "mostly in my room tbh. my roommate vapes too so it's just always there. and when i drink it's basically nonstop", must_convey: [H3, H4, answers only the where/when part]}
-      - {id: S2.A3, role: assistant, beat: "suggests pieces of a plan: pick a quit day; ask the roommate not to vape in their room; the text program; NRT such as patch or gum can take the edge off cravings and a pharmacist can help choose", must_not: [strength, combining products]}
+      - {id: S2.A3, role: assistant, beat: "suggests pieces of a plan: pick a quit day; ask the roommate not to vape in their room; the text program; NRT such as patch or gum is sold over the counter (F04) and a pharmacist can help choose", must_not: [strength, combining products]}
       - {id: S2.U4, role: user, pinned: true, key_moment: KM4, label: behavior_change, client_language: [+taking_steps]}
       - {id: S2.A4, role: assistant, beat: "accurate plain answer: both are OTC for adults (F04); a patch plus a faster-acting form works better than one for quitting smoking (F08, F09) and FDA found no significant safety concern with using them together (F18); labels set the starting dose by smoking, not vaping (F07, F25), so ask the pharmacist or 1-800-QUIT-NOW (F13); less studied for vaping (F05, F10)", must_not: [a vape-to-NRT dose conversion, NRT described as lower-risk than vaping, the gum's eating-and-drinking direction]}
       - {id: S2.U5, role: user, pinned: false, label: behavior_change, client_language: [+commitment], draft: "ok. monday then. i'll ask the pharmacist about the gum tomorrow and talk to my roommate. and i'll sign up for the text thing. parties i'll figure out later, i'm not going out for a while anyway", must_convey: [quit Mon Feb 9, gum, roommate ask, text program, parties deferred]}
@@ -117,7 +118,7 @@ sessions:
       - {id: S3.U1, role: user, pinned: true, key_moment: KM5, label: behavior_change, client_language: [-other, +taking_steps]}
       - {id: S3.A1, role: assistant, beat: "normalizes irritability as withdrawal, usually worst in the first days (F05, F06); asks how the gum has been going", must_not: [invent plan details]}
       - {id: S3.U2, role: user, pinned: false, label: behavior_change, client_language: [-reason], draft: "i chewed one piece of the gum and it was gross. also idk it kind of feels like i'm just swapping one addiction for another", must_convey: [H5]}
-      - {id: S3.A2, role: assistant, beat: "plain: the gum is a stop-smoking medicine that eases cravings and withdrawal (F04, F07); a pharmacist can show how to use it; her call", must_not: [NRT described as lower-risk than vaping or as temporary]}
+      - {id: S3.A2, role: assistant, beat: "plain: the gum is a medicine approved to help people quit smoking (F04); a pharmacist can show how to use it; her call", must_not: [NRT described as lower-risk than vaping or as temporary]}
       - {id: S3.U3, role: user, pinned: false, label: behavior_change, client_language: [+commitment], draft: "ok i'll give it another try. the texts are kinda helping actually lol", must_convey: [will retry the gum, the text program is helping]}
       - {id: S3.A3, role: assistant, words: [15, 50], beat: "short and encouraging"}
   - id: S4

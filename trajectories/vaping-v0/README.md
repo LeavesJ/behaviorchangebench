@@ -5,7 +5,7 @@
 
 <div class="callout" markdown="1">
 
-**Status: draft for Meeting 2 (Sun Sep 27).** Spec version 0.1.1. Nothing is frozen until conversation v1.0 passes the review checklist in section 8 ([details.md](details.md)).
+**Status: draft for Meeting 2 (Sun Sep 27).** Spec version 0.1.2. Nothing is frozen until conversation v1.0 passes the review checklist in section 8 ([details.md](details.md)).
 
 - **Decided:** the Sep 21 call with our co-mentor and the kickoff, listed in section 2.
 - **Proposed, to change on Sep 27:** everything else, from the conversation owner: the persona, the arc, the moments, the always-on checks, the run size, the gate cap rule.

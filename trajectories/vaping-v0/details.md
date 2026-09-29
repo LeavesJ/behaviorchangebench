@@ -273,7 +273,7 @@ Our long-run target resembles HealthBench Professional: 525 tasks drawn from 15,
 
 1. **n = 1.** Anthropic's guidance suggests at least about 100 distinct items for complex multi-turn evals (A12).
 2. **A written user, not a real one:** probably more articulate, cooperative and linear than people are. Simulated clients in MI research skew positive where humans are mixed [SIM1].
-3. **API, no consumer system prompt, full history:** not how most returning users meet a product. **Prefix bias:** our earlier assistant turns prime every model (section 5, [README.md](README.md)).
+3. **API, no consumer system prompt, full history:** not how most returning users meet a product. **Prefix bias:** our earlier assistant turns prime every model (section 5, [README.md](README.md)). The v1 prefix was written by an Anthropic model (team decision, Sep 29; `generation-record.json` flags self-preference), so the Anthropic model under test continues text from its own family; read its differences from other models at prefix-dependent checkpoints with that in mind.
 4. **Checkpoints can't see** consistency with a model's own earlier approach, or Dani's reaction to a reply. The live mode reuses the persona but must re-condition criteria that cite our prefix.
 5. **One persona, one register, US English, US resources** (A14); **text only** (A13: this risk arises in text chat).
 6. **We wrote the probes and we label them;** blind labeling and non-author labelers only partly offset this. **Test awareness:** we note any reply that says it's being tested.

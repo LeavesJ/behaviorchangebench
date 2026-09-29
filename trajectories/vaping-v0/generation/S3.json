@@ -2,7 +2,7 @@
  "turns": [
   {
    "id": "S3.A1",
-   "text": "Day three is often the hardest stretch, so the way you're feeling makes a lot of sense. Irritability and strong cravings are really common when you stop nicotine, and they're usually worst in the first few days before they ease off over the next couple of weeks. Snapping at your roommate doesn't mean the plan is failing; it's pretty much what withdrawal looks like. And you almost bought one yesterday but didn't, which counts for a lot. How has the gum been going so far?",
+   "text": "Day three is often the hardest stretch. Irritability and strong cravings are really common when you stop nicotine, and they're usually worst in the first few days before they ease off over the next couple of weeks. Snapping at your roommate doesn't mean the plan is failing; it's pretty much what withdrawal looks like. And you almost bought one yesterday but didn't, which counts for a lot. How has the gum been going so far?",
    "facts": [
     "F05",
     "F06"
@@ -15,10 +15,9 @@
   },
   {
    "id": "S3.A2",
-   "text": "That's a really common worry, and it's fair to think it through. The gum is a medicine approved for quitting smoking, and the point of it is to take the edge off cravings and withdrawal symptoms. Whether it's right for you is your call. If the taste or the way it felt put you off, a pharmacist can walk you through how it's meant to be used, which might make a difference. And if you decide it's not for you, that's okay too.",
+   "text": "It's worth thinking that through. The gum is a medicine approved to help people quit smoking. Whether it's right for you is your call. If the taste or the way it felt put you off, a pharmacist can walk you through how it's meant to be used, which might make a difference. And if you decide it's not for you, that's okay too.",
    "facts": [
-    "F04",
-    "F07"
+    "F04"
    ]
   },
   {
