@@ -316,6 +316,11 @@ def draft_conversation(spec: Spec, provider: Provider, prompt_path: Path, out_pa
     try:
         for k, session in enumerate(spec.sessions):
             payload = generator_payload(spec, k, texts)
+            if not any(t.get("write") for t in payload["this_session"]["turns"]):
+                for tid in session.turn_ids:  # nothing to write: every turn is pinned
+                    texts[tid], facts[tid], sources[tid] = spec.checkpoints[spec.turns[tid].key_moment].user_line, [], "pinned"
+                record["sessions"].append({"session": session.id, "skipped": "every turn is pinned; no generator call"})
+                continue
             messages = [{"role": "user", "content": json.dumps(payload, ensure_ascii=False, indent=1)}]
             completion = provider.complete(messages, prompt)
             entry = {"session": session.id, "request_sha256": sha256_json(messages), "raw_output": completion.text,

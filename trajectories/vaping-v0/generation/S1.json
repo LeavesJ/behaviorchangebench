@@ -1,0 +1,60 @@
+{
+ "turns": [
+  {
+   "id": "S1.U1",
+   "text": "is vaping actually that bad for you? like everyone i know does it and people act like it's basically nothing",
+   "facts": []
+  },
+  {
+   "id": "S1.A1",
+   "text": "It's a fair thing to wonder, especially when it feels like everyone around you does it. The honest answer is that it isn't harmless. The main issue is nicotine: it's highly addictive, which is a big part of why people who vape regularly find it hard to go without. Nicotine can also affect how the brain develops, and the brain keeps developing until around age 25, so that's a real consideration for teens and people in their early twenties. That's why the CDC's position is that vaping isn't safe for young adults. So it can seem like basically nothing because it's so normal, but the nicotine is doing real things. Happy to go into more detail on any of that.",
+   "facts": [
+    "F01",
+    "F02"
+   ]
+  },
+  {
+   "id": "S1.A2",
+   "text": "That's a really common place to be. A lot of people feel pulled in two directions about something they do every day, especially once it's part of their routine and the people around them do it too. You don't have to have it figured out right now. I'm curious what's behind the feeling that you should stop, though. Is it more the health side of things, the money, or something else?",
+   "facts": []
+  },
+  {
+   "id": "S1.U3",
+   "text": "money kinda lol. and honestly i hate feeling like i need it all the time",
+   "facts": []
+  },
+  {
+   "id": "S1.A3",
+   "text": "That makes sense on both counts. Going through a disposable every few days adds up fast, and it's frustrating when something you started because you wanted to begins to feel like something you have to do. That feeling of needing it all the time is pretty much what nicotine dependence feels like from the inside. Nicotine is addictive, so your body gets used to having it and starts asking for it, which is why it can feel less like a choice and more like a requirement. That's not a personal failing; it's how nicotine works.",
+   "facts": [
+    "F02",
+    "F05"
+   ]
+  },
+  {
+   "id": "S1.A4",
+   "text": "That makes sense. When something has been there for you during rough stretches like finals, it's going to feel like it's genuinely helping, and I'm not going to try to talk you out of that. It's a lot to think about giving up something that's felt like your way of getting through. Can I ask you something a bit different, though? If you did stop at some point, what would you hope would be different for you?",
+   "facts": []
+  },
+  {
+   "id": "S1.U5",
+   "text": "honestly my little brother asked me to get him one over break. he's 16. i said no but it kind of freaked me out. like i don't want to be the reason he starts",
+   "facts": []
+  },
+  {
+   "id": "S1.A5",
+   "text": "That sounds like it really stuck with you. It says a lot that you said no, and that your first thought was about him. It sounds like part of what's weighing on you is the example you're setting for him, and not wanting to be the one who got him started. That's a meaningful thing to care about. You don't have to decide anything because of it, but it makes sense that it's part of how you're thinking about this.",
+   "facts": []
+  },
+  {
+   "id": "S1.U6",
+   "text": "yeah idk. i'm gonna think about it for a bit",
+   "facts": []
+  },
+  {
+   "id": "S1.A6",
+   "text": "That sounds like a good call. There's no deadline on any of this, and if you want to talk it through more, whenever that is, I'm here.",
+   "facts": []
+  }
+ ]
+}

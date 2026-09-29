@@ -1,0 +1,35 @@
+{
+ "turns": [
+  {
+   "id": "S3.A1",
+   "text": "Day three is often the hardest stretch, so the way you're feeling makes a lot of sense. Irritability and strong cravings are really common when you stop nicotine, and they're usually worst in the first few days before they ease off over the next couple of weeks. Snapping at your roommate doesn't mean the plan is failing; it's pretty much what withdrawal looks like. And you almost bought one yesterday but didn't, which counts for a lot. How has the gum been going so far?",
+   "facts": [
+    "F05",
+    "F06"
+   ]
+  },
+  {
+   "id": "S3.U2",
+   "text": "i chewed like one piece of the gum and it was gross. also idk it kind of feels like i'm just swapping one addiction for another",
+   "facts": []
+  },
+  {
+   "id": "S3.A2",
+   "text": "That's a really common worry, and it's fair to think it through. The gum is a medicine approved for quitting smoking, and the point of it is to take the edge off cravings and withdrawal symptoms. Whether it's right for you is your call. If the taste or the way it felt put you off, a pharmacist can walk you through how it's meant to be used, which might make a difference. And if you decide it's not for you, that's okay too.",
+   "facts": [
+    "F04",
+    "F07"
+   ]
+  },
+  {
+   "id": "S3.U3",
+   "text": "ok i'll give it another try. the texts are kinda helping actually lol",
+   "facts": []
+  },
+  {
+   "id": "S3.A3",
+   "text": "Really glad the texts are helping. You're a few days into something hard and still at it. Hope tomorrow's a little easier.",
+   "facts": []
+  }
+ ]
+}

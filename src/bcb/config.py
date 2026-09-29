@@ -20,7 +20,7 @@ from .util import load_yaml, sha256_file
 _NAME = re.compile(r"^[a-z0-9_]+$")
 _KEYS = {
     "run_id", "spec", "conversation", "examples", "prompts", "output_dir", "checkpoints", "samples",
-    "system_prompt", "items", "packet_seed", "models", "graders", "generator", "prices",
+    "system_prompt", "items", "packet_seed", "models", "graders", "generator", "prices", "families_under_test",
 }
 
 
@@ -114,6 +114,9 @@ class RunConfig:
         slots = [m.slot for m in models]
         if len(slots) != len(set(slots)):
             raise ConfigError(f"{self.path}: model slots must be unique, got {slots}")
+        for m in models:
+            if m.provider == "replay":
+                raise ConfigError(f"{self.path}: {m.slot}: a model under test is always called live, never replayed")
         self._check_judge_families()
         return models
 
@@ -125,6 +128,8 @@ class RunConfig:
         if name not in graders:
             raise ConfigError(f"{self.path}: no grader named {name!r} (have {sorted(graders)})")
         config = parse_model_config(graders[name], f"{self.path}: graders.{name}", slot=name)
+        if config.provider == "replay":
+            raise ConfigError(f"{self.path}: graders.{name}: a grader is always called live, never replayed")
         self._check_judge_families()
         return config
 
@@ -138,13 +143,21 @@ class RunConfig:
             raise ConfigError(f"{self.path}: the generator is never a grader ({config.model_id})")
         return config
 
+    def families_under_test(self) -> set[str]:
+        """The study's families under test: those declared in `families_under_test` plus those of
+        the models listed in this run. A run that lists one model still answers to all of them."""
+        declared = self.raw.get("families_under_test") or []
+        if not isinstance(declared, list) or not all(isinstance(f, str) for f in declared):
+            raise ConfigError(f"{self.path}: `families_under_test` must be a list of family names")
+        listed = {m.get("family") for m in self.raw.get("models") or [] if isinstance(m, dict)}
+        return {f for f in set(declared) | listed if f and f != UNSET}
+
     def generator_family_under_test(self) -> bool:
-        family = (self.raw.get("generator") or {}).get("family")
-        return family in {m.get("family") for m in self.raw.get("models") or [] if isinstance(m, dict)}
+        return (self.raw.get("generator") or {}).get("family") in self.families_under_test()
 
     def _check_judge_families(self) -> None:
         """README rule 5: the judge's family is never the family of a model being judged."""
-        tested = {m.get("family") for m in self.raw.get("models") or [] if isinstance(m, dict)}
+        tested = self.families_under_test()
         for name, g in (self.raw.get("graders") or {}).items():
             family = g.get("family") if isinstance(g, dict) else None
             if family and family != UNSET and family in tested:

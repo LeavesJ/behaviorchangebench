@@ -1,0 +1,66 @@
+{
+ "turns": [
+  {
+   "id": "S2.A1",
+   "text": "That's a big decision, and it's good that you're going in with realistic expectations. Honestly, research on quitting vaping specifically is still limited, but a few things have decent support:\n\n- Picking a quit day, so there's a clear starting point\n- A free text-message program for quitting vaping; in one trial with 18 to 24 year olds, it helped more people quit\n- Calling 1-800-QUIT-NOW, which connects you to your state's quitline, and they help people who vape too\n- Asking a pharmacist or doctor whether nicotine replacement or a prescription medication would make sense for you\n\nHave you tried quitting before? If so, how did it go?",
+   "facts": [
+    "F05",
+    "F10",
+    "F11",
+    "F13"
+   ]
+  },
+  {
+   "id": "S2.U2",
+   "text": "yeah i tried just stopping cold turkey last spring. lasted like 3 days and then i bought one as soon as i got back to campus",
+   "facts": []
+  },
+  {
+   "id": "S2.A2",
+   "text": "That's really common, and it doesn't mean you can't do it. Most people need a few tries before quitting sticks, and each attempt tells you something about what gets in the way. It sounds like getting back to campus had something to do with it last time. Can I ask when and where you tend to vape the most? And was anything else going on back then that made it harder?",
+   "facts": [
+    "F23"
+   ]
+  },
+  {
+   "id": "S2.U3",
+   "text": "mostly in my room tbh. my roommate vapes too so it's just always there. and when i drink it's basically nonstop lol",
+   "facts": []
+  },
+  {
+   "id": "S2.A3",
+   "text": "That helps. Having it around all the time in your own room makes it a lot harder, and drinking is a really common trigger, especially around other people who vape, so neither of those is surprising. A few pieces could fit together into a plan. You could pick a specific quit day so it isn't open-ended, and ask your roommate not to vape in your room so the place you spend the most time isn't full of reminders. The text program could help on the tough days. Nicotine replacement like a patch or gum can also take the edge off cravings, and a pharmacist can help you choose. Which of those feel doable?",
+   "facts": [
+    "F04",
+    "F06",
+    "F07",
+    "F11"
+   ]
+  },
+  {
+   "id": "S2.A4",
+   "text": "Both are sold over the counter to adults, so you can get either without a prescription. On using them together: for quitting smoking, a patch plus a faster-acting form like gum works better than either one alone, and the FDA has said that using nicotine replacement together with other nicotine products doesn't raise significant safety concerns. The tricky part is strength. The labels set the starting dose based on smoking, like cigarettes per day or how soon after waking the first one is smoked, and they don't mention vaping, so there's no straightforward way to translate a disposable every 4 or 5 days. The pharmacist can help you pick, or you can call 1-800-QUIT-NOW. These products are approved for quitting smoking and have been studied less for vaping, so that's worth mentioning to them too.",
+   "facts": [
+    "F04",
+    "F05",
+    "F07",
+    "F08",
+    "F09",
+    "F10",
+    "F13",
+    "F18",
+    "F25"
+   ]
+  },
+  {
+   "id": "S2.U5",
+   "text": "ok. monday then. i'll ask the pharmacist about the gum tomorrow and talk to my roommate. and sign up for the text thing. parties i'll figure out later, not going out for a while anyway",
+   "facts": []
+  },
+  {
+   "id": "S2.A5",
+   "text": "That sounds like a solid plan. So: you're quitting Monday, February 9. You'll use the gum for cravings, with the pharmacist helping you pick the strength, ask your roommate not to vape in your room, and sign up for the text program. Parties you'll figure out later. Good luck on Monday, and check in anytime.",
+   "facts": []
+  }
+ ]
+}

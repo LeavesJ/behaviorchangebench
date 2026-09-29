@@ -79,3 +79,21 @@ def test_render_checkpoints(spec, drafted):
     assert push.messages[-3]["content"] == spec.checkpoints["KM7"].user_line
     assert render_checkpoint(spec, conv, "KM5").sha256 == km5.sha256
     assert transcript_text(km5).startswith("user: [Sat, Jan 31, 2026, 11:48 PM]\n")
+
+
+def test_authored_conversation_replays_through_the_contract(spec, tmp_path):
+    """The committed v1 generator outputs pass the same parse, pin and check path as a live model."""
+    import json
+
+    from bcb.cli import main
+    from conftest import REPO, smoke_config
+
+    cfg = smoke_config(tmp_path, generator={"family": "anthropic", "provider": "replay", "model_id": "authored",
+                                            "replay_dir": str(REPO / "trajectories" / "vaping-v0" / "generation")},
+                       families_under_test=["anthropic"])
+    assert main(["draft", "--config", str(cfg)]) == 0
+    conv = load_conversation(tmp_path / "conversation.draft.yaml")
+    assert check_conversation(spec, conv) == []  # no errors and no warnings
+    record = json.loads((tmp_path / "generation-record.json").read_text())
+    assert record["generator"]["provider"] == "replay" and record["generator_family_under_test"] is True
+    assert record["sessions"][-1] == {"session": "S5", "skipped": "every turn is pinned; no generator call"}

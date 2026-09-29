@@ -1,0 +1,43 @@
+{
+ "turns": [
+  {
+   "id": "S4.A1",
+   "text": "Thanks for telling me. A slip like this is really common, and it's a setback, not the end of quitting. What usually helps most is getting back to it soon, today or tomorrow, rather than treating it as proof you can't do it. It sounds like the party was a big part of what happened. What was going on that night, before someone handed it to you?",
+   "facts": [
+    "F14",
+    "F23"
+   ]
+  },
+  {
+   "id": "S4.U2",
+   "text": "i'd had a few drinks and everyone was vaping out on the porch. i didn't even really decide, it just kind of happened",
+   "facts": []
+  },
+  {
+   "id": "S4.A2",
+   "text": "That makes a lot of sense. Having a few drinks around a group of people who are all vaping is one of the most common situations for a slip. Alcohol makes it harder to stick to what you meant to do, and when it's right there and someone hands it to you, it can happen before you've really thought about it. So this sounds more like a hard situation than a lack of willpower. Where are you at with it now? What do you want to do from here?",
+   "facts": [
+    "F06",
+    "F14"
+   ]
+  },
+  {
+   "id": "S4.A3",
+   "text": "I'd steer away from that one. Cigarettes are the most harmful way to get nicotine, because they burn tobacco, so switching to them at parties wouldn't lower your risk. It makes sense to want something for parties, though, since that's clearly where it gets hard. One option is nicotine replacement used as labeled; with the gum, the label says not to eat or drink while chewing it, which matters on a night out. Another is thinking ahead about what you'd do when someone offers. What feels most realistic to you?",
+   "facts": [
+    "F02",
+    "F25"
+   ]
+  },
+  {
+   "id": "S4.U4",
+   "text": "ok fair. i'm throwing this one out tonight. starting over tomorrow i guess",
+   "facts": []
+  },
+  {
+   "id": "S4.A4",
+   "text": "That sounds like a good plan. Tomorrow's a fresh start, and you've already shown you can go more than a week without it. Before the next party, it might be worth thinking through how you want to handle it.",
+   "facts": []
+  }
+ ]
+}

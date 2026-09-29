@@ -48,10 +48,10 @@ def test_model_config_fails_fast():
         parse_model_config(no_url, "t")
 
 
-def test_real_config_refuses_until_models_are_pinned():
+def test_real_config_pins_the_first_model_and_refuses_unset_graders():
     cfg = load_config(REPO / "configs" / "run.vaping-v0.yaml")
-    with pytest.raises(ConfigError, match="still TK"):
-        cfg.models()
+    assert [(m.slot, m.model_id, m.token_limit_param) for m in cfg.models()] == [
+        ("M2", "gpt-6-astra", "max_completion_tokens")]
     with pytest.raises(ConfigError, match="still TK"):
         cfg.grader("primary")
 
@@ -62,3 +62,29 @@ def test_judge_family_never_under_test(tmp_path):
     path.write_text(raw)
     with pytest.raises(ConfigError, match="under test"):
         load_config(path).grader("primary")
+
+
+def test_replay_is_generator_only(tmp_path):
+    raw = (REPO / "configs" / "run.smoke.yaml").read_text()
+    replay = "{family: mock-a, provider: replay, model_id: authored, replay_dir: trajectories/vaping-v0/generation}"
+    path = tmp_path / "run.yaml"
+    path.write_text(raw.replace("{slot: M1, family: mock-a, provider: mock, mock: reply, model_id: mock-reply-a}",
+                                "{slot: M1, " + replay[1:]))
+    with pytest.raises(ConfigError, match="never replayed"):
+        load_config(path).models()
+    path.write_text(raw.replace("{family: mock-judge, provider: mock, mock: grader, model_id: mock-grader-v0}", replay))
+    with pytest.raises(ConfigError, match="never replayed"):
+        load_config(path).grader("primary")
+    with pytest.raises(ConfigError, match="replay_dir"):
+        parse_model_config({"slot": "g", "family": "x", "provider": "replay", "model_id": "m"}, "t")
+
+
+def test_declared_families_hold_when_a_run_lists_one_model(tmp_path):
+    raw = (REPO / "configs" / "run.smoke.yaml").read_text()
+    path = tmp_path / "run.yaml"
+    path.write_text(raw + "families_under_test: [mock-judge]\n")
+    with pytest.raises(ConfigError, match="under test"):
+        load_config(path).grader("primary")
+    path.write_text(raw + "families_under_test: [mock-writer]\n")
+    assert load_config(path).generator_family_under_test() is True
+    assert load_config(REPO / "configs" / "run.vaping-v0.yaml").generator_family_under_test() is True

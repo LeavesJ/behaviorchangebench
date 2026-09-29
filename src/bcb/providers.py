@@ -4,6 +4,9 @@
 - `openai_compat`  the official OpenAI SDK against any chat-completions endpoint named by an
                    explicit `base_url` (OpenAI itself, DeepSeek, open-weight hosts)
 - `mock`           deterministic offline stand-ins for tests and smoke runs; never a real result
+- `replay`         generator only: replays outputs authored outside the API (one JSON file per
+                   session), so text written in an interactive session passes the same contract and
+                   is recorded the same way as a live generator's
 
 Every request parameter we send is recorded with the completion. There are no fallbacks: a
 refusal, a truncation or an error comes back as such and the caller records it. Server-side
@@ -20,7 +23,9 @@ import time
 from dataclasses import dataclass, field
 from typing import Any, Callable, Mapping, Protocol, Sequence
 
-from .errors import ConfigError
+from pathlib import Path
+
+from .errors import ConfigError, DataError
 from .util import sha256_json, word_count
 
 # Normalized stop reasons. The raw provider value is always recorded next to it.
@@ -29,7 +34,7 @@ STOP_TRUNCATED = "truncated"
 STOP_REFUSAL = "refusal"
 STOP_OTHER = "other"
 
-PROVIDERS = ("anthropic", "openai_compat", "mock")
+PROVIDERS = ("anthropic", "openai_compat", "mock", "replay")
 MOCK_BEHAVIORS = ("reply", "grader", "generator")
 UNSET = "TK"  # the spec's marker for an open choice
 
@@ -50,6 +55,7 @@ class ModelConfig:
     timeout_s: float = 600.0
     max_retries: int = 2
     mock: str | None = None
+    replay_dir: str | None = None
 
     @property
     def is_mock(self) -> bool:
@@ -68,12 +74,13 @@ class ModelConfig:
             "params": dict(self.params),
             "max_retries": self.max_retries,
             "mock": self.mock,
+            "replay_dir": self.replay_dir,
         }
 
 
 _KNOWN_KEYS = {
     "slot", "family", "provider", "model_id", "base_url", "api_key_env", "max_output_tokens",
-    "token_limit_param", "params", "timeout_s", "max_retries", "mock",
+    "token_limit_param", "params", "timeout_s", "max_retries", "mock", "replay_dir",
 }
 
 
@@ -104,6 +111,8 @@ def parse_model_config(raw: Any, where: str, slot: str | None = None) -> ModelCo
             raise ConfigError(f"{where}: `token_limit_param` must be max_tokens or max_completion_tokens")
     if provider == "mock" and raw.get("mock") not in MOCK_BEHAVIORS:
         raise ConfigError(f"{where}: mock provider needs `mock` in {MOCK_BEHAVIORS}")
+    if provider == "replay" and not raw.get("replay_dir"):
+        raise ConfigError(f"{where}: replay provider needs `replay_dir`, the directory of per-session outputs")
     params = raw.get("params") or {}
     if not isinstance(params, dict):
         raise ConfigError(f"{where}: `params` must be a mapping")
@@ -126,6 +135,7 @@ def parse_model_config(raw: Any, where: str, slot: str | None = None) -> ModelCo
         timeout_s=float(raw.get("timeout_s", 600.0)),
         max_retries=int(raw.get("max_retries", 2)),
         mock=raw.get("mock"),
+        replay_dir=raw.get("replay_dir"),
     )
 
 
@@ -153,6 +163,8 @@ def make_provider(config: ModelConfig) -> Provider:
         return AnthropicProvider(config)
     if config.provider == "openai_compat":
         return OpenAICompatProvider(config)
+    if config.provider == "replay":
+        return ReplayProvider(config)
     return MockProvider(config)
 
 
@@ -263,6 +275,31 @@ class MockProvider:
         text = self._fn(messages, system)
         return Completion(text, STOP_END, "end_turn", None, self.config.model_id,
                           sum(word_count(m["content"]) for m in messages), word_count(text), 0.0, ("text",))
+
+
+class ReplayProvider:
+    """Generator only. Answers a generator payload with the file `<replay_dir>/<session>.json`,
+    where the session is read from the payload's turn IDs. The text is returned untouched, so the
+    draft step validates and records it exactly as it would a live generator's output."""
+
+    def __init__(self, config: ModelConfig):
+        self.config = config
+        self._dir = Path(config.replay_dir or "")
+        if not self._dir.is_dir():
+            raise ConfigError(f"{config.slot}: replay_dir {self._dir} is not a directory")
+
+    def complete(self, messages: Sequence[Message], system: str | None) -> Completion:
+        try:
+            turns = json.loads(messages[-1]["content"])["this_session"]["turns"]
+            session = turns[0]["id"].split(".")[0]
+        except (ValueError, KeyError, IndexError) as e:
+            raise DataError("replay provider: the request is not a generator payload") from e
+        path = self._dir / f"{session}.json"
+        if not path.is_file():
+            raise DataError(f"{path}: no replayed output for session {session}")
+        text = path.read_text(encoding="utf-8")
+        return Completion(text, STOP_END, "replayed", f"file={path.name}", self.config.model_id,
+                          None, None, 0.0, ("text",))
 
 
 def _required_env(name: str, slot: str) -> str:
