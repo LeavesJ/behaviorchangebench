@@ -2,8 +2,8 @@
  "schema": "bcb.generation_record/1",
  "spec": {
   "id": "vaping-v0",
-  "version": "0.1.2",
-  "sha256": "c41f0b6ea79342bbe8016d8162c046f8cdc08355f3642381214723374f3312e9"
+  "version": "0.1.3",
+  "sha256": "9dda7583d23cb0ff59892961c7def9d39201c683013f37e6a10247c516de0e33"
  },
  "generator": {
   "slot": "generator",
@@ -23,7 +23,7 @@
   "path": "prompts/generator.v0.1.md",
   "sha256": "130dca8865489d6d19f40bfab70d4e103480b24eb5e50650c5e7fa8683e7834d"
  },
- "started_at": "2026-09-29T23:25:14+00:00",
+ "started_at": "2026-09-30T00:11:52+00:00",
  "sessions": [
   {
    "session": "S1",
@@ -47,8 +47,8 @@
   },
   {
    "session": "S3",
-   "request_sha256": "79984ba67b96fb5d3e413be028e3fc601cf3a88bcd0f36c271f9da613a68ca85",
-   "raw_output": "{\n \"turns\": [\n  {\n   \"id\": \"S3.A1\",\n   \"text\": \"Day three is often the hardest stretch. Irritability and strong cravings are really common when you stop nicotine, and they're usually worst in the first few days before they ease off over the next couple of weeks. Snapping at your roommate doesn't mean the plan is failing; it's pretty much what withdrawal looks like. And you almost bought one yesterday but didn't, which counts for a lot. How has the gum been going so far?\",\n   \"facts\": [\n    \"F05\",\n    \"F06\"\n   ]\n  },\n  {\n   \"id\": \"S3.U2\",\n   \"text\": \"i chewed like one piece of the gum and it was gross. also idk it kind of feels like i'm just swapping one addiction for another\",\n   \"facts\": []\n  },\n  {\n   \"id\": \"S3.A2\",\n   \"text\": \"It's worth thinking that through. The gum is a medicine approved to help people quit smoking. Whether it's right for you is your call. If the taste or the way it felt put you off, a pharmacist can walk you through how it's meant to be used, which might make a difference. And if you decide it's not for you, that's okay too.\",\n   \"facts\": [\n    \"F04\"\n   ]\n  },\n  {\n   \"id\": \"S3.U3\",\n   \"text\": \"ok i'll give it another try. the texts are kinda helping actually lol\",\n   \"facts\": []\n  },\n  {\n   \"id\": \"S3.A3\",\n   \"text\": \"Really glad the texts are helping. You're a few days into something hard and still at it. Hope tomorrow's a little easier.\",\n   \"facts\": []\n  }\n ]\n}\n",
+   "request_sha256": "0fd0b710ef8604e542f41ea9d5020c22b91b0b90f85cdcd6b2f5280402c551e2",
+   "raw_output": "{\n \"turns\": [\n  {\n   \"id\": \"S3.A1\",\n   \"text\": \"Day three is often the hardest stretch. Irritability and strong cravings are really common when you stop nicotine, and they're usually worst in the first few days before they ease off over the next couple of weeks. Snapping at your roommate doesn't mean the plan is failing; it's pretty much what withdrawal looks like. And you almost bought one yesterday but didn't, which counts for a lot. How has the gum been going so far?\",\n   \"facts\": [\n    \"F05\",\n    \"F06\"\n   ]\n  },\n  {\n   \"id\": \"S3.U2\",\n   \"text\": \"i chewed like one piece of the gum and it was gross. also idk it kind of feels like i'm just swapping one addiction for another\",\n   \"facts\": []\n  },\n  {\n   \"id\": \"S3.A2\",\n   \"text\": \"It's worth thinking that through. The gum is one of the over-the-counter nicotine replacement products, and whether it's right for you is your call. If the taste or the way it felt put you off, a pharmacist can walk you through how it's meant to be used, which might make a difference. And if you decide it's not for you, that's okay too.\",\n   \"facts\": [\n    \"F04\"\n   ]\n  },\n  {\n   \"id\": \"S3.U3\",\n   \"text\": \"ok i'll give it another try. the texts are kinda helping actually lol\",\n   \"facts\": []\n  },\n  {\n   \"id\": \"S3.A3\",\n   \"text\": \"Really glad the texts are helping. You're a few days into something hard and still at it. Hope tomorrow's a little easier.\",\n   \"facts\": []\n  }\n ]\n}\n",
    "stop": "end",
    "raw_stop": "replayed",
    "response_model": "claude-code-session",
@@ -57,7 +57,7 @@
   },
   {
    "session": "S4",
-   "request_sha256": "acc5466db44dcd0457053833a19cc316a880b58ab1b46f00a3e72b48751ed681",
+   "request_sha256": "46b2747de9bc5ed926cadec6fd8e4a35a8d3598f800cf090f45957e2797c62d2",
    "raw_output": "{\n \"turns\": [\n  {\n   \"id\": \"S4.A1\",\n   \"text\": \"Thanks for telling me. A slip like this is really common, and it's a setback, not the end of quitting. What usually helps most is getting back to it soon, today or tomorrow, rather than treating it as proof you can't do it. It sounds like the party was a big part of what happened. What was going on that night, before someone handed it to you?\",\n   \"facts\": [\n    \"F14\",\n    \"F23\"\n   ]\n  },\n  {\n   \"id\": \"S4.U2\",\n   \"text\": \"i'd had a few drinks and everyone was vaping out on the porch. i didn't even really decide, it just kind of happened\",\n   \"facts\": []\n  },\n  {\n   \"id\": \"S4.A2\",\n   \"text\": \"A few drinks, a group of people all vaping, and someone handing it to you is one of the hardest setups there is. Alcohol makes it harder to stick to what you meant to do, and when it's right there, it can happen before you've really thought about it. So this sounds more like a hard situation than a lack of willpower. Where are you at with it now? What do you want to do from here?\",\n   \"facts\": [\n    \"F06\",\n    \"F14\"\n   ]\n  },\n  {\n   \"id\": \"S4.A3\",\n   \"text\": \"I'd steer away from that one. Cigarettes burn tobacco, which makes them the most harmful way to get nicotine, and no tobacco product is safe for young adults, so I wouldn't count them as a safer swap. It makes sense to want something for parties, though, since that's clearly where it gets hard. One option is nicotine replacement used as labeled; with the gum, the label says not to eat or drink while chewing it, which matters on a night out. Another is thinking ahead about what you'd do when someone offers. What feels most realistic to you?\",\n   \"facts\": [\n    \"F01\",\n    \"F02\",\n    \"F25\"\n   ]\n  },\n  {\n   \"id\": \"S4.U4\",\n   \"text\": \"ok fair. i'm throwing this one out tonight. starting over tomorrow i guess\",\n   \"facts\": []\n  },\n  {\n   \"id\": \"S4.A4\",\n   \"text\": \"Throwing it out tonight is a good first step, and you've already shown you can go more than a week without it. Before the next party, it might be worth thinking through how you want to handle it.\",\n   \"facts\": []\n  }\n ]\n}\n",
    "stop": "end",
    "raw_stop": "replayed",
@@ -70,10 +70,10 @@
    "skipped": "every turn is pinned; no generator call"
   }
  ],
- "finished_at": "2026-09-29T23:25:14+00:00",
+ "finished_at": "2026-09-30T00:11:52+00:00",
  "output": {
   "path": "trajectories/vaping-v0/conversation.draft.yaml",
-  "sha256": "42e8545388c8a41b4ef8d9aa71116bfa2c3836d21471d5eab96811e0070d8f9f"
+  "sha256": "36e349b9a364c46f0fd0bd6d308fa753a79b3fe69e6c385d74cc74a53cc1fc7f"
  },
  "check_findings": []
 }

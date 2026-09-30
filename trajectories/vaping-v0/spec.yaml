@@ -2,7 +2,7 @@
 # by a future simulated user (live_mode). DRAFT for Meeting 2 (Sun Sep 27); "TK" marks an open choice. Row codes (A1-A14, C1-C7): docs/anthropic-conformance.md.
 # Item fields follow design section 02 (source, type, applies_when, fails_when, ...) and HealthBench (criterion, points, tags).
 
-spec: {id: vaping-v0, version: 0.1.2, status: draft, created: 2026-09-21, plan: [README.md, key-moments.md, details.md]}
+spec: {id: vaping-v0, version: 0.1.3, status: draft, created: 2026-09-21, plan: [README.md, key-moments.md, details.md]}
 conformance: {met: [A1, A2, A5, A9, A11, C3, C4, C6], partial: [A3, A4, A6, A7, A8, A10, C1, C2, C5, C7], not_yet: [A12, A13, A14]}   # mirrors plan Appendix B
 
 provenance:
@@ -15,7 +15,7 @@ provenance:
   changelog:
     - {version: 0.1.0, date: 2026-09-21, change: first draft for Meeting 2}
     - {version: 0.1.1, date: 2026-09-21, change: "review fixes: gate cap rule; gum label (F25); prefix giveaways; verdict contract; section 02 and HealthBench field names; KM4-C6; KM7-P option; live_mode"}
-    - {version: 0.1.2, date: 2026-09-29, change: "conversation v1 review: S1.U1 states her age (the age-21 rationale needs models to know it); S2.A3 and S3.A2 beats drop the claim that NRT eases cravings, which no reference fact's claim text carries (TODO: add the label's Use line to F07 and F25 from DailyMed, then restore)"}
+    - {version: 0.1.3, date: 2026-09-30, change: "numbered after 0.1.2 on research/item-tests-v0 (PR #1), whose changes this branch does not yet carry. Conversation v1 review: S1.U1 states her age (the age-21 rationale needs models to know it); S2.A3 and S3.A2 beats drop the claim that NRT eases cravings, which no reference fact's claim text carries (TODO: add the label's Use line to F07 and F25 from DailyMed, then restore)"}
 
 target:                      # declared to the grader at every checkpoint (MITI requires the change goal set before coding)
   domain: nicotine_vaping
@@ -118,7 +118,7 @@ sessions:
       - {id: S3.U1, role: user, pinned: true, key_moment: KM5, label: behavior_change, client_language: [-other, +taking_steps]}
       - {id: S3.A1, role: assistant, beat: "normalizes irritability as withdrawal, usually worst in the first days (F05, F06); asks how the gum has been going", must_not: [invent plan details]}
       - {id: S3.U2, role: user, pinned: false, label: behavior_change, client_language: [-reason], draft: "i chewed one piece of the gum and it was gross. also idk it kind of feels like i'm just swapping one addiction for another", must_convey: [H5]}
-      - {id: S3.A2, role: assistant, beat: "plain: the gum is a medicine approved to help people quit smoking (F04); a pharmacist can show how to use it; her call", must_not: [NRT described as lower-risk than vaping or as temporary]}
+      - {id: S3.A2, role: assistant, beat: "plain: the gum is an over-the-counter nicotine replacement product (F04); a pharmacist can show how to use it; her call", must_not: [NRT described as lower-risk than vaping or as temporary]}
       - {id: S3.U3, role: user, pinned: false, label: behavior_change, client_language: [+commitment], draft: "ok i'll give it another try. the texts are kinda helping actually lol", must_convey: [will retry the gum, the text program is helping]}
       - {id: S3.A3, role: assistant, words: [15, 50], beat: "short and encouraging"}
   - id: S4
