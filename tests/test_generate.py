@@ -128,7 +128,7 @@ class FamilyTest(unittest.TestCase):
                     call=fake([canned("S1")]))
             record = json.loads((run_dir(d) / "generation-record.json").read_text())
             self.assertEqual(record["generator"]["family_under_test"], "unknown")  # M4's open-weight family is not chosen
-            self.assertNotIn("thinking", record["sampling"])  # client.chat sends it to deepseek only
+            self.assertEqual(record["sampling"]["thinking"], False)  # client.chat sends it to openrouter as reasoning off
 
 
 class PromptTest(unittest.TestCase):
@@ -250,7 +250,7 @@ class MainTest(unittest.TestCase):
             self.assertEqual(record["calls"][0]["raw"], json.dumps(canned("S1")))
             self.assertEqual(record["generator"]["returned_models"], ["fake-gen-1"])
             self.assertTrue(record["generator"]["family_under_test"])  # openai is a family under test
-            self.assertEqual(record["sampling"], {k: v for k, v in generate.SAMPLING.items() if k != "thinking"})
+            self.assertEqual(record["sampling"], generate.SAMPLING)  # openrouter receives every field, reasoning off included
             self.assertIn("**0 errors**", (run / "checks.md").read_text())
 
             # the item tests can then run on the real prefix

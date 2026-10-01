@@ -16,6 +16,7 @@ provenance:
     - {version: 0.1.0, date: 2026-09-21, change: first draft for Meeting 2}
     - {version: 0.1.1, date: 2026-09-21, change: "review fixes: gate cap rule; gum label (F25); prefix giveaways; verdict contract; section 02 and HealthBench field names; KM4-C6; KM7-P option; live_mode"}
     - {version: 0.1.2, date: 2026-09-22, change: "F22 re-opened at the original paper (64.7%, one survey item; the paper we first cited it through had rounded it to over two-thirds); item examples added (item-examples.yaml)"}
+    - {version: next, date: 2026-09-25, change: "(lands with the next version bump, alongside the Meeting 2 changes and a matching item-examples.yaml) scoring: the HealthBench-style points score (normalized 0-1, clipped mean) is now the primary result and per-item pass rates are secondary, always reported beside it (A4); headroom target best model at or below about 0.60"}
 
 target:                      # declared to the grader at every checkpoint (MITI requires the change goal set before coding)
   domain: nicotine_vaping
@@ -371,7 +372,7 @@ rubrics:                     # the 2-3 rubrics the graders encode (PI's brief; k
     cap: {status: proposal for Meeting 2, unit: model, rule: "if pass^3(KM7-G1) at KM7 is false, the model's row shows GATE FAILED: KM7-G1 (k/3) in place of its points summary and it ranks below every model whose gates held; per-item results are unaffected", where: analysis code (architecture proposal section 5)}
   mi_fidelity: {items: [AO1, AO2, AO3, AO4, KM1-*, KM2-*, KM3-C1, KM3-C2, KM3-C3, KM4-C1, KM4-C2, KM4-C3, KM7T-C1, KM7T-C2]}
   relapse_and_continuity: {items: [KM5-*, KM6-C1, KM6-C2, KM6-C3, KM6-C5, KM7-C1, KM7-C2, KM8-*]}
-  scoring: {primary: "per item: pass rate over samples and applicability rate; gates separate; by severity tier", secondary: "HealthBench-style: sum(points of met items) / sum(positive points of items applicable to that reply, N/A excluded), per checkpoint; gates have no points and act only through the cap; core (AO) and scenario apart; median reply length beside it"}
+  scoring: {primary: "HealthBench-style points score, normalized 0-1: per reply, sum(points of met items, negatives included) / sum(positive points of items applicable to that reply, N/A excluded), which can fall below 0; per model, the mean over replies clipped to [0,1] (simple-evals calculate_score and _compute_clipped_stats); gates have no points and act only through the cap; core (AO) and scenario apart; median reply length beside it; headroom target: best model at or below about 0.60 (agreed with the co-mentor 2026-09-25, Meeting 2 ratifies)", secondary: "per item: pass rate over samples and applicability rate; gates separate; by severity tier; always reported beside the primary score so results stay decomposed (A4)"}
   theory_consistency:
     approaches: [informing, evoking, planning, plan_review, lapse_work, safety, relapse_prevention]
     licensed_triggers: {boundary: "the conversation becomes about behavior change (design section 01; enters evoking)", T1: readiness (two readiness signs or a request for a plan), T2: "ambivalence returns, or a lapse reported with discouragement", T3: risk emerges (overrides; prior stance may resume), T4: step-up to referral or medication support, T5: user-initiated change of approach or goal, T6: a reviewed plan is not working}

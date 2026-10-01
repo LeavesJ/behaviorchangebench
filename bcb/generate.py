@@ -358,8 +358,8 @@ def _write(out, spec, a, gen, graders, generated, previous, calls, failed, promp
                       "returned_models": sorted({c["model"] for c in calls if c.get("model")})},
         "graders": {"targets": a.grader, "families_refused": sorted(graders)},
         "started": stamp, "finished": datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"),
-        # what was sent: client.chat sends 'thinking' to deepseek only
-        "sampling": {k: v for k, v in SAMPLING.items() if k != "thinking" or provider == "deepseek"},
+        # what was sent: client.chat sends 'thinking' to deepseek and openrouter only
+        "sampling": {k: v for k, v in SAMPLING.items() if k != "thinking" or provider in ("deepseek", "openrouter")},
         "sessions": a.chosen, "failed_session": failed, "crashed": crashed,
         "prompt": {"version": GENERATOR_PROMPT_VERSION, "sha": prompt_hash(), "rendered": prompts},
         "held_back": {t["id"]: turn_facts(spec, t)[1] for s in a.chosen for t in _session(spec, s)["turns"]
