@@ -45,6 +45,14 @@ class ChatTest(unittest.TestCase):
         sent, _ = capture("openrouter:some/model")
         self.assertNotIn("thinking", sent["body"])
 
+    def test_openrouter_reasoning_and_temperature_stay_vendor_default_unless_set(self):
+        sent, _ = capture("openrouter:some/model", temperature=None)
+        self.assertNotIn("reasoning", sent["body"])
+        self.assertNotIn("temperature", sent["body"])
+        self.assertEqual(sent["body"]["usage"], {"include": True})
+        sent, _ = capture("openrouter:some/model", thinking=False)
+        self.assertEqual(sent["body"]["reasoning"], {"enabled": False})
+
     def test_json_mode_sets_response_format(self):
         sent, _ = capture("deepseek:deepseek-flash", json_mode=True)
         self.assertEqual(sent["body"]["response_format"], {"type": "json_object"})

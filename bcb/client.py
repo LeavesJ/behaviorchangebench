@@ -44,12 +44,22 @@ def parse_target(target: str) -> tuple[str, str]:
     return provider, model
 
 
-def chat(target: str, messages: list[dict], *, temperature=0.0, max_tokens=1000, json_mode=False, thinking=False,
+def chat(target: str, messages: list[dict], *, temperature=0.0, max_tokens=1000, json_mode=False, thinking=None,
          timeout=120) -> dict:
-    """One completion. Returns {'text', 'model', 'usage', 'latency_s'}; raises CallError."""
+    """One completion. Returns {'text', 'model', 'usage', 'latency_s', 'finish_reason'}; raises CallError.
+
+    temperature=None sends none, so the vendor default applies (spec run.sampling; some models refuse one).
+    thinking=None leaves reasoning at the vendor default, except on DeepSeek, where it stays off unless asked.
+    """
     provider, model = parse_target(target)
     base, var = PROVIDERS[provider]
-    body = {"model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens}
+    body = {"model": model, "messages": messages, "max_tokens": max_tokens}
+    if temperature is not None:
+        body["temperature"] = temperature
+    if provider == "openrouter":
+        body["usage"] = {"include": True}  # puts the call's cost in usage
+        if thinking is not None:  # hidden reasoning is billed as output and counts toward max_tokens
+            body["reasoning"] = {"enabled": bool(thinking)}
     if json_mode:
         body["response_format"] = {"type": "json_object"}
     if provider == "deepseek":
@@ -75,4 +85,4 @@ def chat(target: str, messages: list[dict], *, temperature=0.0, max_tokens=1000,
     if not text.strip():
         raise CallError(f"{provider} returned an empty completion (finish_reason={choice.get('finish_reason')})")
     return {"text": text, "model": data.get("model", model), "usage": data.get("usage", {}),
-            "latency_s": round(time.monotonic() - start, 2)}
+            "latency_s": round(time.monotonic() - start, 2), "finish_reason": choice.get("finish_reason")}

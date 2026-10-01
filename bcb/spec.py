@@ -97,6 +97,9 @@ class Spec:
         else:
             stop, replaced, line = moment["checkpoint_turn"], None, None
         pinned = self.pinned_lines()
+        # a variant line that replaces a session's opening message keeps that session's date line
+        opens = {next(t["id"] for t in s["turns"] if t["role"] == "user"): s["when"]["header"]
+                 for s in self.raw["sessions"]}
         out = []
         for session in self.raw["sessions"]:
             header = session["when"]["header"]  # goes on the session's first user turn
@@ -105,8 +108,8 @@ class Spec:
                 out.append(Turn(t["id"], t["role"], self._text(t, pinned), header if user else None))
                 header = None if user else header
                 if t["id"] == stop:
-                    if replaced:  # mid-session, so it never carries a header
-                        out.append(Turn(replaced, "user", line, None))
+                    if replaced:
+                        out.append(Turn(replaced, "user", line, opens.get(replaced)))
                     return out
         raise KeyError(f"{checkpoint}: turn {stop} not found in sessions")
 
