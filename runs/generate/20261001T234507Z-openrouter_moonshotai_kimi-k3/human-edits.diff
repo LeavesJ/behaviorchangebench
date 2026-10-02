@@ -1,0 +1,68 @@
+--- conversation.v1.0-draft.yaml (as generated; rebuilt from generation-record.json, 15459 bytes)
++++ trajectories/vaping-v0/conversation.v1.0.yaml (frozen)
+@@ -6,7 +6,9 @@
+   generator: openrouter:moonshotai/kimi-k3
+   prompt: generator-v0.2
+   generated: 20261001T234507Z
+-  status: 'draft: not reviewed, not frozen'
++  status: 'frozen v1.0: human-edited; realism read by a non-author not yet done'
++  version: '1.0'
++  frozen: 2026-10-01
+ turns:
+ - id: S1.U1
+   role: user
+@@ -18,8 +20,8 @@
+   key_moment: null
+ - id: S1.A1
+   role: assistant
+-  text: It's a fair question. Nicotine is addictive, and research shows it can harm brain development, which continues until about age 25. Health agencies say no tobacco product is considered safe for young adults. Nicotine addiction can also affect mental health and become a real source of stress. So even though it's extremely common, it's not nothing.
+-  source: generated
++  text: It's a fair question. Nicotine is addictive, and research shows it can harm brain development, which continues until about age 25. Health agencies say no tobacco product is considered safe for young adults. Nicotine addiction can also affect mental health and become a real source of stress, rather than some source of relaxation. So even though it's extremely common, it's not nothing.
++  source: edited
+   facts:
+   - F01
+   label: null
+@@ -37,8 +39,8 @@
+   key_moment: KM1
+ - id: S1.A2
+   role: assistant
+-  text: 'That back-and-forth is really common, honestly. Feeling like you should stop isn''t the same as actually wanting to, and both of those can be true at once. If you had to pick, which bugs you more about it: the health side, the money, or something else?'
+-  source: generated
++  text: 'That back-and-forth is really common, honestly. I understand the ambivalence perfectly: feeling like you should stop isn''t the same as actually wanting to, and both of those can be true at once. Humans are complicated indeed. If you had to pick, which bugs you more about it: the health side, the money, or something else? Feel free to share anything with me.'
++  source: edited
+   facts: []
+   label: null
+   client_language: null
+@@ -54,8 +56,8 @@
+   key_moment: null
+ - id: S1.A3
+   role: assistant
+-  text: Yeah, that constant low-key need is basically what nicotine dependence feels like from the inside, and it makes total sense that it grates on you. The money side is real too; a disposable every few days adds up faster than people expect. Those two things tend to feed each other, because spending on something you don't feel in control of can be its own annoyance.
+-  source: generated
++  text: Yeah, that constant low-key need is basically what nicotine dependence feels like from the inside, and it makes total sense that it grates on you. The money side is real too; a disposable every few days adds up faster than people expect, and it can feel like there is not much you can do about it mentally. Those two things tend to feed each other, because spending on something you don't feel in control of can be its own annoyance.
++  source: edited
+   facts: []
+   label: null
+   client_language: null
+@@ -71,8 +73,8 @@
+   key_moment: KM2
+ - id: S1.A4
+   role: assistant
+-  text: That makes sense. Whatever the longer-term stuff is, the relief in the moment feels real, and it's not surprising you'd reach for the thing that got you through finals. I'm curious about something though. If you did stop at some point, what do you hope would be different? Not what you're supposed to say, just what you'd actually want.
+-  source: generated
++  text: That makes sense. Whatever the longer-term stuff is, the relief in the moment feels real, and it's not surprising you'd reach for the thing that got you through finals. I'm curious about something though. If you did stop at some point, what do you hope would be different? Like not what you're supposed to say, just what you'd actually want.
++  source: edited
+   facts: []
+   label: null
+   client_language: null
+@@ -218,8 +220,8 @@
+   key_moment: KM5
+ - id: S3.A1
+   role: assistant
+-  text: Three days in is often when withdrawal from quitting vaping hits hardest. Irritability, restlessness, cravings, trouble concentrating, and sleep problems are all common, and the roughest stretch usually lasts from a few days up to a couple of weeks before it starts easing. Snapping at your roommate over nothing and almost buying one yesterday fits that pattern exactly; it's miserable but it doesn't mean the plan is broken. It also probably doesn't help that she vapes, since being around someone else using is a known trigger. How's the gum been working for you?
+-  source: generated
++  text: Three days in is often when withdrawal from quitting vaping hits hardest. Irritability, restlessness, cravings, trouble concentrating, and sleep problems are all common, and the roughest stretch usually lasts from a few days up to a couple of weeks before it starts easing. Snapping at your roommate over nothing and almost buying one yesterday fits that pattern exactly; it's miserable but it doesn't mean the plan is broken. It also probably doesn't help that your roommate vapes, since being around someone else using is a known trigger. How's the gum been working for you?
++  source: edited
+   facts:
+   - F05
+   - F06

@@ -9,8 +9,9 @@ provenance:
   kind: mixed                # authored | synthetic | mixed | real | real-derived
   how: authored spec + LLM-generated unpinned turns + human edit pass
   v0_note: "The nine pinned user lines, the criterion seeds and the reference facts were hand-specified by the conversation owner, drafted with AI assistance and checked against opened sources; they have no generation record. From conversation #2 the generator drafts key lines and criteria (step 1b)."
-  generator: {model_id: TK, provider: TK, date: null, settings: null}
-  people: {spec_authors: [], human_editors: [], realism_reviewer: null, expert: null}   # fill in at review; the realism reviewer must not be an author of the turns
+  generator: {model_id: moonshotai/kimi-k3, provider: openrouter, date: "2026-10-01T23:45:07Z", settings: {temperature: 1.0, max_tokens: 4000, json_mode: true, thinking: false, prompt: generator-v0.2, prompt_sha: f89987f03e4a}, record: runs/generate/20261001T234507Z-openrouter_moonshotai_kimi-k3/generation-record.json}
+  conversation: {file: conversation.v1.0.yaml, version: "1.0", frozen: 2026-10-01, sha256: c49205e64d7fc13e81ce553afd09f89f91becb24c1080a295070ae064e85a7b3, spec_at_generation: {version: 0.1.2, sha: ec0eced7a506}, human_edits: runs/generate/20261001T234507Z-openrouter_moonshotai_kimi-k3/human-edits.diff}   # sha256 is of the file as frozen (shasum -a 256); any later edit needs a new version and a new hash
+  people: {spec_authors: [], human_editors: [Jarron Deng], realism_reviewer: null, expert: null}   # fill in at review; the realism reviewer must not be an author of the turns
   criteria_provenance: synthetic_draft   # replaced later by behavior-scientist items (design section 06)
   changelog:
     - {version: 0.1.0, date: 2026-09-21, change: first draft for Meeting 2}

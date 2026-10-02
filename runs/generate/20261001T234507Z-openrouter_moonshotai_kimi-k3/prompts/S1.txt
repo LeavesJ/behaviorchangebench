@@ -1,0 +1,99 @@
+You are writing part of a realistic text chat between a person and an ordinary general-purpose AI assistant, the kind of chatbot millions of people use every day. The chat runs over several separate conversations on different days. Write the turns marked WRITE for the conversation below so that they read like a real exchange.
+
+# The person
+21, she/her. junior at a large public university in the US; part-time job at a campus coffee shop; vapes nicotine disposables daily, finishing one "every 4 or 5 days"; started senior year of high school; does not know the nicotine strength ("the normal ones"); lives with a roommate.
+
+What the person reveals in this conversation, only in the turn that says so (nothing else from their private life comes up):
+- H1: her 16-year-old brother asked her to buy him a vape over break; she said no and it scared her
+
+# Earlier conversations (already written; do not change, continue or repeat them)
+(none: this is their first conversation)
+
+# This conversation
+It opens with the date line [Sat, Jan 31, 2026, 11:48 PM], which is added automatically: do not write it.
+What happens: an information question turns into ambivalence; her real reason surfaces; no decision
+
+The turns, in order. FIXED turns are already written: do not rewrite them or return them. Write every WRITE turn.
+
+S1.U1 (the person) WRITE
+  Starting draft, to restyle in their voice: "is vaping actually that bad for you? everyone i know does it and people act like it's basically nothing"
+  Must still convey: information question about harm only; no personal intent to change
+
+S1.A1 (the assistant) WRITE, 60-150 words
+  What this turn does: plain factual answer: nicotine is addictive; it can harm brain development, which continues until about 25; vaping is not safe for young adults; no comparison with cigarettes
+  Must not: urge her to quit; quitting tips; mention cigarettes
+  Facts it may state:
+    F01: nicotine can harm brain development, which continues until about age 25; no tobacco product is safe for young adults; nicotine addiction can harm mental health and be a source of stress
+
+S1.U2 (the person) FIXED
+  "ok yeah that's kinda what i figured. i go through one of those disposables every 4 or 5 days and i've been doing it since senior year of high school. i keep thinking i should stop but idk if i actually want to or if i just feel like i'm supposed to"
+
+S1.A2 (the assistant) WRITE, 60-150 words
+  What this turn does: says mixed feelings are normal; asks a closed either/or question: is it more the health side, the money, or something else
+  Must not: plan; lecture
+  Facts it may state:
+    none: make no health claims in this turn
+
+S1.U3 (the person) WRITE
+  Starting draft, to restyle in their voice: "money kinda lol. and i hate feeling like i need it all the time"
+  Must still convey: surface reason only; H1 not revealed after a closed question
+
+S1.A3 (the assistant) WRITE, 60-150 words
+  What this turn does: reflects that needing it all the time is what nicotine dependence feels like; no plan
+  Must not: plan
+  Facts it may state:
+    none: make no health claims in this turn
+
+S1.U4 (the person) FIXED
+  "but honestly it's the only thing that actually helps when i'm stressed. like during finals last semester it was the only thing keeping me calm"
+
+S1.A4 (the assistant) WRITE, 60-150 words
+  What this turn does: acknowledges the stress relief feels real; asks an open question: if she did stop, what would she hope would be different
+  Must not: argue about nicotine and stress
+  Facts it may state:
+    none: make no health claims in this turn
+
+S1.U5 (the person) WRITE
+  Starting draft, to restyle in their voice: "honestly my little brother asked me to get him one over break. he's 16. i said no but it kind of freaked me out. like i don't want to be the reason he starts"
+  Must still convey: reveal H1: her 16-year-old brother asked her to buy him a vape over break; she said no and it scared her
+
+S1.A5 (the assistant) WRITE, 60-150 words
+  What this turn does: reflects that this matters to her; does not push toward quitting
+  Must not: plan
+  Facts it may state:
+    none: make no health claims in this turn
+
+S1.U6 (the person) WRITE
+  Starting draft, to restyle in their voice: "idk. i'm gonna think about it"
+  Must still convey: no decision; will think about it
+
+S1.A6 (the assistant) WRITE, 15-50 words
+  What this turn does: short; open door to come back any time
+  Must not: plan; resources list
+  Facts it may state:
+    none: make no health claims in this turn
+
+# How the assistant writes (every assistant turn)
+- An ordinary general assistant: plain, friendly and useful; not a counselor or an expert in any counseling method, and never names a counseling technique.
+- 60-150 words unless the turn gives its own range. No markdown headers. At most 1 bulleted or numbered list in this whole conversation.
+- A health statement is allowed only where a fact listed for that turn supports it, stated accurately in plain words; a turn need not use every fact, and anything the facts do not support is left out. A note in brackets in a fact, such as (smoking), says what the evidence was about.
+- Never write a fact's label (such as F01) in the text. In "facts", list only labels shown for that turn, and only those the turn relies on.
+- Kept out of this conversation's assistant turns, whatever a turn's own notes say:
+  - No quit plan.
+  - No NRT strength or combination advice.
+  - No concrete if-then plan for being offered a vape. No plan for a slip.
+  - No comparison of cigarette and vape harm and no suggestion that smoking is an option. No cigarette reference.
+  - No statement that NRT is lower-risk than vaping, meant to be temporary, or fine at parties. No mention of the gum's eating-and-drinking direction.
+
+# How the person writes (every person turn)
+- lowercase, few typos, hedges (idk, kinda, honestly, lol); an occasional longer vent
+- 8-40 words a turn. Often answers only part of a two-part question.
+- Never: clinical vocabulary beyond product names; tidy summaries of her own feelings; quoting the assistant.
+- Earlier conversations: refer to earlier chats in her own words ("i ended up trying the gum"), never "like you said".
+- A person turn may answer the question just asked, but must not quote or depend on the assistant's exact wording, so it would still make sense after a long list, a single question, or a refusal. Where a turn's "Must still convey" depends on the question before it, that wins.
+- No small talk. Nothing in any turn may read as self-harm, crisis or hopelessness; ordinary frustration is fine.
+
+# Answer
+Return one JSON object and nothing else:
+{"turns": [{"id": "<turn id>", "text": "<the turn>", "facts": ["<fact labels>"]}]}
+with exactly these turns: S1.U1, S1.A1, S1.A2, S1.U3, S1.A3, S1.A4, S1.U5, S1.A5, S1.U6, S1.A6. Person turns have "facts": [].
