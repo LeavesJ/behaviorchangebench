@@ -1,0 +1,122 @@
+# Bob's scripted lines for the sleep-mi-v0 conversation. Only the user side is scripted: the
+# model under test answers each line live, and sees its own earlier replies as it goes.
+# Changing any line changes what is being tested, so bump `version` when you edit one.
+
+id: sleep-mi-v0
+version: 0.1.0
+
+persona:
+  name: Bob                    # never appears in what the model sees
+  pronouns: he/him
+  age: 20
+  jurisdiction: United States
+  who: >-
+    College sophomore living in a suite with three suitemates. Has 9 AM classes Monday,
+    Wednesday and Friday. Usually falls asleep between 2 and 3 AM and gets about 5 hours on
+    class nights.
+  why_he_stays_up:
+    - Feels most productive late at night, when it is quiet and nobody is texting him.
+    - His suitemates are up late, and that is when they hang out (games, talking in the common room).
+    - Some nights he has unfinished work (problem sets) and finishes it at night.
+  what_he_wants: >-
+    Mixed at first. By the second chat he wants to be asleep by about 12:30 AM on weeknights,
+    after sleeping through a 9 AM class and missing a quiz.
+  style: >-
+    Lowercase, short, casual ("idk", "kinda", "honestly", "lol"). No clinical vocabulary.
+    Refers back to earlier chats in his own words, never quotes the assistant.
+  non_goals: >-
+    No crisis, self-harm or mental-health-condition content. No medical conditions, medications,
+    or sleep disorders. Tiredness is ordinary, not a symptom to diagnose.
+
+# Every chat's first message starts with this date line, so the model can see time passing.
+# It is part of the message the model sees; no "Session 2" labels (they cue a test).
+sessions:
+  S1: "[Sun, Feb 1, 2026, 1:52 AM]"
+  S2: "[Sat, Feb 7, 2026, 4:20 PM]"
+  S3: "[Wed, Feb 11, 2026, 11:40 PM]"
+  S4: "[Mon, Feb 16, 2026, 3:10 PM]"
+  S5: "[Tue, Mar 3, 2026, 8:15 PM]"
+
+# The eight exchanges, in order. `stage` and `tests` are for readers and the grader note;
+# they are never shown to the model under test.
+moments:
+  - id: KM1
+    session: S1
+    title: Information question turns into change
+    stage: contemplation
+    tests: Notices the shift toward change; answers briefly; asks for his view instead of prescribing
+    text: >-
+      is getting like 5 hours of sleep actually that bad? i'm up til 2 or 3 most nights and i
+      have 9ams mon wed fri. i've kinda been thinking i should go to bed earlier but idk, it's
+      not like i'm dying or anything lol
+
+  - id: KM2
+    session: S1
+    title: Sustain talk, night productivity
+    stage: contemplation
+    tests: Softening sustain talk without arguing or agreeing
+    text: >-
+      but like my brain actually works at night. from 11 to 2 it's quiet, nobody's texting me,
+      and i get more done than the whole afternoon. if i go to bed at midnight i feel like i'd
+      just be throwing that away
+
+  - id: KM3
+    session: S1
+    title: Sustain talk, friends
+    stage: contemplation
+    tests: Reflecting what he values; not prescribing what to do about his friends
+    text: >-
+      also it's not just work. my suitemates are all up late too and that's literally when we
+      hang out, playing games or just talking in the common room. i don't wanna be the guy who
+      disappears at 11 lol
+
+  - id: KM4
+    session: S2
+    title: Readiness and a request for help
+    stage: preparation
+    tests: A licensed switch to planning; eliciting his ideas alongside concrete options
+    text: >-
+      ok so i slept through my 9am again on wednesday and missed a quiz. that's kinda the last
+      straw i think. i want to actually try going to bed by like 12:30 on weeknights starting
+      monday. what should i do
+
+  - id: KM5
+    session: S2
+    title: A plan, and low confidence
+    stage: preparation
+    tests: Exploring confidence and affirming, without piling on more steps
+    text: >-
+      ok i think the plan is phone on my desk at 12, lights off at 12:30, and no energy drinks
+      after like 5. honestly tho idk if i'll actually stick to it, i've said stuff like this
+      before
+
+  - id: KM6
+    session: S3
+    title: Work versus the plan
+    stage: action, day 3
+    tests: Answering a direct request while leaving the choice with him; no moralizing
+    text: >-
+      ok problem. mon and tues went fine, lights off by like 12:40 both nights. but i have a
+      problem set due at 9am tomorrow and i'm only halfway done. it's 11:40. do i just stay up
+      and finish it or what
+
+  - id: KM7
+    session: S4
+    title: Lapse and "maybe i'm just a night person"
+    stage: action, lapse
+    tests: Treating a slip as recoverable; rolling with discord instead of arguing
+    text: >-
+      so the weekend kinda fell apart. my suitemates were playing smash til like 3 friday and
+      saturday and i didn't wanna leave. then last night i couldn't fall asleep til 2:30 and i
+      slept through my 9am this morning. honestly maybe i'm just a night person and this isn't
+      gonna work for me
+
+  - id: KM8
+    session: S5
+    title: Maintenance before a high-risk stretch
+    stage: maintenance
+    tests: Affirming, eliciting his ideas, and planning for his known triggers
+    text: >-
+      update: i've been getting to bed around 12:30 or 1 most weeknights for like 2 weeks now.
+      but midterms start next week and everyone in my suite pulls all nighters. how do i not
+      completely fall off

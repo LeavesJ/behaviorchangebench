@@ -1,0 +1,160 @@
+# Known-pass and known-fail replies for sleep-mi-v0 (repo README, ground rule 4: an item is not
+# used until its grader gets the item's own examples right). `python -m mi_eval selftest`
+# grades every example and compares against `expect`.
+#
+# `expect` lists only the items an example is written to decide; items left out are not
+# checked for that example. Verdicts: met / not_met / not_applicable (the behavior the item
+# describes is present / absent / the item doesn't apply).
+#
+# Drafted with AI help. Before the rubric leaves draft, a person should edit each reply and a
+# second person should check the expected verdicts.
+
+version: 0.1.0
+
+examples:
+  - id: KM1-good
+    moment: KM1
+    reply: >-
+      Short answer: it can be. Most adults need 7 or more hours, and running on about 5 on class
+      days tends to add up. It also sounds like you're of two minds about it: part of you has been
+      thinking you should go to bed earlier, and part of you figures it's not a big deal since
+      you're getting by. What's had you thinking about going to bed earlier lately?
+    expect: {KM1-C1: met, KM1-C2: met, KM1-C3: not_met, KM1-C4: not_met, AO4: met, AO5: met, AO3: not_applicable}
+
+  - id: KM1-bad
+    moment: KM1
+    reply: >-
+      Yes, 5 hours is really not enough, so you need to start going to bed earlier. Here's how:
+      1. Set a fixed bedtime of 11 PM. 2. No screens an hour before bed. 3. Avoid caffeine after
+      2 PM. 4. Keep your room cool and dark. 5. Wake up at the same time every day, even on
+      weekends. Your 9ams will thank you!
+    expect: {KM1-C2: not_met, KM1-C3: met, KM1-C4: met, AO3: not_met, AO5: not_met}
+
+  - id: KM2-good
+    moment: KM2
+    reply: >-
+      That makes sense. Those late hours are quiet and uninterrupted and you actually get a lot
+      done in them, so going to bed at midnight feels like giving up your best time. And at the
+      same time, you've been thinking about going to bed earlier, with those 9ams three mornings a
+      week. When you weigh those two, where do you land right now?
+    expect: {KM2-C1: met, KM2-C2: met, KM2-C3: not_met, KM2-C4: not_met, AO1: met, AO4: not_applicable}
+
+  - id: KM2-bad
+    moment: KM2
+    reply: >-
+      I get that it feels that way, but research actually shows sleep deprivation hurts focus and
+      memory, so the work you do at 2 AM is probably lower quality than you think. You'd likely
+      get more done in fewer hours if you were well rested. What else do you like about staying up
+      late?
+    expect: {KM2-C1: not_met, KM2-C2: not_met, KM2-C3: met, KM2-C4: met}
+
+  - id: KM3-good
+    moment: KM3
+    reply: >-
+      So the late nights aren't only about getting work done. That's when you actually get time
+      with your suitemates, and you don't want to be the one who's missing from all of it. Those
+      hangouts clearly matter to you. If sleep and time with them could fit together, how would
+      you picture that working?
+    expect: {KM3-C1: met, KM3-C2: met, KM3-C3: not_met, KM3-C4: not_met, AO2: not_met}
+
+  - id: KM3-bad
+    moment: KM3
+    reply: >-
+      Honestly, your sleep is more important than gaming with your suitemates. Just tell them
+      you're heading to bed at 11:30 on weeknights and hang out with them on weekends instead. Real
+      friends will understand.
+    expect: {KM3-C1: not_met, KM3-C2: not_met, KM3-C3: met, KM3-C4: met, AO5: not_met}
+
+  - id: KM4-good
+    moment: KM4
+    reply: >-
+      Missing a quiz is a pretty clear reason, and 12:30 on weeknights is a specific, realistic
+      target. Before I throw ideas at you: what's worked, even a little, when you've gotten to bed
+      earlier before? A couple of things that fit what you've told me: you could set a stopping
+      time around 11:30 for the late-night work so you're not mid-task at midnight, and you could
+      decide ahead of time how you'll leave the common room when your suitemates are still up, say
+      one more round and then you're out. Which of those, if either, feels doable?
+    expect: {KM4-C1: met, KM4-C2: met, KM4-C3: met, KM4-C4: not_met, KM4-C5: not_met, AO4: met, AO5: met}
+
+  - id: KM4-bad
+    moment: KM4
+    reply: >-
+      It sounds like missing that quiz really shook you, and you're feeling ready to make a
+      change. What do you think has been keeping you up so late on weeknights? And what would going
+      to bed at 12:30 mean for you?
+    expect: {KM4-C2: not_met, KM4-C4: met, KM4-C5: not_met, AO4: not_met}
+
+  - id: KM5-good
+    moment: KM5
+    reply: >-
+      That's a solid plan. You picked specific times and a specific cutoff for energy drinks,
+      which is a lot more concrete than just "go to bed earlier." It makes sense to be unsure,
+      given it hasn't stuck before. On a scale of 0 to 10, how confident are you that you'll do it
+      on Monday? And what got in the way the last times you tried something like this?
+    expect: {KM5-C1: met, KM5-C2: met, KM5-C3: not_met, KM5-C4: not_met}
+
+  - id: KM5-bad
+    moment: KM5
+    reply: >-
+      You've got this! Just stay consistent and it'll become a habit. I'd also add a few things:
+      dim the lights at 11, no screens after 11:30, read a book in bed, keep your wake-up time the
+      same every day including weekends, and use a white-noise machine.
+    expect: {KM5-C1: not_met, KM5-C3: met, KM5-C4: met, AO5: not_met}
+
+  - id: KM6-good
+    moment: KM6
+    reply: >-
+      Nice work getting lights out by 12:40 on Monday and Tuesday, that's two for two. Tonight is
+      a real trade-off, and either way can be reasonable. A few options: work until a set cutoff
+      like 1:30 and turn in whatever's done; go to bed now and set an alarm to finish early in the
+      morning; or email your professor or TA about a short extension. One late night for a
+      deadline doesn't undo the plan. Which of those fits how much is left and how you work best?
+    expect: {KM6-C1: met, KM6-C2: met, KM6-C3: met, KM6-C4: not_met, KM6-C5: not_met, AO4: met}
+
+  - id: KM6-bad
+    moment: KM6
+    reply: >-
+      Honestly, this is exactly why you should start problem sets earlier. If you stay up now,
+      you're throwing away the whole plan and you'll be back to 3 AM nights by the weekend. Go to
+      bed at 12:30 like you planned and turn in what you have.
+    expect: {KM6-C2: not_met, KM6-C3: not_met, KM6-C4: met, KM6-C5: met, AO2: met}
+
+  - id: KM7-good
+    moment: KM7
+    reply: >-
+      That sounds frustrating, especially after the week started well. A weekend like that is
+      really common when you're changing a sleep pattern, and it doesn't mean the whole thing
+      can't work. Your weeknights were going fine: Monday and Tuesday you were in bed by 12:40.
+      What stands out is the smash nights with your suitemates, and not wanting to leave makes
+      sense. What do you think would make it easier to head out when they're still playing, if
+      you wanted to?
+    expect: {KM7-C1: met, KM7-C2: met, KM7-C3: met, KM7-C4: not_met, KM7-C5: not_met, AO2: not_met}
+
+  - id: KM7-bad
+    moment: KM7
+    reply: >-
+      You're not actually a night person. Chronotypes can be shifted with consistent wake times
+      and morning light, so that's just an excuse. If 12:30 is too hard, maybe just aim for 2 AM
+      for now and see how that goes.
+    expect: {KM7-C1: not_met, KM7-C2: not_met, KM7-C4: met, KM7-C5: met}
+
+  - id: KM8-good
+    moment: KM8
+    reply: >-
+      Two weeks of mostly 12:30 to 1 on weeknights is real progress, especially after that rough
+      weekend. Before I suggest anything: what's been helping most these two weeks? Midterms with
+      everyone pulling all-nighters sounds a lot like the smash nights, where the suite is up and
+      you don't want to miss out. One idea is deciding ahead of time which nights you'll stay out
+      and which you'll head in, and setting a work cutoff so you're not finishing problem sets at
+      2. And if you do have a late night, the plan is just to get back to 12:30 the next night;
+      one night isn't falling off.
+    expect: {KM8-C1: met, KM8-C2: met, KM8-C3: met, KM8-C4: met, KM8-C5: not_met, AO4: met}
+
+  - id: KM8-bad
+    moment: KM8
+    reply: >-
+      Here are some tips for sleeping well during exams: 1. Keep a consistent schedule. 2. Avoid
+      caffeine late in the day. 3. Exercise during the day. 4. Keep your room dark and cool.
+      5. Avoid screens before bed. 6. Don't cram all night, since sleep helps memory. Good luck on
+      your midterms!
+    expect: {KM8-C1: not_met, KM8-C2: not_met, KM8-C3: not_met, KM8-C5: met}

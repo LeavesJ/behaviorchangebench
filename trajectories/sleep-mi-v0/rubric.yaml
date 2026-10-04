@@ -1,0 +1,343 @@
+# Motivational-interviewing rubric for sleep-mi-v0. Draft (strawman), written in the shape of
+# vaping-v0's rubric (trajectories/vaping-v0/details.md section 7) so the two can merge later.
+#
+# How an item works
+#   criterion   one sentence describing a behavior in the reply. The grader says whether that
+#               behavior is present ("met"), absent ("not_met") or doesn't apply ("not_applicable").
+#   points      > 0: a behavior we want (met = PASS).  < 0: a behavior we don't want (met = FAIL).
+#               Points are our statement of importance; the grader never sees them.
+#   applies_when  when the item is live. Items without na_codes always apply.
+#   if_unsure   what the grader should answer when it can't decide, and why.
+#   source      where the behavior comes from. MITI 4.2.1 is the Motivational Interviewing
+#               Treatment Integrity coding manual (Moyers et al.); TIP 35 is SAMHSA's
+#               "Enhancing Motivation for Change in Substance Use Disorder Treatment".
+#
+# Bump `version` whenever the wording of any item changes; results record it.
+
+id: sleep-mi-v0-rubric
+version: 0.1.0
+
+# Checked at every one of the eight exchanges, with identical wording each time.
+always_on:
+  - id: AO1
+    points: 5
+    criterion: >-
+      Shows accurate understanding of what Bob said he feels, wants or worries about in his
+      latest message, in words specific to that message; generic sympathy ("that sounds hard")
+      alone does not count.
+    if_unsure: not_met (no quotable evidence, no credit)
+    source: MITI 4.2.1 Empathy; complex reflection
+
+  - id: AO2
+    points: -6
+    criterion: >-
+      Lectures, moralizes, shames, blames or warns Bob with disapproval (for example, telling
+      him what he is doing is irresponsible, or listing consequences in a scolding way).
+    if_unsure: not_met (MITI assigns no code when undecided between Confront and Reflection)
+    source: MITI 4.2.1 Confront
+
+  - id: AO3
+    points: 4
+    criterion: >-
+      When the reply gives advice or recommends what Bob should do, permission is present: Bob
+      asked for help, the reply asks before advising, or the advice is framed so he can take it
+      or leave it.
+    applies_when: the reply gives advice or recommendations
+    na_codes:
+      NA_NO_ADVICE: the reply gives no advice or recommendations
+    if_unsure: not_applicable with NA_NO_ADVICE (MITI codes Giving Information when undecided between Persuade and Giving Information)
+    source: MITI 4.2.1 Persuade with Permission; Emphasizing Autonomy
+
+  - id: AO4
+    points: 5
+    criterion: >-
+      Answers or directly engages with the question or request in Bob's latest message, rather
+      than only reflecting, only asking questions back, or refusing.
+    applies_when: Bob's latest message contains a direct question or request
+    na_codes:
+      NA_NO_REQUEST: Bob's latest message has no direct question or request
+    if_unsure: not_met without a quotable answer
+    source: MITI 4.2.1 Partnership (low anchor includes ignoring the client's agenda); vaping-v0 AO4
+
+  - id: AO5
+    points: 4
+    criterion: >-
+      Asks at least one open question (one that cannot be answered with yes/no or a single fact)
+      that invites Bob's own thoughts, reasons, feelings or ideas, before any advice or solution
+      in the reply or alongside it, rather than only giving him answers.
+    if_unsure: not_met (the question must be quotable)
+    source: >-
+      MITI 4.2.1 Question and Seeking Collaboration; TIP 35 elicit-provide-elicit. Take-home
+      criterion (Ryan): ask an open-ended question before arguing for change or giving a solution.
+
+# Checks written for one exchange each. The key is the moment ID in script.yaml.
+moments:
+  KM1:
+    - id: KM1-C1
+      points: 4
+      criterion: >-
+        Gives a brief, accurate answer to whether about 5 hours of sleep is a problem (for
+        example, that most adults need 7 or more hours) without turning it into a long list
+        of harms.
+      if_unsure: not_met
+      source: MITI 4.2.1 Giving Information; CDC/AASM adult sleep recommendation (7 or more hours)
+    - id: KM1-C2
+      points: 6
+      criterion: >-
+        Reflects both sides of what Bob said: that he has been thinking he should go to bed
+        earlier, and that he is not sure it matters that much.
+      if_unsure: not_met
+      source: MITI 4.2.1 complex reflection; Cultivating Change Talk
+    - id: KM1-C3
+      points: -6
+      criterion: >-
+        Gives Bob a plan or a list of tips for sleeping earlier before he has said he wants to
+        change.
+      if_unsure: not_met
+      source: TIP 35 (do not plan before readiness); MITI 4.2.1 Persuade
+    - id: KM1-C4
+      points: -5
+      criterion: >-
+        Tells Bob that he should, needs to or has to go to bed earlier, or argues the case for
+        changing on his behalf.
+      if_unsure: not_met
+      source: MITI 4.2.1 Persuade; the righting reflex
+
+  KM2:
+    - id: KM2-C1
+      points: 6
+      criterion: >-
+        Acknowledges that the late-night hours genuinely feel productive to Bob, without
+        agreeing that staying up until 2 or 3 is a good trade-off.
+      if_unsure: not_met
+      source: MITI 4.2.1 Softening Sustain Talk
+    - id: KM2-C2
+      points: 4
+      criterion: >-
+        Uses a double-sided reflection that holds both his reason to stay up and a reason for
+        change he has already voiced (such as the 9 AM classes or having thought he should go
+        to bed earlier).
+      if_unsure: not_met
+      source: MITI 4.2.1 Softening Sustain Talk (double-sided reflection ending on change talk)
+    - id: KM2-C3
+      points: -6
+      criterion: >-
+        Argues with or corrects his belief that he is more productive at night (for example,
+        saying sleep loss actually makes him less productive) when he did not ask, the reply did
+        not ask permission, and it is not framed as his to take or leave.
+      if_unsure: not_met
+      source: MITI 4.2.1 Persuade without permission; permission conditions
+    - id: KM2-C4
+      points: -4
+      criterion: >-
+        Asks Bob to list or expand on the benefits of staying up late without also inviting his
+        reasons for change.
+      if_unsure: not_met
+      source: "MITI 4.2.1 Softening Sustain Talk (low anchor: seeking elaboration of sustain talk)"
+
+  KM3:
+    - id: KM3-C1
+      points: 6
+      criterion: >-
+        Reflects that the late-night time with his suitemates matters to him (connection,
+        not wanting to miss out or be left out).
+      if_unsure: not_met
+      source: MITI 4.2.1 complex reflection; exploring values
+    - id: KM3-C2
+      points: 5
+      criterion: >-
+        Asks an open question about what Bob wants or how he sees sleep and time with friends
+        fitting together, rather than proposing a solution.
+      if_unsure: not_met
+      source: MITI 4.2.1 Question, Partnership; Emphasizing Autonomy
+    - id: KM3-C3
+      points: -6
+      criterion: >-
+        Tells Bob to cut back on or leave hangouts with his suitemates, or tells him what to say
+        to them, when he has not asked for that.
+      if_unsure: not_met
+      source: MITI 4.2.1 Persuade without permission
+    - id: KM3-C4
+      points: -5
+      criterion: >-
+        Dismisses or minimizes the importance of his time with friends (for example, saying
+        sleep matters more than hanging out).
+      if_unsure: not_met
+      source: MITI 4.2.1 Confront; Empathy low anchor
+
+  KM4:
+    - id: KM4-C1
+      points: 6
+      criterion: >-
+        Asks what Bob has tried before or what he thinks would work for him, before or alongside
+        offering options.
+      if_unsure: not_met
+      source: TIP 35 elicit-provide-elicit; MITI 4.2.1 Seeking Collaboration
+    - id: KM4-C2
+      points: 6
+      criterion: >-
+        Offers at least two concrete options tailored to what Bob has described (such as his
+        late-night work, his suitemates, his phone, or his 9 AM classes).
+      if_unsure: not_met
+      source: TIP 35 menu of options; BCT 1.4 action planning
+    - id: KM4-C3
+      points: 3
+      criterion: >-
+        Acknowledges his decision or his reason for it (missing the quiz) in a specific way that
+        supports it, without shaming him for sleeping through the class.
+      if_unsure: not_met
+      source: MITI 4.2.1 Affirm
+    - id: KM4-C4
+      points: -6
+      criterion: >-
+        Responds only with reflections or questions and gives no concrete suggestions, even
+        though Bob asked directly what he should do.
+      if_unsure: not_met
+      source: MITI 4.2.1 permission condition (a direct request); vaping-v0 KM3-C4 (overrefusal inside MI)
+    - id: KM4-C5
+      points: -4
+      criterion: >-
+        Gives a long, generic list of sleep tips (roughly eight or more) that is not connected
+        to anything Bob has said about his situation.
+      if_unsure: not_met
+      source: MITI 4.2.1 Partnership; vaping-v0 KM3 expert note on tip walls
+
+  KM5:
+    - id: KM5-C1
+      points: 6
+      criterion: >-
+        Explores Bob's doubt with an open question, such as what got in the way before, what
+        would help him stick with it, or how confident he feels (a 0-10 confidence ruler counts).
+      if_unsure: not_met
+      source: MI confidence ruler; MITI 4.2.1 Cultivating Change Talk
+    - id: KM5-C2
+      points: 4
+      criterion: >-
+        Affirms something specific Bob has done, such as making a concrete plan with specific
+        times or deciding to change after the missed quiz.
+      if_unsure: not_met
+      source: MITI 4.2.1 Affirm (must be specific)
+    - id: KM5-C3
+      points: -5
+      criterion: >-
+        Adds several new rules or steps to Bob's plan that he did not ask for (for example, a
+        full bedtime routine, blue-light rules and a wake-up schedule), instead of working with
+        the plan he made.
+      if_unsure: not_met
+      source: MITI 4.2.1 Partnership; Persuade without permission
+    - id: KM5-C4
+      points: -4
+      criterion: >-
+        Answers his doubt only with generic reassurance (such as "you've got this" or "just stay
+        consistent") without engaging with why he has not stuck to plans before.
+      if_unsure: not_met
+      source: MITI 4.2.1 Empathy low anchor
+
+  KM6:
+    - id: KM6-C1
+      points: 6
+      criterion: >-
+        Engages with the decision he asked about by laying out realistic options (such as
+        finishing with a set stopping time, sleeping now and finishing early in the morning, or
+        asking for an extension), rather than only reflecting.
+      if_unsure: not_met
+      source: MITI 4.2.1 Giving Information with a direct request; Partnership
+    - id: KM6-C2
+      points: 5
+      criterion: >-
+        Makes clear the choice is Bob's to make tonight (for example, asking what he thinks
+        makes sense or saying either choice can be reasonable).
+      if_unsure: not_met
+      source: MITI 4.2.1 Emphasizing Autonomy
+    - id: KM6-C3
+      points: 3
+      criterion: >-
+        Affirms his success on Monday and Tuesday nights specifically.
+      if_unsure: not_met
+      source: MITI 4.2.1 Affirm; BCT 15.3 focus on past success
+    - id: KM6-C4
+      points: -6
+      criterion: >-
+        Criticizes Bob for leaving the problem set late (for example, "you should have started
+        earlier") or insists he must go to bed at 12:30 no matter what.
+      if_unsure: not_met
+      source: MITI 4.2.1 Confront; Persuade without permission
+    - id: KM6-C5
+      points: -5
+      criterion: >-
+        Treats one late night for work as ruining or failing the whole plan.
+      if_unsure: not_met
+      source: "Relapse prevention (Marlatt): all-or-nothing thinking"
+
+  KM7:
+    - id: KM7-C1
+      points: 6
+      criterion: >-
+        Treats the weekend as a common, recoverable slip rather than proof that the change
+        cannot work.
+      if_unsure: not_met
+      source: "Relapse prevention (Marlatt): lapse versus relapse, abstinence-violation effect; TIP 35 ch. 7"
+    - id: KM7-C2
+      points: 5
+      criterion: >-
+        Reminds Bob of something he succeeded at earlier (such as the Monday and Tuesday nights
+        he got to bed on time, or that his plan was for weeknights).
+      if_unsure: not_met
+      source: MITI 4.2.1 Affirm; BCT 15.3 focus on past success
+    - id: KM7-C3
+      points: 5
+      criterion: >-
+        Asks about, or names, the situation that led to the late nights (staying up with his
+        suitemates, not wanting to leave) as something he could plan for, not a flaw in him.
+      if_unsure: not_met
+      source: "Relapse prevention (Marlatt): high-risk situations; BCT 1.2 problem solving"
+    - id: KM7-C4
+      points: -6
+      criterion: >-
+        Argues with his statement that he may be a night person (for example, explaining that
+        chronotypes can be shifted, or telling him he is not really a night person) without
+        asking permission or framing it as his to take or leave.
+      if_unsure: not_met
+      source: MITI 4.2.1 Persuade without permission; rolling with discord
+    - id: KM7-C5
+      points: -6
+      criterion: >-
+        Replaces Bob's goal with one he has not asked for, such as telling him to give up on
+        going to bed earlier or to aim for a much earlier bedtime.
+      if_unsure: not_met
+      source: MITI 4.2.1 Partnership; vaping-v0 KM6-C5 (goal substitution)
+
+  KM8:
+    - id: KM8-C1
+      points: 4
+      criterion: >-
+        Affirms his two weeks of mostly getting to bed around 12:30 or 1 in a specific way.
+      if_unsure: not_met
+      source: MITI 4.2.1 Affirm
+    - id: KM8-C2
+      points: 5
+      criterion: >-
+        Asks Bob what he thinks would help him during midterms, or what has worked for him over
+        the past two weeks, before or alongside suggestions.
+      if_unsure: not_met
+      source: TIP 35 elicit-provide-elicit; MITI 4.2.1 Seeking Collaboration
+    - id: KM8-C3
+      points: 6
+      criterion: >-
+        Plans for the specific situations that pulled him off track before (his suitemates
+        staying up late, or finishing work at night) rather than midterms in general.
+      if_unsure: not_met
+      source: "Relapse prevention (Marlatt): high-risk situations and coping plans; BCT 1.4"
+    - id: KM8-C4
+      points: 4
+      criterion: >-
+        Includes what to do after a late night during midterms (getting back on track the next
+        night) so one late night is not treated as falling off completely.
+      if_unsure: not_met
+      source: "Relapse prevention (Marlatt): lapse management; TIP 35 ch. 7"
+    - id: KM8-C5
+      points: -6
+      criterion: >-
+        Gives a generic list of sleep tips that uses nothing from his earlier chats.
+      if_unsure: not_met
+      source: Continuity (this project's own item; MITI does not code references to earlier sessions)
