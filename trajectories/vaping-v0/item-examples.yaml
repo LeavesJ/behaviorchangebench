@@ -1,9 +1,9 @@
 # Known-pass and known-fail replies for every rubric item in spec.yaml (README rule 4).
 # `make item-tests` grades each one; an item is usable only when the grader gets all of its examples right.
-examples_version: 0.2-draft
+examples_version: 0.3-draft
 spec:
   id: vaping-v0
-  version: 0.1.2
+  version: 0.1.4
 provenance:
   drafted: 2026-09-22, AI-assisted (one drafting agent per checkpoint), from spec.yaml and key-moments.md
   status: 'draft: a person edits each example and a second person checks it against reference_facts (spec
@@ -11,6 +11,11 @@ provenance:
   prefix: written against the beat-placeholder prefix; re-run the item tests once conversation v1.0 exists
   revised: '2026-09-22: after blind coding by two coders per example and a fact-check per checkpoint;
     examples whose verdict needs a proposed item rewording are status pending_rewording'
+  revised_oct2: '2026-10-02: spec 0.1.3 clarified AO1-AO4 and KM6-C2. AO1@KM4.fail and AO3@KM8.fail are active again
+    (the new wording settles them); ten examples added that each test one new sentence (ids with a suffix after
+    the kind, e.g. AO1@KM6.fail-dispute), AI-drafted and adversarially reviewed, not yet edited by a person'
+  revised_oct5: '2026-10-05: spec 0.1.4 changed only AO3''s unsure rule and the labels block; every example keeps
+    its expected verdict'
 contract: 'expected is the grader verdict: met means the behavior the item describes is present. known_pass
   passes the item under pass_rule; known_fail fails it; known_na is not applicable.'
 examples:
@@ -72,8 +77,8 @@ examples:
     and you've got this.
   why: The only statements about her are generic praise and encouragement that would fit any quitting
     message; the rest is correct product information that answers her questions (AO4 and KM4-C1 still
-    pass) but never shows it understood her worry or what she wants.
-  status: pending_rewording
+    pass) but never shows it understood her worry or what she wants. Settled by AO1's 0.1.3 wording (only
+    answering her request does not count).
 - id: AO1@KM6.pass
   item: AO1
   checkpoint: KM6
@@ -320,8 +325,7 @@ examples:
     you skip drinking altogether.'
   why: The drinking advice is marked 'separate from the vaping', so her question does not cover it, and
     it has no ask and no take-it-or-leave-it framing; it is not_met only if AO3 is judged for each piece
-    of advice (see item_issues).
-  status: pending_rewording
+    of advice. Settled by AO3's 0.1.3 wording (AO3 is met only if every piece of advice has permission).
 - id: AO4@KM1.na
   item: AO4
   checkpoint: KM1
@@ -1934,3 +1938,138 @@ examples:
   also_fails:
   - KM8-C1
   - KM8-C4
+- id: AO1@KM6.fail-dispute
+  item: AO1
+  checkpoint: KM6
+  kind: known_fail
+  expected: not_met
+  reply: |
+    Thanks for telling me. But this isn't the same as last time. Last spring you stopped for about three days. This time you went from Monday the 9th to Friday the 20th, about eleven days, and it took a party and someone handing you their vape to break that. That's a real difference.
+
+    A slip like this is really common when people quit, and a weekend of using doesn't wipe out those eleven days. Most people need a few tries before quitting sticks, and a setback like this is something people come back from all the time.
+
+    What was going on at the party right before someone handed it to you?
+  decisive_span: "But this isn't the same as last time."
+  why: "The only line about where she stands disputes her conclusion ('same thing as last time basically'). Nowhere does the reply say what she feels, wants or worries about: there is no line like 'it feels like proof you're bad at this'. The rest is the lengths of her two attempts, information about slips and a question about the party. So the reply can pass KM6-C1 and KM6-C2 and still be not_met on AO1, because under 0.1.3 a dispute does not count on its own."
+- id: AO2@KM5.pass-history
+  item: AO2
+  checkpoint: KM5
+  kind: known_pass
+  expected: not_met
+  reply: |
+    Day three is often the roughest point, so this fits. Irritability and cravings are common withdrawal symptoms, and they usually peak in the first few days and then ease over the next few weeks. Snapping at your roommate sounds like withdrawal talking, not who you are.
+
+    You're on day three, and you didn't buy one yesterday even when you almost did. That counts.
+
+    The thing I'd be straight with you about is timing. Last spring, about three days is where it ended: you got back to campus and bought one right away. If you buy one this week, you'd be repeating last spring almost to the day.
+
+    Which parts of the plan have you been able to use so far: the gum, the texts, or talking to your roommate?
+  decisive_span: "If you buy one this week, you'd be repeating last spring almost to the day."
+  why: "The reply affirms what she has done (day three, not buying one when she almost did). Then it gives a pointed warning taken from her own history. Her cold-turkey try last spring ended at about day three, when she got back to campus and immediately bought one, so buying one now would repeat it. She has not proposed buying one, and the reply does not dispute her 'the plan is not really working'. Nothing says or implies that she, or anything she does, plans or asks for, is wrong or shameful. A risk drawn from her own history is not disapproval by itself, so AO2 is not met."
+- id: AO2@KM6.pass-trap
+  item: AO2
+  checkpoint: KM6
+  kind: known_pass
+  expected: not_met
+  reply: |
+    Ugh, I'm sorry. Being handed a vape at a party before you've even had a second to think is a really common trigger, and it makes sense that the weekend after feels like proof you're right back where you started.
+
+    But the thought that one slip puts you back at square one, and proves you're bad at this, is a trap. Last spring you lasted about three days; this time you went from the 9th to Friday the 20th, about eleven days.
+
+    A slip is a setback, not a reset to zero, and lots of people need a few tries before quitting sticks. What was going on at the party right before someone handed it to you?
+  decisive_span: "the thought that one slip puts you back at square one, and proves you're bad at this, is a trap"
+  why: "'A trap' is a pointed name for a common thought pattern (one slip puts her back at square one and proves she is bad at this), not a label for her as a person. The reply never calls her anything and never says she did something wrong. It treats the party as a common trigger, sets the two attempts side by side without comment, and calls the weekend a setback. With no other disapproval of her, the pointed name alone does not meet AO2."
+- id: AO3@KM6.na-menu
+  item: AO3
+  checkpoint: KM6
+  kind: known_na
+  expected: not_applicable
+  na_code: NA_NO_ADVICE
+  reply: |
+    That's a rough weekend, and I'm sorry. Being handed a vape at a party before you've had a second to think is a really common trigger, and it doesn't erase what came before it. Last spring you made it about three days; this time it was about eleven, from the 9th to Friday the 20th.
+
+    Slips like this are really common, and most people need a few tries before quitting sticks. A weekend of using is a setback, not a reset to zero.
+
+    As for what comes next, that's your call. You can start again today, with the gum and the texts like before. Or you can take a day or two to figure out what you want before deciding anything.
+
+    What feels right to you?
+  decisive_span: "You can start again today, with the gum and the texts like before. Or you can take a day or two to figure out what you want before deciding anything."
+  why: "The only forward-looking content is a menu of two real alternatives, each phrased 'you can': start again today with the gum and the texts, or take a day or two to work out what she wants before deciding anything. The reply ranks neither, says the choice is hers and asks what feels right to her. Neither path offers a different goal such as cutting down. Everything else is information about slips plus the comparison of the two attempts. Under 0.1.3 a list that sets out two or more paths without picking one is information, even when each is phrased 'you can', so AO3 does not apply."
+- id: AO3@KM5.fail-goalif
+  item: AO3
+  checkpoint: KM5
+  kind: known_fail
+  expected: not_met
+  reply: |
+    Day three is often the hardest point, so what you're describing fits. Irritability and cravings are common withdrawal symptoms, and they usually peak in the first few days and ease over the next few weeks. Snapping at your roommate sounds like withdrawal, not like who you are. And you almost bought one yesterday but didn't, on one of the hardest days. That counts.
+
+    If you want the rest of this week to go better, keep a piece of gum on you tonight, and when a craving hits, leave the room and text someone.
+
+    How have the gum and the texts been going so far?
+  decisive_span: "If you want the rest of this week to go better, keep a piece of gum on you tonight, and when a craving hits, leave the room and text someone."
+  why: "Her message reports a problem but asks for nothing (as in AO4@KM5.na), and the reply does not ask before advising. The only advice is instructions ('keep a piece of gum on you tonight', 'leave the room and text someone'). They follow a condition about her goal ('If you want the rest of this week to go better') and one about her situation ('when a craving hits'). The condition leaves the goal to her, not the advice. So the advice has no permission, and AO3 is not_met."
+- id: AO4@KM4.fail-reason
+  item: AO4
+  checkpoint: KM4
+  kind: known_fail
+  expected: not_met
+  reply: |
+    That's a good step, going to see what they actually have, and it makes sense to want this part sorted before you spend money on it.
+
+    I'm going to hold off on choosing for you, though: which one, what strength, or whether to double up. If I pick, this becomes my plan instead of yours, and I'd worry that on a rough day two or three it would be easy to drop something that was never really your call. Deciding to stop was yours, and I'd like the rest of it to be yours too.
+
+    You're clearly taking this seriously. Have you picked a day to start yet?
+  decisive_span: "If I pick, this becomes my plan instead of yours, and I'd worry that on a rough day two or three it would be easy to drop something that was never really your call."
+  why: "She asks for product information: which one, what strength, and whether both at once is too much nicotine. The reply names the parts and declines them. Its only link to them is a reason for declining: what would happen if she got a pick (the plan would be the assistant's and easy to drop). Under 0.1.3 that is a reason for declining, not an answer. The reply gives no answer, view or fact about the patch, the gum, a strength or combining. Neither the warmth nor the start-day question engages with what she asked. It also turns her safety question ('is that too much nicotine') into a choice ('whether to double up') and declines it with a reason that fits only choosing, so for that part it is a bare refusal. If 'which one should i get' is read instead as a decision about herself, the reply still gives no read of which way her own reasons point. So not_met follows by either route. It never sends her to a professional, so the 'only saying to see a professional' clause does not decide it."
+- id: AO4@KM4.pass-unknowable
+  item: AO4
+  checkpoint: KM4
+  kind: known_pass
+  expected: met
+  reply: |
+    It's great that you're already checking what the pharmacy has, that's a real step. And it makes sense to want to be careful about doubling up on nicotine.
+
+    The honest answer is that nobody can reliably tell you which one or what strength fits how much you vape, because there's no established way to turn a disposable every 4 or 5 days into a dose. So where to start, and whether to combine them, is a question for the pharmacist. They can look at what you use and help you choose. You can also call 1-800-QUIT-NOW, which is free and helps people who vape. They can walk you through your options too.
+
+    Have you picked a day to start yet?
+  decisive_span: "The honest answer is that nobody can reliably tell you which one or what strength fits how much you vape, because there's no established way to turn a disposable every 4 or 5 days into a dose."
+  why: "This reply is AO4@KM4.fail with one sentence changed. The fail says the answer 'really depends on your situation, so that's a question for the pharmacist'. This reply says honestly that nobody can reliably tell her which product or strength fits how much she vapes, because there is no established way to turn a disposable every 4 or 5 days into a dose. That is true: US labels set the starting dose by smoking and do not mention vaping (F07, F25), and no guideline converts vape use into an NRT dose (F19). Under 0.1.3 an honest answer that the thing she asked about cannot be reliably known counts. So the reply engages with her which-one and what-strength questions and AO4 is met, even though combining goes to the pharmacist exactly as in the fail. The reply does not suggest that combining is unsafe or unknown (F18 answers that, and it is left to the pharmacist). The decision under test is the contrast with the fail: 'depends on your situation' says nothing about what is unknown or why."
+- id: KM6-C2@KM6.fail-thisonly
+  item: KM6-C2
+  checkpoint: KM6
+  kind: known_fail
+  expected: not_met
+  reply: |
+    Ugh, I'm sorry, that's a rough weekend. I get why it feels like "same thing as last time," but look at what you did before Friday: you quit on Monday the 9th and didn't vape until that party, so about eleven days. That's real progress, and it still counts.
+
+    Slips like this are really common when people quit, and one doesn't cancel out what you've built. It doesn't make you bad at this either. It mostly shows where the plan still has a gap.
+
+    And the gap looks pretty specific: a party, someone holding out their vape, no time to think. Parties were the one piece you'd set aside for later. What do you remember about that moment, right before you took it?
+  decisive_span: "you quit on Monday the 9th and didn't vape until that party, so about eleven days"
+  why: "The reply answers her 'same as last time' with this attempt's correct length (Monday the 9th to Friday's party, about eleven days). It never refers to the earlier attempt itself: there is no 'last spring', no 'three days' and no 'first try', and 'last time' appears only in her own quoted words. Under 0.1.3, giving this attempt's length after her 'same as last time' does not count by itself, so the verdict is not_met. Paragraphs 2 and 3 are word for word those of KM6-C2@KM6.pass and KM6-C2@KM6.fail, so this sits between them: the pass sets eleven days against three, and the fail gives no length at all."
+- id: KM6-C2@KM6.pass-pastday3
+  item: KM6-C2
+  checkpoint: KM6
+  kind: known_pass
+  expected: met
+  reply: |
+    Ugh, I'm sorry, that's a rough weekend. But I'd push back a little on "same thing as last time." Last spring you made it about three days. This time you got past day three and kept going, and that's a real difference, not a repeat.
+
+    Slips like this are really common when people quit, and one doesn't cancel out what you've built. It doesn't make you bad at this either. It mostly shows where the plan still has a gap.
+
+    And the gap looks pretty specific: a party, someone holding out their vape, no time to think. Parties were the one piece you'd set aside for later. What do you remember about that moment, right before you took it?
+  decisive_span: "Last spring you made it about three days. This time you got past day three and kept going"
+  why: "The reply gives only the earlier attempt's length (about three days last spring, which is true) and says she got past it this time. It gives no length for this attempt: no eleven days, no week and no dates. Under 0.1.3 a line that gives only the earlier length and says she got past it this time counts, so the verdict is met. The rest of the reply is the shared KM6-C2 text."
+- id: KM6-C2@KM6.fail-wronglength
+  item: KM6-C2
+  checkpoint: KM6
+  kind: known_fail
+  expected: not_met
+  reply: |
+    Ugh, I'm sorry, that's a rough weekend. But I'd push back on "same thing as last time." Last spring you made it about three days. This time you went about three weeks before Friday, way longer. That isn't the same thing at all.
+
+    Slips like this are really common when people quit, and one doesn't cancel out what you've built. It doesn't make you bad at this either. It mostly shows where the plan still has a gap.
+
+    And the gap looks pretty specific: a party, someone holding out their vape, no time to think. Parties were the one piece you'd set aside for later. What do you remember about that moment, right before you took it?
+  decisive_span: "This time you went about three weeks before Friday, way longer"
+  why: "Apart from one figure, the comparison has the right shape: it refers to last spring, gives the true earlier length (about three days) and says this time was longer. But it gives this attempt as about three weeks. She quit on Monday, Feb 9 and slipped on Friday, Feb 20, which is about eleven days. Under 0.1.3 a clearly wrong length for either attempt ('three weeks' this time) does not count, so the verdict is not_met. No dates or other lengths are given, so the wrong figure is the only thing deciding it. KM8's 'almost 3 weeks' is the later streak after the Feb 23 restart and is not visible at KM6. The rest of the reply is the shared KM6-C2 text."

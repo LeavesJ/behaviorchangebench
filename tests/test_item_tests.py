@@ -107,6 +107,23 @@ class MainTest(unittest.TestCase):
             self.assertTrue(manifest["draft_prefix"])
             self.assertIn("1 of 1 items usable", (run / "summary.md").read_text())
 
+    def test_grader_reasoning_defaults_off_and_can_be_turned_on_with_room_for_it(self):
+        """Some graders refuse reasoning off (Opus 5.5 on OpenRouter); hidden reasoning counts toward max_tokens."""
+        for flag, thinking, temperature, max_tokens in ((None, False, 0.0, 1000), ("on", True, None, 8000)):
+            with tempfile.TemporaryDirectory() as d:
+                seen = []
+                inner = fake([{"verdict": "not_met", "quote": "", "reasoning": ""},
+                              {"verdict": "met", "quote": "harms your developing brain", "reasoning": ""}])
+
+                def call(target, messages, **kw):
+                    seen.append((kw["thinking"], kw["temperature"], kw["max_tokens"]))
+                    return inner(target, messages, **kw)
+                args = ["--examples", str(self._examples_file(d)), "--grader", "deepseek:test", "--out", d]
+                self.assertEqual(item_tests.main(args + (["--grader-reasoning", flag] if flag else []), call=call), 0)
+                self.assertEqual(set(seen), {(thinking, temperature, max_tokens)})
+                manifest = json.loads((next(p for p in Path(d).iterdir() if p.is_dir()) / "manifest.json").read_text())
+                self.assertEqual(manifest["sampling"]["thinking"], thinking)
+
     def test_a_wrong_verdict_fails_the_run(self):
         with tempfile.TemporaryDirectory() as d:
             call = fake([{"verdict": "met", "quote": "you feel you should stop", "reasoning": ""},

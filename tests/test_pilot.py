@@ -6,7 +6,7 @@ from pathlib import Path
 
 import yaml
 
-from bcb import branches as br, client, pilot
+from bcb import branches as br, client, labels, pilot
 from bcb.item_tests import DEFAULT_SPEC
 from bcb.spec import Spec
 
@@ -102,6 +102,22 @@ class RunUnitTest(unittest.TestCase):
         self.assertIn("HTTP 500", u["error"])
 
 
+class SubscoreTest(unittest.TestCase):
+    def test_core_and_scenario_score_their_own_items_only(self):
+        spec = attached()
+        unit = {"verdicts": [{"item": "AO1", "verdict": "met"}, {"item": "AO2", "verdict": "not_met"},
+                             {"item": "HQ-MID-C1", "verdict": "not_met"}]}
+        self.assertEqual(pilot.subscore(spec, unit, core=True), 1.0)
+        self.assertEqual(pilot.subscore(spec, unit, core=False), 0.0)
+
+    def test_interval_is_a_point_when_every_checkpoint_agrees_and_widens_when_they_differ(self):
+        self.assertEqual(pilot.clustered_interval({"A": [1.0, 1.0], "B": [1.0]}), (1.0, 1.0))
+        lo, hi = pilot.clustered_interval({"A": [0.2, 0.2], "B": [1.0, 1.0], "C": [0.6]})
+        self.assertLess(lo, 0.6)
+        self.assertGreater(hi, 0.6)
+        self.assertIsNone(pilot.clustered_interval({"A": [None]}))
+
+
 class MainTest(unittest.TestCase):
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())
@@ -128,6 +144,160 @@ class MainTest(unittest.TestCase):
         def boom(*a, **k):
             raise AssertionError("resume re-ran a finished unit")
         self.assertEqual(pilot.main(args + ["--resume", str(run)], call=boom), 0)
+
+    def test_no_grade_draws_replies_only_then_resume_grades_them(self):
+        """Blind labels: replies are drawn first, and the grader runs only when someone asks for it later."""
+        draw = ["--branches", str(self.branches), "--out", str(self.tmp), "--no-grade",
+                "--models", "openrouter:a/one,openrouter:b/two", "--samples", "2", "--workers", "2"]
+
+        def no_grader(target, messages, **kw):
+            if target.startswith("deepseek"):
+                raise AssertionError("--no-grade called the grader")
+            return fake()(target, messages, **kw)
+        self.assertEqual(pilot.main(draw, call=no_grader), 0)
+        run = next(self.tmp.glob("*-models"))
+        units = [json.loads(x) for x in (run / "units.jsonl").read_text().splitlines()]
+        self.assertEqual(len(units), 8)
+        self.assertTrue(all(u["reply"] and u["verdicts"] == [] and u["score"] is None for u in units))
+        self.assertIn("not graded", (run / "summary.md").read_text())
+        self.assertFalse(json.loads((run / "manifest.json").read_text())["graded"])
+
+        def grader_only(target, messages, **kw):
+            if not target.startswith("deepseek"):
+                raise AssertionError("grading a drawn run asked a model for a new reply")
+            return fake()(target, messages, **kw)
+        grade = ["--branches", str(self.branches), "--out", str(self.tmp), "--grader", "deepseek:deepseek-flash",
+                 "--models", "openrouter:a/one,openrouter:b/two", "--samples", "2", "--resume", str(run)]
+        self.assertEqual(pilot.main(grade, call=grader_only), 0)
+        graded = [json.loads(x) for x in (run / "units.jsonl").read_text().splitlines()]
+        self.assertEqual(len(graded), 8)
+        self.assertEqual({u["score"] for u in graded}, {1.0})
+        self.assertEqual({u["reply"] for u in graded}, {u["reply"] for u in units})
+        self.assertTrue(all(u["usage"] == {"cost": 0.01} for u in graded), "grading dropped the reply's own usage")
+        self.assertTrue(json.loads((run / "manifest.json").read_text())["graded"])
+
+    def test_reasoning_setting_is_sent_and_recorded(self):
+        seen = []
+
+        def call(target, messages, **kw):
+            if not target.startswith("deepseek"):
+                seen.append(kw.get("thinking", "absent"))
+            return fake()(target, messages, **kw)
+        args = ["--branches", str(self.branches), "--out", str(self.tmp), "--no-grade", "--models", "openrouter:a/one",
+                "--samples", "1", "--reasoning", "off"]
+        self.assertEqual(pilot.main(args, call=call), 0)
+        self.assertEqual(set(seen), {False})
+        manifest = json.loads((next(self.tmp.glob("*-models")) / "manifest.json").read_text())
+        self.assertEqual(manifest["reply_sampling"]["reasoning"], "off")
+
+    def test_reasoning_defaults_to_the_vendor_and_says_so(self):
+        seen = []
+
+        def call(target, messages, **kw):
+            seen.append(kw.get("thinking", "absent"))
+            return fake()(target, messages, **kw)
+        args = ["--branches", str(self.branches), "--out", str(self.tmp), "--no-grade", "--models", "openrouter:a/one",
+                "--samples", "1"]
+        self.assertEqual(pilot.main(args, call=call), 0)
+        self.assertEqual(set(seen), {None})
+        manifest = json.loads((next(self.tmp.glob("*-models")) / "manifest.json").read_text())
+        self.assertEqual(manifest["reply_sampling"]["reasoning"], "vendor default")
+
+    def test_a_crash_while_grading_a_drawn_run_loses_no_reply(self):
+        """Replies drawn for blind labels are paid for and labelled; grading them later must never drop one from disk."""
+        draw = ["--branches", str(self.branches), "--out", str(self.tmp), "--no-grade", "--models", "openrouter:a/one",
+                "--samples", "2", "--workers", "1"]
+        self.assertEqual(pilot.main(draw, call=fake()), 0)
+        run = next(self.tmp.glob("*-models"))
+        drawn = {(u["checkpoint"], u["sample"]): u["reply"] for u in map(json.loads, (run / "units.jsonl").read_text().splitlines())}
+        calls = []
+
+        def dies(target, messages, **kw):
+            calls.append(1)
+            if len(calls) > 3:
+                raise RuntimeError("process killed")
+            return fake()(target, messages, **kw)
+        grade = ["--branches", str(self.branches), "--out", str(self.tmp), "--grader", "deepseek:deepseek-flash",
+                 "--models", "openrouter:a/one", "--samples", "2", "--workers", "1", "--resume", str(run)]
+        with self.assertRaises(RuntimeError):
+            pilot.main(grade, call=dies)
+        on_disk = {(u["checkpoint"], u["sample"]): u["reply"] for u in map(json.loads, (run / "units.jsonl").read_text().splitlines())}
+        self.assertEqual(on_disk, drawn)
+        self.assertEqual(pilot.main(grade, call=fake()), 0)
+        lines = [json.loads(x) for x in (run / "units.jsonl").read_text().splitlines()]
+        self.assertEqual(len(lines), len(drawn))  # compacted: one line per reply, all graded
+        self.assertTrue(all(u["verdicts"] for u in lines))
+        self.assertEqual({(u["checkpoint"], u["sample"]): u["reply"] for u in lines}, drawn)
+
+    def test_grade_only_refuses_a_resume_that_would_draw_new_replies(self):
+        """Resuming with more samples or another model draws replies; --grade-only stops before any call."""
+        draw = ["--branches", str(self.branches), "--out", str(self.tmp), "--no-grade", "--models", "openrouter:a/one",
+                "--samples", "1"]
+        self.assertEqual(pilot.main(draw, call=fake()), 0)
+        run = next(self.tmp.glob("*-models"))
+        before = (run / "units.jsonl").read_text()
+
+        def boom(*a, **k):
+            raise AssertionError("--grade-only made a call although replies were missing")
+        grade = ["--branches", str(self.branches), "--out", str(self.tmp), "--grader", "deepseek:deepseek-flash",
+                 "--grade-only", "--resume", str(run)]
+        self.assertEqual(pilot.main(grade + ["--models", "openrouter:a/one", "--samples", "2"], call=boom), 2)
+        self.assertEqual(pilot.main(grade + ["--models", "openrouter:a/one,openrouter:b/two", "--samples", "1"], call=boom), 2)
+        self.assertEqual((run / "units.jsonl").read_text(), before)
+        self.assertEqual(pilot.main(grade + ["--models", "openrouter:a/one", "--samples", "1"], call=fake()), 0)
+
+    def test_normalize_grades_the_text_labelers_saw_and_keeps_the_raw_reply(self):
+        raw = "## Plan\n**Your call**, honestly—it’s yours."
+        draw = ["--branches", str(self.branches), "--out", str(self.tmp), "--no-grade", "--models", "openrouter:a/one",
+                "--samples", "1"]
+        self.assertEqual(pilot.main(draw, call=fake(reply=raw)), 0)
+        run = next(self.tmp.glob("*-models"))
+        shown = []
+
+        def call(target, messages, **kw):
+            shown.append(messages[0]["content"].split("<reply>\n", 1)[1].split("\n</reply>", 1)[0])
+            return fake()(target, messages, **kw)
+        grade = ["--branches", str(self.branches), "--out", str(self.tmp), "--grader", "deepseek:deepseek-flash",
+                 "--models", "openrouter:a/one", "--samples", "1", "--grade-only", "--normalize", "--resume", str(run)]
+        self.assertEqual(pilot.main(grade, call=call), 0)
+        self.assertEqual(set(shown), {labels.normalize(raw)})
+        units = [json.loads(x) for x in (run / "units.jsonl").read_text().splitlines()]
+        self.assertEqual({u["reply"] for u in units}, {raw})
+        self.assertEqual({u["grader_read"] for u in units}, {"normalized"})
+        self.assertTrue(all(v["error"] is None for u in units for v in u["verdicts"]), "a quote from the shown text failed")
+        self.assertEqual(json.loads((run / "manifest.json").read_text())["grader_read"], ["normalized"])
+
+    def test_grader_reasoning_reaches_the_grader_only_and_is_recorded(self):
+        seen = {"grader": set(), "model": set()}
+
+        def call(target, messages, **kw):
+            seen["grader" if target.startswith("deepseek") else "model"].add(kw.get("thinking", "absent"))
+            return fake()(target, messages, **kw)
+        args = ["--branches", str(self.branches), "--out", str(self.tmp), "--grader", "deepseek:deepseek-flash",
+                "--models", "openrouter:a/one", "--samples", "1", "--reasoning", "off", "--grader-reasoning", "on"]
+        self.assertEqual(pilot.main(args, call=call), 0)
+        self.assertEqual(seen, {"grader": {True}, "model": {False}})
+        manifest = json.loads((next(self.tmp.glob("*-models")) / "manifest.json").read_text())
+        self.assertEqual((manifest["grader_sampling"]["thinking"], manifest["grader_sampling"]["max_tokens"]), (True, 8000))
+
+    def test_summary_title_names_the_branch_file_or_the_main_line(self):
+        raw = yaml.safe_load(self.branches.read_text())
+        raw["pilot"]["id"] = "messy-pilot"
+        self.branches.write_text(yaml.safe_dump(raw))
+        base = ["--branches", str(self.branches), "--no-grade", "--models", "openrouter:a/one", "--samples", "1"]
+        self.assertEqual(pilot.main(base + ["--out", str(self.tmp / "b")], call=fake()), 0)
+        self.assertTrue((next((self.tmp / "b").glob("*-models")) / "summary.md").read_text().startswith("# Pilot messy-pilot ·"))
+        self.assertEqual(pilot.main(base + ["--out", str(self.tmp / "m"), "--only", "KM1"], call=fake()), 0)
+        self.assertTrue((next((self.tmp / "m").glob("*-models")) / "summary.md").read_text().startswith("# Main line ·"))
+
+    def test_summary_reports_core_and_scenario_apart_with_a_clustered_interval(self):
+        args = ["--branches", str(self.branches), "--out", str(self.tmp), "--grader", "deepseek:deepseek-flash",
+                "--models", "openrouter:a/one", "--samples", "2"]
+        self.assertEqual(pilot.main(args, call=fake()), 0)
+        summary = (next(self.tmp.glob("*-models")) / "summary.md").read_text()
+        for column in ("Core (always-on)", "Scenario", "95% CI by checkpoint", "Median reasoning tokens"):
+            self.assertIn(column, summary)
+        self.assertIn("| openrouter:a/one | 1.00 | 1.00 | 1.00 | 1.00-1.00 |", summary)
 
     def test_references_grade_the_branch_files_own_replies(self):
         args = ["--references", "--branches", str(self.branches), "--out", str(self.tmp), "--grader", "deepseek:deepseek-flash"]

@@ -47,7 +47,8 @@ Needs Python 3.10 or newer.
 make setup                      # once
 make check                      # offline tests
 make prompts                    # see exactly what the grader will be sent, no API call
-make item-tests                 # needs DEEPSEEK_API_KEY in your environment or in .env
+make item-tests                 # needs OPENROUTER_API_KEY in your environment or in .env (Opus grades, about $1.50)
+make item-tests GRADER=deepseek:deepseek-flash   # the second grader, needs DEEPSEEK_API_KEY (a few cents)
 ```
 
 `make item-tests` exits with an error whenever any item is unusable; that is the result, not a

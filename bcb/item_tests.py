@@ -26,6 +26,16 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SPEC = ROOT / "trajectories/vaping-v0/spec.yaml"
 DEFAULT_EXAMPLES = ROOT / "trajectories/vaping-v0/item-examples.yaml"
 SAMPLING = {"temperature": 0.0, "max_tokens": 1000, "json_mode": True, "thinking": False}  # recorded in every manifest
+GRADER_REASONING = {"off": False, "on": True, "vendor default": None}
+REASONING_MAX_TOKENS = 8000  # hidden reasoning counts toward max_tokens
+
+
+def sampling(reasoning="off"):
+    """The grader's call settings. Reasoning stays off unless asked, since some graders refuse it off (Opus 5.5 on
+    OpenRouter); with it on, the vendor's temperature applies (Anthropic accepts no other) and max_tokens has room."""
+    if reasoning == "off":
+        return dict(SAMPLING)
+    return dict(SAMPLING, thinking=GRADER_REASONING[reasoning], temperature=None, max_tokens=REASONING_MAX_TOKENS)
 
 
 def _sha(path: Path) -> str:
@@ -36,7 +46,7 @@ def _selected(item_id: str, only: list[str] | None) -> bool:
     return not only or any(fnmatch.fnmatch(item_id, pattern) for pattern in only)
 
 
-def grade_one(spec, example, target, call=client.chat):
+def grade_one(spec, example, target, call=client.chat, settings=SAMPLING):
     """Grade one example; returns a result row. `call` is injectable so tests never touch the network."""
     item = spec.items[example.item]
     prompt = grader.render_prompt(spec, example.checkpoint, item, example.reply)
@@ -45,7 +55,7 @@ def grade_one(spec, example, target, call=client.chat):
     errors = []
     for attempt in (1, 2):
         try:
-            resp = call(target, [{"role": "user", "content": prompt}], **SAMPLING)
+            resp = call(target, [{"role": "user", "content": prompt}], **settings)
             v = grader.parse(resp["text"], item, example.reply)
         except (client.CallError, grader.GradeError) as e:
             errors.append(f"attempt {attempt}: {e}")
@@ -101,6 +111,8 @@ def main(argv=None, call=client.chat):
     p.add_argument("--out", type=Path, default=ROOT / "runs/item-tests")
     p.add_argument("--dry-run", action="store_true", help="write the prompts; call nothing")
     p.add_argument("--conversation", type=Path, help="step 1's conversation file; without it, earlier assistant turns are beat placeholders")
+    p.add_argument("--grader-reasoning", choices=sorted(GRADER_REASONING), default="off",
+                   help="the grader's hidden reasoning; recorded in the manifest")
     a = p.parse_args(argv)
     if not a.dry_run and not a.grader:
         p.error("--grader is required unless --dry-run")
@@ -130,16 +142,16 @@ def main(argv=None, call=client.chat):
         print(f"wrote {len(chosen)} prompts to {out}")
         return 0
 
-    rows = []
+    rows, settings = [], sampling(a.grader_reasoning)
     for i, e in enumerate(chosen, 1):
-        rows.append(grade_one(spec, e, a.grader, call))
+        rows.append(grade_one(spec, e, a.grader, call, settings))
         r = rows[-1]
         status = "ERROR" if r["error"] else ("ok" if r["correct"] else f"WRONG ({r['verdict']})")
         print(f"[{i}/{len(chosen)}] {e.id}: expected {e.expected}, {status}", flush=True)
     table = summarize(spec, rows)
     manifest = {
         "grader": a.grader, "returned_models": sorted({r["model"] for r in rows if r.get("model")}),
-        "sampling": SAMPLING, "only": only,
+        "sampling": settings, "only": only,
         "prompt": {"version": grader.PROMPT_VERSION, "sha": grader.prompt_hash()},
         "spec": {"id": spec.raw["spec"]["id"], "version": spec.version, "sha": _sha(a.spec)},
         "examples": {"version": raw.get("examples_version"), "sha": _sha(a.examples), "n": len(chosen),

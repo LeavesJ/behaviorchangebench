@@ -81,6 +81,35 @@ class ChatTest(unittest.TestCase):
                     mock.patch("urllib.request.urlopen", urlopen), self.assertRaises(client.CallError):
                 client.chat("openrouter:some/model", [{"role": "user", "content": "hi"}])
 
+    def test_a_rate_limit_is_waited_out_then_retried(self):
+        """New OpenRouter accounts get 20 requests a minute per model; a 429 waits instead of failing the unit."""
+        import urllib.error
+        calls, slept = [], []
+
+        def urlopen(req, timeout):
+            calls.append(1)
+            if len(calls) <= 2:
+                headers = {"Retry-After": "7"} if len(calls) == 1 else {}
+                raise urllib.error.HTTPError(req.full_url, 429, "Too Many Requests", headers, io.BytesIO(b"slow down"))
+            return FakeResponse(json.dumps({"model": "m", "choices": [{"message": {"content": "ok"}}]}).encode())
+
+        with mock.patch.dict(os.environ, {"OPENROUTER_API_KEY": "or-test-key"}), \
+                mock.patch("urllib.request.urlopen", urlopen), mock.patch.object(client, "_sleep", slept.append):
+            result = client.chat("openrouter:a/b", [{"role": "user", "content": "hi"}])
+        self.assertEqual(result["text"], "ok")
+        self.assertEqual(slept, [7.0, client.RATE_LIMIT_WAIT * 2])
+
+    def test_a_rate_limit_that_never_lifts_is_a_call_error(self):
+        import urllib.error
+
+        def urlopen(req, timeout):
+            raise urllib.error.HTTPError(req.full_url, 429, "Too Many Requests", {}, io.BytesIO(b"slow down"))
+
+        with mock.patch.dict(os.environ, {"OPENROUTER_API_KEY": "or-test-key"}), \
+                mock.patch("urllib.request.urlopen", urlopen), mock.patch.object(client, "_sleep", lambda s: None):
+            with self.assertRaisesRegex(client.CallError, "429"):
+                client.chat("openrouter:a/b", [{"role": "user", "content": "hi"}])
+
     def test_bad_target(self):
         with self.assertRaises(ValueError):
             client.parse_target("deepseek-flash")

@@ -18,6 +18,9 @@ PROVIDERS = {
     "openai": ("https://api.openai.com/v1", "OPENAI_API_KEY"),
 }
 ROOT = Path(__file__).resolve().parent.parent
+RATE_LIMIT_WAIT = 20.0  # seconds before the first retry after a 429 with no Retry-After; doubles each time
+RATE_LIMIT_RETRIES = 4  # new OpenRouter accounts get 20 requests a minute per model
+_sleep = time.sleep
 
 
 class CallError(RuntimeError):
@@ -34,6 +37,15 @@ def _key(var: str) -> str:
             if sep and name.strip() == var:
                 return value.strip().strip("\"'")
     raise CallError(f"{var} is not set (environment or {env.name}); see README 'Running the item tests'")
+
+
+def _retry_after(e) -> float | None:
+    """The server's Retry-After in seconds, if it sent a usable one."""
+    try:
+        value = float(e.headers.get("Retry-After", ""))
+    except (TypeError, ValueError, AttributeError):
+        return None
+    return value if 0 < value <= 300 else None
 
 
 def parse_target(target: str) -> tuple[str, str]:
@@ -68,16 +80,21 @@ def chat(target: str, messages: list[dict], *, temperature=0.0, max_tokens=1000,
     req = urllib.request.Request(f"{base}/chat/completions", data=json.dumps(body).encode(), method="POST",
                                  headers={"Authorization": f"Bearer {_key(var)}", "Content-Type": "application/json"})
     start = time.monotonic()
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            data = json.loads(resp.read())
-    except urllib.error.HTTPError as e:
-        raise CallError(f"{provider} HTTP {e.code}: {e.read()[:300]!r}") from e
-    # urllib wraps only the send in URLError: a reset while the response is read, or a short read, arrives raw
-    except (OSError, http.client.HTTPException) as e:
-        raise CallError(f"{provider} request failed: {type(e).__name__}: {e}") from e
-    except ValueError as e:
-        raise CallError(f"{provider} returned a body that is not JSON: {e}") from e
+    for attempt in range(RATE_LIMIT_RETRIES + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                data = json.loads(resp.read())
+            break
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < RATE_LIMIT_RETRIES:  # wait it out: a rate limit is not a failed unit
+                _sleep(_retry_after(e) or RATE_LIMIT_WAIT * 2 ** attempt)
+                continue
+            raise CallError(f"{provider} HTTP {e.code}: {e.read()[:300]!r}") from e
+        # urllib wraps only the send in URLError: a reset while the response is read, or a short read, arrives raw
+        except (OSError, http.client.HTTPException) as e:
+            raise CallError(f"{provider} request failed: {type(e).__name__}: {e}") from e
+        except ValueError as e:
+            raise CallError(f"{provider} returned a body that is not JSON: {e}") from e
     if not isinstance(data, dict):
         raise CallError(f"{provider} returned JSON that is not an object")
     choice = (data.get("choices") or [{}])[0]
