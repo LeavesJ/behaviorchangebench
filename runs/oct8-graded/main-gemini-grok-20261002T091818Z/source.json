@@ -1,0 +1,9 @@
+{
+  "copied_from": "runs/main-line/20261002T091818Z-models",
+  "units_sha256": "b96c0f3c8f0ead76459b9f12faec70f1d57ebdc17de84f93a6af712f3ea40d79",
+  "units_kept": 60,
+  "units_removed": 30,
+  "removed_why": "the grader's own replies are neither labeled nor graded (README rule 5)",
+  "graded_text": "normalized with bcb.labels.normalize, as the Oct 4 labelers saw it (docs/decisions.md 2026-10-05)",
+  "drawn_manifest": "drawn-manifest.json"
+}

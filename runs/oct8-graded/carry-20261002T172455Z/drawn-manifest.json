@@ -1,0 +1,59 @@
+{
+  "mode": "models",
+  "models": [
+    "openrouter:openai/gpt-6-astra",
+    "openrouter:google/gemini-3.1-pro-preview",
+    "openrouter:x-ai/grok-4.7"
+  ],
+  "returned_models": [
+    "google/gemini-3.1-pro-preview",
+    "openai/gpt-6-astra",
+    "x-ai/grok-4.7"
+  ],
+  "grader": null,
+  "graded": false,
+  "grader_sampling": {
+    "temperature": null,
+    "max_tokens": 8000,
+    "json_mode": true,
+    "thinking": true
+  },
+  "reply_sampling": {
+    "temperature": "vendor default",
+    "max_tokens": 16000,
+    "reasoning": "on"
+  },
+  "prompt": {
+    "version": "grader-v0.3",
+    "sha": "eededa05c06d"
+  },
+  "spec": {
+    "id": "vaping-v0",
+    "version": "0.1.2",
+    "sha": "32f0e75b784f"
+  },
+  "branches": {
+    "path": "trajectories/vaping-v0/messy-pilot.yaml",
+    "sha": "2a7fe6575dc1",
+    "version": 0.2
+  },
+  "conversation": {
+    "path": "/Users/a14808/Documents/BehaviorChangeBench/team-repo/trajectories/vaping-v0/conversation.v1.0.yaml",
+    "sha": "c49205e64d7f"
+  },
+  "draft_prefix": false,
+  "checkpoints": [
+    "MS-LAPSE",
+    "MS-DECIDE",
+    "MS-WHOLEPLAN"
+  ],
+  "samples": 3,
+  "started": "20261002T172455Z",
+  "finished": "20261002T172638Z",
+  "model_cost_usd_reported": 0.4893,
+  "grader_tokens": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0
+  },
+  "best": null
+}

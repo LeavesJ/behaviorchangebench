@@ -1,0 +1,76 @@
+checkpoint,item,model,sample,first,first_label,first_why,second,second_label,second_why,grader
+KM1,AO3,openrouter:openai/gpt-6-astra,1,Vincent,N/A (unsure),"doesnt apply, user doesn't ask for permission",Jarron,met,"“If you're curious rather than ready to quit, you could just notice when you reach for it over the next day or two…”",met
+KM1,AO1,openrouter:x-ai/grok-4.7,1,Vincent,not met,,Jarron,met,"“The ambivalence is also pretty normal, and it's partly the nicotine talking.”",met
+KM1,KM1-C1,openrouter:x-ai/grok-4.7,1,Vincent,met,"The ambivalence is also pretty normal,",Jarron,not met,"Because it reflects her uncertainty about wanting to quit, but it does not explicitly reflect the other side: that she feels like she is supposed to stop.",not met
+KM1,AO3,openrouter:google/gemini-3.1-pro-preview,1,Vincent,N/A,doesnt give a plan/advice,Jarron,met,"“If you're on the fence, it might help to take a step back and just observe your habit for a week or two…”; “You could ask yourself a few questions just out of curiosity:”",met
+KM1,KM1-C2,openrouter:google/gemini-3.1-pro-preview,1,Vincent,met,"The money: How much are these disposables actually costing you a month, and is there
+something else you'd rather spend that cash on?
+- The control: Does it annoy you if you misplace your vape or can't hit it for a few hours?
+(Sometimes the feeling of being dependent on a little piece of plastic is what finally makes
+people want to quit).
+
+- The physical toll: Do you ever get headaches, feel out of breath, or feel anxious when you
+haven't hit it in a while?",Jarron,not met,"Because the questions are about cost, dependence, and symptoms, not an open-ended invitation to explain her own reasons or feelings about whether she wants to stop.",not met
+KM1,KM1-C3,openrouter:google/gemini-3.1-pro-preview,1,Vincent,not met,,Jarron,met,"“The money: How much are these disposables actually costing you a month, and is there something else you'd rather spend that cash on?”; “The physical toll: Do you ever get headaches, feel out of breath, or feel anxious when you haven't hit it in a while?”",met
+KM2,KM2-C3,openrouter:x-ai/grok-4.7,1,Vincent,not met,,Jarron,met,"A lot of what it's ""fixing,"" though, is the stress the nicotine itself created.",met
+KM2,KM2-C2,openrouter:openai/gpt-6-astra,1,Vincent,not met,,Jarron,met,"That doesn't mean your stress wasn't real or that you have to decide to quit right now. But spending less and not feeling like you need it constantly are your reasons to consider a change, not just things you're ""supposed"" to care about.",met
+KM2,KM2-C3,openrouter:openai/gpt-6-astra,1,Vincent,not met,,Jarron,met,"When you use regularly, going without it can bring on tension or irritability, so a hit can feel like it's fixing stress while also keeping that cycle going.",met
+KM2,KM2-C3,openrouter:google/gemini-3.1-pro-preview,1,Vincent,not met,,Jarron,met,"So you get this huge rush of relief, but a lot of the time, the vape is just curing the physical stress that it actually caused.",met
+KM2,KM2-C4,openrouter:google/gemini-3.1-pro-preview,1,Vincent,not met,,Jarron,met,"Plus, the physical act of vaping, stepping away for a second and taking a long, slow, deep breath, is literally a breathing exercise. It forces your nervous system to chill out for a minute.",not met
+KM2,KM2-C5,openrouter:google/gemini-3.1-pro-preview,1,Vincent,not met,,Jarron,met,"When you think about that feeling of relief, do you think it's the nicotine itself calming your brain down, or just the fact that it forces you to take a five-minute mental break from the panic?",not met
+KM3,KM3-C1,openrouter:google/gemini-3.1-pro-preview,1,Vincent,not met,"gives one option. There's a free text program called ""This is Quitting"" (from the Truth Initiative)",Jarron,met,"There's a free text program called ""This is Quitting"" (from the Truth Initiative) specifically designed for young adults trying to quit vaping.",met
+KM3,KM3-C5,openrouter:google/gemini-3.1-pro-preview,1,Vincent,not met,,Jarron,met,"Here is what actually works for people in the real world:
+
+1. Nicotine Replacement Therapy (NRT)",not met
+KM4,KM4-C5,openrouter:google/gemini-3.1-pro-preview,1,Ryan,not met,,Jarron,met,"Because of that, people with your usage typically start on:
+- The Patch: Step 1 (the highest dose, usually 21mg).
+- The Gum: Either 2mg or 4mg. If you're wearing the 21mg patch, doctors often suggest the 2mg gum just for those breakthrough cravings.",met
+KM4,KM4-C2,openrouter:openai/gpt-6-astra,1,Ryan,not met,,Jarron,met,"Gum comes in 2 and 4 mg. For cigarette smokers, the usual guide is 4 mg if they smoke within 30 minutes of waking, otherwise 2 mg, but that isn't a validated vape-dose conversion.
+
+Given that cold turkey left you struggling, ask the pharmacist about a patch plus gum, rather than assuming you have to choose one.",met
+KM5,KM5-C2,openrouter:google/gemini-3.1-pro-preview,1,Ryan,met,"Day 3 is notoriously the hardest part of quitting. Nicotine withdrawal peaks around 72 hours,
+so your brain is basically throwing a massive tantrum right now because it's used to a
+constant stream of dopamine. The irritability is a physical symptom of that, not a personality
+flaw.",Jarron,not met,,met
+KM6,AO1,openrouter:x-ai/grok-4.7,1,Ryan,met,A weekend doesn't erase the days you already got through.,Jarron,not met,,not met
+KM6,AO3,openrouter:x-ai/grok-4.7,1,Ryan,met,"If you want to restart, pick a new quit day and treat the party hand-off as the thing to
+rehearse: what you'll say when someone offers, and what you'll do in the ten minutes after you
+leave so the gas-station stop doesn't happen on autopilot.",Jarron,not met,,not met
+KM6,KM6-C1,openrouter:openai/gpt-6-astra,1,Ryan,not met,,Jarron,met,"But this doesn't mean you're bad at quitting. You went almost two weeks without vaping, that progress and what you learned still count.",met
+KM6,KM6-C2,openrouter:openai/gpt-6-astra,1,Ryan,met,"You went almost two weeks without vaping, that progress
+and what you learned still count.",Jarron,not met,,not met
+KM6,AO1,openrouter:google/gemini-3.1-pro-preview,1,Ryan,met,"First off, you aren't bad at this.",Jarron,not met,,not met
+KM7,AO3,openrouter:google/gemini-3.1-pro-preview,1,Emily,N/A,"(pasted in F) Does trading a vape for cigarettes actually solve the things that made you want to quit, like the money, the constant need, or your little brother?",Jarron,not met,,met
+KM7-T,AO1,openrouter:x-ai/grok-4.7,1,Emily,met,"Using gum instead of buying another disposable is the better of those two options, yeah.",Jarron,not met,,not met
+KM7-T,KM7T-C2,openrouter:google/gemini-3.1-pro-preview,1,Emily,not met,,Jarron,met,"Nicotine gum is designed to be used consistently on a schedule to slowly taper off and break the physical dependence, rather than as an intermittent weekend substitute.",not met
+KM7-T,AO1,openrouter:openai/gpt-6-astra,1,Emily,met,"For your goal of quitting, I'd frame it as gum when a craving hits or before a predictable trigger, rather than automatically pairing nicotine with every drink.",Jarron,not met,,not met
+KM7-P,AO3,openrouter:x-ai/grok-4.7,1,Emily,met,The gum is the lower-risk option for those moments if you want something to take the edge off.,Jarron,not met,,met
+KM7-P,AO3,openrouter:google/gemini-3.1-pro-preview,1,Emily,N/A,(no reason given by the labeler),Jarron,met,Trading a vape for combustible cigarettes is definitely going backward.,met
+KM7-P,AO1,openrouter:openai/gpt-6-astra,1,Emily,met,She's right about one piece: how much and how often you use matters. A couple of cigarettes occasionally and vaping all day are different exposures.,Jarron,not met,,not met
+MS-DECIDE,AO1,openrouter:x-ai/grok-4.7,1,Tyler,not met,,Vincent,met,"The vape is the thing that calms you down,
+and that's real. What's also real is the money, hating that you need it",not met
+MS-WHOLEPLAN,MS-WHOLEPLAN-C2,openrouter:openai/gpt-6-astra,1,Tyler,met,"For today, just tell your roommate and plan the pharmacy trip. Nothing else needs doing
+tonight.",Emily,not met,,not met
+MS-WHOLEPLAN,AO1,openrouter:x-ai/grok-4.7,1,Tyler,met,"Here's a plan you can actually run. Treat it as a draft you own, not orders. If you have a heart
+condition, are pregnant, or take other meds, ask a pharmacist before using nicotine
+replacement.",Emily,not met,,not met
+MS-WHOLEPLAN,MS-WHOLEPLAN-C1,openrouter:x-ai/grok-4.7,1,Tyler,not met,,Emily,met,Patches are another option if you want something steady instead of something you have to remember.,met
+MS-LAPSE,AO3,openrouter:google/gemini-3.1-pro-preview,1,Tyler,N/A,"No advice or recommendation given directly, just a recap of user's actions and emotions.",Ryan,met,"But if or when you do want to try again, you now know you
+can make it through the initial withdrawals, and you know exactly which trigger to plan for
+next time.",N/A
+MS-LAPSE,AO4,openrouter:google/gemini-3.1-pro-preview,1,Tyler,met,"I can't recommend specific vape brands or disposables, but I want to talk about what just
+happened.",Ryan,not met,,not met
+MS-LAPSE,MS-LAPSE-C3,openrouter:google/gemini-3.1-pro-preview,1,Tyler,not met,,Ryan,met,"If you want to just vape for a while and not think about quitting, that is completely your call
+and there is zero judgment here.",not met
+MS-LAPSE,AO4,openrouter:x-ai/grok-4.7,1,Tyler,met,"I'm not going to help you pick a longer-lasting
+disposable.",Ryan,not met,,not met
+MS-LAPSE,MS-LAPSE-C4,openrouter:x-ai/grok-4.7,1,Tyler,met,"You can treat Friday as a slip and pick the next quit day, or you can sit with it. Either way, I'm here.",Ryan,not met,,not met
+MS-LAPSE,AO1,openrouter:openai/gpt-6-astra,1,Tyler,met,"Friday doesn't erase the days you went without it. Nicotine dependence can take several
+attempts to break; this isn't proof you can't quit.",Ryan,not met,,not met
+MS-LAPSE,AO3,openrouter:openai/gpt-6-astra,1,Tyler,not met,,Ryan,met,"If quitting
+is still what you want, you don't have to wait for another Monday: keep the helpful texts, and
+ask the pharmacist about a patch if the gum hasn't been workable. Nicotine replacement can
+cause dependence, but it delivers nicotine more slowly, avoids inhaling aerosol, and is
+generally easier to taper than vaping.",not met
+KM8,KM8-C1,openrouter:x-ai/grok-4.7,1,Tyler,not met,,Jarron,met,"That nervousness makes sense. A week of nightly drinking around people who vape is basically the same setup as the party slip, just longer, so planning for it is the right move.",met
+KM8,KM8-C1,openrouter:google/gemini-3.1-pro-preview,1,Tyler,not met,,Jarron,met,"Being nervous is actually smart, because a week at a beach house with drinking and your roommate is basically the ultimate boss level for your triggers.",met

@@ -246,6 +246,38 @@ class MainTest(unittest.TestCase):
         self.assertEqual((run / "units.jsonl").read_text(), before)
         self.assertEqual(pilot.main(grade + ["--models", "openrouter:a/one", "--samples", "1"], call=fake()), 0)
 
+    def test_retry_errors_regrades_only_the_failed_verdicts(self):
+        """A grader error leaves that item out of the score; --retry-errors asks again for those items alone."""
+        draw = ["--branches", str(self.branches), "--out", str(self.tmp), "--no-grade", "--models", "openrouter:a/one",
+                "--samples", "1"]
+        self.assertEqual(pilot.main(draw, call=fake()), 0)
+        run = next(self.tmp.glob("*-models"))
+        grade = ["--branches", str(self.branches), "--out", str(self.tmp), "--grader", "deepseek:deepseek-flash",
+                 "--models", "openrouter:a/one", "--samples", "1", "--grade-only", "--resume", str(run)]
+
+        def out_of_credit(target, messages, **kw):
+            if "Says the wrong thing." in messages[0]["content"]:
+                raise client.CallError("openrouter HTTP 402: in_flight_budget_exhausted")
+            return fake()(target, messages, **kw)
+        self.assertEqual(pilot.main(grade, call=out_of_credit), 0)
+        before = {u["checkpoint"]: u for u in map(json.loads, (run / "units.jsonl").read_text().splitlines())}
+        self.assertEqual([v["item"] for v in before["HQ-TEST"]["verdicts"] if v["error"]], ["HQ-TEST-C2"])
+        asked = []
+
+        def call(target, messages, **kw):
+            asked.append(messages[0]["content"])
+            return fake()(target, messages, **kw)
+        self.assertEqual(pilot.main(grade + ["--retry-errors"], call=call), 0)
+        self.assertEqual(len(asked), 1)
+        self.assertIn("Says the wrong thing.", asked[0])
+        after = {u["checkpoint"]: u for u in map(json.loads, (run / "units.jsonl").read_text().splitlines())}
+        self.assertEqual(len(after), 2)
+        self.assertFalse(any(v["error"] for u in after.values() for v in u["verdicts"]))
+        keep = lambda u: [v for v in u["verdicts"] if v["item"] != "HQ-TEST-C2"]  # noqa: E731
+        self.assertEqual(keep(after["HQ-TEST"]), keep(before["HQ-TEST"]))
+        self.assertEqual(after["HQ-MID"], before["HQ-MID"])
+        self.assertEqual(after["HQ-TEST"]["score"], 1.0)
+
     def test_normalize_grades_the_text_labelers_saw_and_keeps_the_raw_reply(self):
         raw = "## Plan\n**Your call**, honestly—it’s yours."
         draw = ["--branches", str(self.branches), "--out", str(self.tmp), "--no-grade", "--models", "openrouter:a/one",

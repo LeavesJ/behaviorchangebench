@@ -9,7 +9,8 @@
 # make draw         replies only, no grader, so people can label first (needs an OpenRouter key); grade them
 #                   later with make pilot RESUME=<run dir>. SAMPLES, REASONING (on, off), OUT and BRANCHES (another
 #                   branches file) also pass through. When grading a drawn run, GRADE_ONLY=1 stops before any call
-#                   if the resume would draw a reply, and NORMALIZE=1 grades the text labelers saw.
+#                   if the resume would draw a reply, NORMALIZE=1 grades the text labelers saw, and RETRY_ERRORS=1
+#                   asks again for verdicts that errored.
 .PHONY: setup check item-tests prompts preflight generate-prompts generate pilot-dry pilot-refs pilot draw
 
 PYTHON ?= .venv/bin/python
@@ -25,7 +26,7 @@ CONVERSATION ?=
 PILOT_ARGS = $(if $(CONVERSATION),--conversation $(CONVERSATION)) $(if $(ONLY),--only $(ONLY)) \
 	$(if $(SAMPLES),--samples $(SAMPLES)) $(if $(REASONING),--reasoning $(REASONING)) $(if $(GRADER_REASONING),--grader-reasoning "$(GRADER_REASONING)") $(if $(OUT),--out $(OUT)) \
 	$(if $(RESUME),--resume $(RESUME)) $(if $(BRANCHES),--branches $(BRANCHES)) $(if $(GRADE_ONLY),--grade-only) \
-	$(if $(NORMALIZE),--normalize)
+	$(if $(NORMALIZE),--normalize) $(if $(WORKERS),--workers $(WORKERS)) $(if $(RETRY_ERRORS),--retry-errors)
 
 setup:
 	@python3 -c 'import sys; sys.exit(0 if sys.version_info >= (3, 10) else "needs Python 3.10 or newer: python3 is " + sys.version.split()[0])'

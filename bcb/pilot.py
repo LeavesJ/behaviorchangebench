@@ -18,7 +18,8 @@ score exists; --resume with --grader later grades those replies without drawing 
 --reasoning pins hidden reasoning on or off for every model under test; without it each vendor's
 default applies. Either way the manifest records the setting. --grade-only makes a resume stop
 before any call if it would draw a reply, and --normalize grades the text labelers saw
-(bcb.labels.normalize) while the unit keeps the raw reply.
+(bcb.labels.normalize) while the unit keeps the raw reply. --retry-errors asks the grader again for the
+verdicts that errored on a resume, those items only.
 
 The pilot picks which hard questions to keep, so its replies are never reported as results:
 the Oct run draws fresh samples (hard-queries digest, section 4).
@@ -105,6 +106,14 @@ def grade_unit(spec, unit, grader_target, call=client.chat, settings=SAMPLING, n
     unit["verdicts"] = [grade(spec, unit["checkpoint"], i, text, grader_target, call, settings)
                         for i in spec.items_at(unit["checkpoint"])]
     unit["grader_read"] = "normalized" if normalize else "raw"
+    return score_unit(spec, unit)
+
+
+def regrade_errors(spec, unit, grader_target, call=client.chat, settings=SAMPLING):
+    """Ask again for the items whose verdict errored, reading the text the unit was graded on; the rest stay."""
+    text = labels.normalize(unit["reply"]) if unit.get("grader_read") == "normalized" else unit["reply"]
+    unit["verdicts"] = [grade(spec, unit["checkpoint"], v["item"], text, grader_target, call, settings) if v["error"] else v
+                        for v in unit["verdicts"]]
     return score_unit(spec, unit)
 
 
@@ -221,6 +230,8 @@ def main(argv=None, call=client.chat):
     p.add_argument("--resume", type=Path, help="an earlier run directory; finished units are kept, the rest are run")
     p.add_argument("--grade-only", action="store_true",
                    help="with --resume: grade the replies on disk and stop before any call if one would be drawn")
+    p.add_argument("--retry-errors", action="store_true",
+                   help="with --resume: ask the grader again for verdicts that errored, those items only")
     p.add_argument("--normalize", action="store_true",
                    help="grade the reply as labelers saw it (bcb.labels.normalize); the unit keeps the raw reply")
     p.add_argument("--out", type=Path, default=ROOT / "runs/hard-pilot")
@@ -242,8 +253,8 @@ def main(argv=None, call=client.chat):
         models = list(REFERENCE_MODELS)
     else:
         models = a.models.split(",") if a.models else []
-    if (a.grade_only and not (a.resume and a.grader)) or (a.normalize and not a.grader):
-        p.error("--grade-only needs --resume and --grader; --normalize needs --grader")
+    if ((a.grade_only or a.retry_errors) and not (a.resume and a.grader)) or (a.normalize and not a.grader):
+        p.error("--grade-only and --retry-errors need --resume and --grader; --normalize needs --grader")
     if a.no_grade and (a.references or a.grader):
         p.error("--no-grade draws replies without grading; it takes neither --references nor --grader")
     if not a.dry_run and (not (a.grader or a.no_grade) or not models):
@@ -274,10 +285,13 @@ def main(argv=None, call=client.chat):
         return 2
     # a run drawn with --no-grade is graded on its own replies when resumed with a grader; nothing new is drawn for it
     ungraded = [] if a.no_grade else [u for u in units if not u["verdicts"]]
-    units = [u for u in units if u not in ungraded]
+    retry = [u for u in units if a.retry_errors and u["verdicts"] and any(v["error"] for v in u["verdicts"])]
+    units = [u for u in units if u not in ungraded and u not in retry]
     # errored units are dropped and rerun; ungraded replies stay on disk until their graded line is appended after them
-    units_path.write_text("".join(json.dumps(u) + "\n" for u in units + ungraded))
+    units_path.write_text("".join(json.dumps(u) + "\n" for u in units + ungraded + retry))
     print(f"{len(units)} unit(s) already done; grading {len(ungraded)} drawn earlier; running {len(jobs)}"
+          + (f"; asking again for {sum(bool(v['error']) for u in retry for v in u['verdicts'])} errored verdict(s) on "
+             f"{len(retry)} replies" if a.retry_errors else "")
           + (" on a draft prefix" if draft else ""), flush=True)
     thinking, settings = REASONING[a.reasoning], sampling(a.grader_reasoning)
 
@@ -289,7 +303,8 @@ def main(argv=None, call=client.chat):
     with ThreadPoolExecutor(max_workers=a.workers) as pool:
         futures = {pool.submit(job, *j): j for j in jobs}
         futures.update({pool.submit(grade_unit, spec, u, a.grader, call, settings, a.normalize): u for u in ungraded})
-        jobs = jobs + ungraded
+        futures.update({pool.submit(regrade_errors, spec, u, a.grader, call, settings): u for u in retry})
+        jobs = jobs + ungraded + retry
         for n, f in enumerate(as_completed(futures), 1):
             u = f.result()
             with lock:

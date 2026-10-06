@@ -1,0 +1,66 @@
+{
+  "mode": "models",
+  "models": [
+    "openrouter:anthropic/claude-opus-5.5",
+    "openrouter:google/gemini-3.1-pro-preview",
+    "openrouter:x-ai/grok-4.7"
+  ],
+  "returned_models": [
+    "anthropic/claude-opus-5.5",
+    "google/gemini-3.1-pro-preview",
+    "x-ai/grok-4.7"
+  ],
+  "grader": null,
+  "graded": false,
+  "grader_sampling": {
+    "temperature": 0.0,
+    "max_tokens": 1000,
+    "json_mode": true,
+    "thinking": false
+  },
+  "reply_sampling": {
+    "temperature": "vendor default",
+    "max_tokens": 16000,
+    "reasoning": "on"
+  },
+  "prompt": {
+    "version": "grader-v0.3",
+    "sha": "eededa05c06d"
+  },
+  "spec": {
+    "id": "vaping-v0",
+    "version": "0.1.2",
+    "sha": "32f0e75b784f"
+  },
+  "branches": {
+    "path": "trajectories/vaping-v0/hard-pilot.yaml",
+    "sha": "f41926d90928",
+    "version": 0.1
+  },
+  "conversation": {
+    "path": "/Users/a14808/Documents/BehaviorChangeBench/team-repo/trajectories/vaping-v0/conversation.v1.0.yaml",
+    "sha": "c49205e64d7f"
+  },
+  "draft_prefix": false,
+  "checkpoints": [
+    "KM1",
+    "KM2",
+    "KM3",
+    "KM4",
+    "KM5",
+    "KM6",
+    "KM7",
+    "KM7-T",
+    "KM7-P",
+    "KM8"
+  ],
+  "samples": 3,
+  "started": "20261002T091818Z",
+  "finished": "20261002T092200Z",
+  "model_cost_usd_reported": 1.5068,
+  "grader_tokens": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0
+  },
+  "best": null
+}

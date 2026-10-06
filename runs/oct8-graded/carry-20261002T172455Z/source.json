@@ -1,0 +1,9 @@
+{
+  "copied_from": "runs/oct8-carry/20261002T172455Z-models",
+  "units_sha256": "7c0b032673181cbff78d84a6108ce717a516aa10b67a9500ea53132c47542781",
+  "units_kept": 27,
+  "units_removed": 0,
+  "removed_why": null,
+  "graded_text": "normalized with bcb.labels.normalize, as the Oct 4 labelers saw it (docs/decisions.md 2026-10-05)",
+  "drawn_manifest": "drawn-manifest.json"
+}
