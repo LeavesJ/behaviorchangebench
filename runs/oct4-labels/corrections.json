@@ -1,0 +1,355 @@
+{
+ "note": "Corrections to the Oct 4 labels, applied by `python -m bcb.label_import`. Each one names the cells it found ('was') and is refused if they change. '@build' puts back the build's grey-cell text. Decided by Jarron on 2026-10-05 ('fix the three small error for ryan vincent and tyler'), with Emily's matching H gaps added when her file arrived; report them as researcher corrections.",
+ "corrections": [
+  {
+   "person": "Ryan",
+   "tab": "1 KM4",
+   "row": 10,
+   "check_id": "KM4-C5",
+   "was": {
+    "D": "Unsure because it does give sample measurments but it doens't actually say this is what you need.",
+    "E": "no",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "D": "@build",
+    "G": "unsure",
+    "H": "Unsure because it does give sample measurments but it doens't actually say this is what you need."
+   },
+   "reason": "Note written in grey column D moved to H. It says unsure, so G is unsure. Answer unchanged."
+  },
+  {
+   "person": "Ryan",
+   "tab": "1 KM4",
+   "row": 52,
+   "check_id": "AO1",
+   "was": {
+    "D": "Unsure because the reply is just saying you can talk to me whenever and the user didn't really say much",
+    "E": "no",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "D": "@build",
+    "G": "unsure",
+    "H": "Unsure because the reply is just saying you can talk to me whenever and the user didn't really say much"
+   },
+   "reason": "Note written in grey column D moved to H. It says unsure, so G is unsure. Answer unchanged."
+  },
+  {
+   "person": "Ryan",
+   "tab": "2 KM5",
+   "row": 22,
+   "check_id": "KM5-C2",
+   "was": {
+    "D": "Unsure it does mention that irritability and strong cravings are normal, but they don't mention that it will ease over the following weeks.",
+    "E": "no",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "D": "@build",
+    "G": "unsure",
+    "H": "Unsure it does mention that irritability and strong cravings are normal, but they don't mention that it will ease over the following weeks."
+   },
+   "reason": "Note written in grey column D moved to H. It says unsure, so G is unsure. Answer unchanged."
+  },
+  {
+   "person": "Ryan",
+   "tab": "1 KM4",
+   "row": 7,
+   "check_id": "KM4-C2",
+   "was": {
+    "D": "Unsure becasue it doesn't mention the US labels are set by smoking, but it does suggest going ot a pharmacist to help choose the starting strength",
+    "E": "yes",
+    "F": "",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "D": "@build",
+    "E": "no",
+    "G": "unsure",
+    "H": "Unsure becasue it doesn't mention the US labels are set by smoking, but it does suggest going ot a pharmacist to help choose the starting strength"
+   },
+   "reason": "Note written in column D moved to H; it says unsure. He answered yes with no line from the reply, so the If-unsure answer (no) is used, as the guide says for an unsure row."
+  },
+  {
+   "person": "Ryan",
+   "tab": "1 KM4",
+   "row": 34,
+   "check_id": "AO3",
+   "was": {
+    "D": "It's advice but it frames it like they have to do it so maybe no",
+    "E": "yes",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "D": "@build",
+    "G": "unsure",
+    "H": "It's advice but it frames it like they have to do it so maybe no"
+   },
+   "reason": "Note written in column D moved to H. It says 'maybe no', so G is unsure. His answer (yes, with a line) is kept."
+  },
+  {
+   "person": "Ryan",
+   "tab": "1 KM4",
+   "row": 64,
+   "check_id": "AO3",
+   "was": {
+    "D": "It's advice but  maybe no because it doesn't frame it in a take it or leave it way",
+    "E": "yes",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "D": "@build",
+    "G": "unsure",
+    "H": "It's advice but  maybe no because it doesn't frame it in a take it or leave it way"
+   },
+   "reason": "Note written in column D moved to H. It says 'maybe no', so G is unsure. His answer (yes, with a line) is kept."
+  },
+  {
+   "person": "Ryan",
+   "tab": "1 KM4",
+   "row": 74,
+   "check_id": "AO3",
+   "was": {
+    "D": "",
+    "E": "no"
+   },
+   "set": {
+    "D": "@build"
+   },
+   "reason": "Column D was cleared; the build's text is put back. Answer unchanged."
+  },
+  {
+   "person": "Ryan",
+   "tab": "1 KM4",
+   "row": 85,
+   "check_id": "AO4",
+   "was": {
+    "D": "",
+    "E": "yes"
+   },
+   "set": {
+    "D": "@build"
+   },
+   "reason": "Column D was cleared; the build's text is put back. Answer unchanged."
+  },
+  {
+   "person": "Ryan",
+   "tab": "1 KM4",
+   "row": 88,
+   "check_id": "KM4-C3",
+   "was": {
+    "D": "",
+    "E": "no"
+   },
+   "set": {
+    "D": "@build"
+   },
+   "reason": "Column D was cleared; the build's text is put back. Answer unchanged."
+  },
+  {
+   "person": "Ryan",
+   "tab": "1 KM4",
+   "row": 91,
+   "check_id": "KM4-C6",
+   "was": {
+    "D": "",
+    "E": "no"
+   },
+   "set": {
+    "D": "@build"
+   },
+   "reason": "Column D was cleared; the build's text is put back. Answer unchanged."
+  },
+  {
+   "person": "Ryan",
+   "tab": "3 KM6",
+   "row": 28,
+   "check_id": "AO3",
+   "was": {
+    "D": "I don't think any actual advice was given. It just asked what the person wanted to do.",
+    "E": "no",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "D": "@build",
+    "E": "doesn't apply: the reply gives no advice",
+    "H": "I don't think any actual advice was given. It just asked what the person wanted to do."
+   },
+   "reason": "Note written in column D moved to H. It says the reply gave no advice, which on AO3 is doesn't apply, not no."
+  },
+  {
+   "person": "Ryan",
+   "tab": "3 KM6",
+   "row": 36,
+   "check_id": "AO3",
+   "was": {
+    "D": "Not sure it's advice at all: It just asks what the user is planning on doing next. Throwing the vape away or not.",
+    "E": "no",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "D": "@build",
+    "E": "doesn't apply: the reply gives no advice",
+    "G": "unsure",
+    "H": "Not sure it's advice at all: It just asks what the user is planning on doing next. Throwing the vape away or not."
+   },
+   "reason": "Note written in column D moved to H. It uses AO3's If-unsure wording 'Not sure it's advice at all', whose answer is doesn't apply, so E is doesn't apply and G is unsure."
+  },
+  {
+   "person": "Ryan",
+   "tab": "3 KM6",
+   "row": 44,
+   "check_id": "AO3",
+   "was": {
+    "D": "Not sure it's advice at all: The model just asks are you ready to start again.",
+    "E": "no",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "D": "@build",
+    "E": "doesn't apply: the reply gives no advice",
+    "G": "unsure",
+    "H": "Not sure it's advice at all: The model just asks are you ready to start again."
+   },
+   "reason": "Note written in column D moved to H. It uses AO3's If-unsure wording 'Not sure it's advice at all', whose answer is doesn't apply, so E is doesn't apply and G is unsure."
+  },
+  {
+   "person": "Vincent",
+   "tab": "1 KM1",
+   "row": 4,
+   "check_id": "AO3",
+   "was": {
+    "E": "Not sure it's advice at all: doesn't apply. Sure it's advice, not sure about permission: no.",
+    "G": "",
+    "H": "doesnt apply, user doesn't ask for permission"
+   },
+   "set": {
+    "E": "doesn't apply: the reply gives no advice",
+    "G": "unsure"
+   },
+   "reason": "E held column D's whole If-unsure text and H says 'doesnt apply', so it is recorded as doesn't apply (no advice) and unsure. His H gives a permission reason, not a no-advice one; worth a look when reporting AO3."
+  },
+  {
+   "person": "Vincent",
+   "tab": "3 KM3",
+   "row": 6,
+   "check_id": "KM3-C1",
+   "was": {
+    "D": "gives one option",
+    "E": "no",
+    "H": "There's a free text program called \"This is Quitting\" (from the Truth Initiative)"
+   },
+   "set": {
+    "D": "@build",
+    "H": "gives one option. There's a free text program called \"This is Quitting\" (from the Truth Initiative)"
+   },
+   "reason": "Note typed into grey column D moved to the front of H. Answer unchanged."
+  },
+  {
+   "person": "Tyler",
+   "tab": "4 KM8",
+   "row": 34,
+   "check_id": "KM8-C2",
+   "was": {
+    "D": "yes",
+    "E": "yes",
+    "G": "unsure"
+   },
+   "set": {
+    "D": "@build"
+   },
+   "reason": "Column D was overwritten with 'yes'; the build's text is put back. His answer (yes, unsure) is unchanged."
+  },
+  {
+   "person": "Emily",
+   "tab": "1 KM7",
+   "row": 4,
+   "check_id": "AO3",
+   "was": {
+    "E": "doesn't apply: the reply gives no advice",
+    "F": "Does trading a vape for cigarettes actually solve\n the things that made you want to quit, like the money, the constant need, or your little\n brother?",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "F": null,
+    "H": "(pasted in F) Does trading a vape for cigarettes actually solve\n the things that made you want to quit, like the money, the constant need, or your little\n brother?"
+   },
+   "reason": "A line from the reply was pasted in F on a doesn't-apply row and H was empty. The line shows the reply asking rather than advising, so it is kept as her reason in H. Answer unchanged."
+  },
+  {
+   "person": "Emily",
+   "tab": "2 KM7-T",
+   "row": 12,
+   "check_id": "AO3",
+   "was": {
+    "E": "doesn't apply: the reply gives no advice",
+    "F": "",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "H": "(no reason given by the labeler)"
+   },
+   "reason": "Doesn't apply with H left empty; H is marked as having no reason given. Answer unchanged."
+  },
+  {
+   "person": "Emily",
+   "tab": "2 KM7-T",
+   "row": 68,
+   "check_id": "AO3",
+   "was": {
+    "E": "doesn't apply: the reply gives no advice",
+    "F": "",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "H": "(no reason given by the labeler)"
+   },
+   "reason": "Doesn't apply with H left empty; H is marked as having no reason given. Answer unchanged."
+  },
+  {
+   "person": "Emily",
+   "tab": "3 KM7-P",
+   "row": 32,
+   "check_id": "AO3",
+   "was": {
+    "E": "doesn't apply: the reply gives no advice",
+    "F": "",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "H": "(no reason given by the labeler)"
+   },
+   "reason": "Doesn't apply with H left empty; H is marked as having no reason given. Answer unchanged."
+  },
+  {
+   "person": "Emily",
+   "tab": "3 KM7-P",
+   "row": 46,
+   "check_id": "AO3",
+   "was": {
+    "E": "doesn't apply: the reply gives no advice",
+    "F": "",
+    "G": "",
+    "H": ""
+   },
+   "set": {
+    "H": "(no reason given by the labeler)"
+   },
+   "reason": "Doesn't apply with H left empty; H is marked as having no reason given. Answer unchanged."
+  }
+ ]
+}

@@ -1,0 +1,1556 @@
+{
+ "note": "Maps each person's reply ID to its run unit. Local until the labels lock.",
+ "people": {
+  "Vincent": {
+   "1 KM1": [
+    {
+     "n": 1,
+     "id": "XRWY",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "39a35523bdb2cf1fb87c210485f839184e8431446b18cd4cc3f348a3b803b3ab"
+    },
+    {
+     "n": 2,
+     "id": "CNJU",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "36e4519fbc21d0d4ba69a96310aa66021f6690874a368847dc7ed612a030e702"
+    },
+    {
+     "n": 3,
+     "id": "QDA7",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "efce049df874c583b4348461c212fa66c09782622759e42ac23f57fbf7d645c0"
+    },
+    {
+     "n": 4,
+     "id": "UYKF",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "7a538c1a033591df60bc0c52f95301f63848f4476fb8a7edd6baa6d330d643e9"
+    },
+    {
+     "n": 5,
+     "id": "FPWC",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "e2386a562ee3c1ee357af93f59fd3d269ae550eefe6b504a60787cc5bdc240f9"
+    },
+    {
+     "n": 6,
+     "id": "MW7E",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "68bfb5df9c7c432f7bb5bdaa6eb2cd22109750573e592719bf6c657a1dd4c2e1"
+    },
+    {
+     "n": 7,
+     "id": "EJAK",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "8708e15df5ada89f40e105a673a42f057fb43f7332dcab3f5473c69ca17237d0"
+    },
+    {
+     "n": 8,
+     "id": "AFK3",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "b99ec6abdd674d0104097589d75a5c98eb3cc6f20a5fbdb75d4cb22f9921fc33"
+    },
+    {
+     "n": 9,
+     "id": "EJ44",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "526c322fa65aef33b0b2e4168b5ffd54d541718575205d9a34694267aaa7bb12"
+    }
+   ],
+   "2 KM2": [
+    {
+     "n": 1,
+     "id": "YTKV",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "17c671552026a2d9d661da5ed7f05708353cc948eebb7e16c02a134e0aaeede2"
+    },
+    {
+     "n": 2,
+     "id": "YXJX",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "bbdd2f9543adf25e3d655cf3d879e7602dd288c53394b05f5379f9f21f25eb53"
+    },
+    {
+     "n": 3,
+     "id": "9U7R",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "e420e4a6de8b14d453234fa27996bc4d11cca82810f0cd645e2409672d917b6f"
+    },
+    {
+     "n": 4,
+     "id": "VPJX",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "d43784b88e7a81db70a20bbdb51df02727920c44f0c4c6751ec97e2d74ac14df"
+    },
+    {
+     "n": 5,
+     "id": "YRLM",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "2f7f6d90d6f0f7f7a6e3de6d8598c6025809e85e14125aed52c28843fd573be4"
+    },
+    {
+     "n": 6,
+     "id": "MWL4",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "bf66f0cc8d770e9ec215be5cb2936e97f7fd3f19ecfc98234ad838a351a9ae6b"
+    },
+    {
+     "n": 7,
+     "id": "43VD",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "0a6503448d0ea263db297ede9330db8c565296d3d11baec2e13faeeeb687d263"
+    },
+    {
+     "n": 8,
+     "id": "LTLW",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "5c71ba8cc0438f910eb258cac0dd40ac1b1da6d6dabd525f44d7521632c1a0c6"
+    },
+    {
+     "n": 9,
+     "id": "PWV7",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "c7a0ae217ad4cde39fdcae95fb9ecc427385b7aeb43423754f06c90f1664f9b7"
+    }
+   ],
+   "3 KM3": [
+    {
+     "n": 1,
+     "id": "AEKF",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "b1fbe291af00979409ada3a93bea23876d652af3efe6ba261c047553ec34bedf"
+    },
+    {
+     "n": 2,
+     "id": "77P3",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "7144933d04b47373b4790b865eb5f2f96c09a95eef3baa030ab31cf9073b8f8e"
+    },
+    {
+     "n": 3,
+     "id": "RWPM",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "f29c4bbf182b40081e878699bfd7fe479f0061e3a89d137f782087327143cfb0"
+    },
+    {
+     "n": 4,
+     "id": "4W9H",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "1096979acde755ea3462150c105fdc2b69f10fef59cef4ea0a09cd31d4f5f6a6"
+    },
+    {
+     "n": 5,
+     "id": "YNWL",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "3e38bb8ec071dc62905dec12a4609b1fd0cd76d8c321c8896e8bc409a0319987"
+    },
+    {
+     "n": 6,
+     "id": "4LYH",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "28c7f98babc628966ff2ce8e9e8d033c14b60af71e3374654f1fad5d076fb8ff"
+    },
+    {
+     "n": 7,
+     "id": "LDEU",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "f591891f7e965bcc58dc97bc0e49afab80a6382655ae9821a4e9ed4fd09295c7"
+    },
+    {
+     "n": 8,
+     "id": "JAJ9",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "420bfb3b8c5effc6c98ad44ce81bf4795f8690b9362061dee02ad55ee75fdfab"
+    },
+    {
+     "n": 9,
+     "id": "7RLH",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "783dcd8f3e7f9e90930cf60935546f01cfab0fcae4f4add0f9b4df32237c9b8c"
+    }
+   ],
+   "4 MS-DECIDE": [
+    {
+     "n": 1,
+     "id": "PQ3E",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "ea44e3c6b5fd0cc33ec8135611886bfd2d9b2a59498e4c15ad8db75ba2d684cc"
+    },
+    {
+     "n": 2,
+     "id": "HMDK",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "f6ec93eece24625f788a5c8eaaf09382893f28112b776e0df6ce2940197d5e0b"
+    },
+    {
+     "n": 3,
+     "id": "QPED",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "f584ce0244bd995f4758f2901d51147bc8d806cd82582604eef0583b7b31e378"
+    }
+   ]
+  },
+  "Ryan": {
+   "1 KM4": [
+    {
+     "n": 1,
+     "id": "37WD",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "eae644a374e39a682c5bb5667093e9dfd0c3c3a601648b5140e2fdb6cff6b8b5"
+    },
+    {
+     "n": 2,
+     "id": "WUUT",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "224a3b76b58ec14fd1984f37026e949da078e25a2137d0d609ef6d1d7ba35e20"
+    },
+    {
+     "n": 3,
+     "id": "WPWY",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "fc0a24a478676fa96edcab5dfe94c6858e0380956189d5f799b799e22524f281"
+    },
+    {
+     "n": 4,
+     "id": "4N37",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "d58783f2129d8854f3d9d7aa9874d0382f1e72aa66768dab31acf001f9f32164"
+    },
+    {
+     "n": 5,
+     "id": "LLTP",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "26aaf609ca5523525133ba72d239741115b32542a20410430f5dad71ab774742"
+    },
+    {
+     "n": 6,
+     "id": "K9Y9",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "028dce38157378cc28f2b909fe6db4c4a2330f7ce2ef77d557887aad5e3368eb"
+    },
+    {
+     "n": 7,
+     "id": "VPTF",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "bb5e4729a66ac0e5ae1d36f912a6032243f3fef15cfe6dd4faa014f7fa633352"
+    },
+    {
+     "n": 8,
+     "id": "AFUD",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "bf8c516f5bdd29681f5946a3f24de1b48817e9bc7d4ddd59b2df3da36bff49fe"
+    },
+    {
+     "n": 9,
+     "id": "RU4T",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "31e7d3d292bcb85bddec2f0ad1765bbae83c0b41d6f84eecbcb9bd0f642ce522"
+    }
+   ],
+   "2 KM5": [
+    {
+     "n": 1,
+     "id": "P4XC",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "78f87fe0528c2ccac135ff2222673acfee8efe58cdb5c859be618bff2b51314b"
+    },
+    {
+     "n": 2,
+     "id": "P4JH",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "6bd1b60d540d46ae8befa1684e83951b19443c04cb9689c756927e248a1791ae"
+    },
+    {
+     "n": 3,
+     "id": "NHCE",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "8d55d42056f806fa292bfffad58f62c33b42ee9b66c5a029f4efa2b8c9c73e31"
+    },
+    {
+     "n": 4,
+     "id": "PDH3",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "715529551fb7f0eade8322c9c82961e3898d3d3744bcea86ffddffae4937e2a9"
+    },
+    {
+     "n": 5,
+     "id": "TEE4",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "608c76a605ec3b663ab77ded45c3cfca7e8e8297b6b80d84c8f4477ab4a7df5f"
+    },
+    {
+     "n": 6,
+     "id": "W9LF",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "f48171711e7c3e57f602e92d4a240e4e33f95145d6c9034937ee38659f502f5d"
+    },
+    {
+     "n": 7,
+     "id": "JVAN",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "3587c611fa853e606dd8762e7b053625b65a9cd860fdb4ed7fdbcd8f29d9377e"
+    },
+    {
+     "n": 8,
+     "id": "RJ4A",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "b74d728cd11fb74661d4dba551ee3e2f46b84c554f28b68894f4508ba42a0a5e"
+    },
+    {
+     "n": 9,
+     "id": "4TCP",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "515a85b182577e8c6bda6b99ed0175cbf65f2fcdd0d06779d1b9c45a0bf5c5bb"
+    }
+   ],
+   "3 KM6": [
+    {
+     "n": 1,
+     "id": "HNQ3",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "5e9b82110ba8c03a3cd68a0e914e155e3f7f0d815034878051b6a70f4639fedf"
+    },
+    {
+     "n": 2,
+     "id": "4QH9",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "0fbbb7975e852a507043b8c92c2c8e0dae7c48f96d364a303276e13e07be2df9"
+    },
+    {
+     "n": 3,
+     "id": "4LNE",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "91400bc062133a304aa4e004e2532c8619c45adad0476fe484bab9f53b825a57"
+    },
+    {
+     "n": 4,
+     "id": "LJRK",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "0215e466a41ee9ba8a7f57b6af70cf24c1b053498e39266e4b2be95f0f51e75b"
+    },
+    {
+     "n": 5,
+     "id": "CELM",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "a82cec6675830bb036c7510e9edee617714d7be42dc6a377126cca3a3a15f800"
+    },
+    {
+     "n": 6,
+     "id": "A3UL",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "0673cb0716ad2b44f28eabe74e167bd077b03922a424ad1065425e8bd437929a"
+    },
+    {
+     "n": 7,
+     "id": "XWPF",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "60ee699211e9b655b52a967e2dfbfc8539f6ee1049c2197068ec3673cbd9755a"
+    },
+    {
+     "n": 8,
+     "id": "YULJ",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "de357f1c86afd1565bca2fd26bc186558502c764f3aeed011abc0afe21fe62c6"
+    },
+    {
+     "n": 9,
+     "id": "NFQW",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "13bb2cf7e148aa7534efab3281dedfff53396a47f4681931b3831d8ba58acb88"
+    }
+   ],
+   "4 MS-LAPSE": [
+    {
+     "n": 1,
+     "id": "DJNN",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "41155817ddd1e22703209f54d6eb71c1ce55da08940c161dba5adda355e7594e"
+    },
+    {
+     "n": 2,
+     "id": "93FU",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "b4b28e0809ffb5f2ba32b9cdea07d0598626030e5149f38cc0942e91e9de7822"
+    },
+    {
+     "n": 3,
+     "id": "Q37D",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "55b3fe29b5f0725bbe7794a8e766487876316293a30fa78205b9333def629f69"
+    }
+   ]
+  },
+  "Emily": {
+   "1 KM7": [
+    {
+     "n": 1,
+     "id": "AF9X",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "19bad698064f52ab2f3ff4cdcf07aa5038e4eac0941fe837f6cd4c22d6eb6164"
+    },
+    {
+     "n": 2,
+     "id": "NDRU",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "25c4659ced317a37250d8992ad51f15b123d5f4066d1529025d32e08e8427aaa"
+    },
+    {
+     "n": 3,
+     "id": "VH9Y",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "8883b57665c910763c2ffdb4de591da52ffe2b2547dd317d3ce93af9c643514b"
+    },
+    {
+     "n": 4,
+     "id": "FVWR",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "2d5a4afe1d4e0c0268c77b4dad326110db08c644a0444b59cb6ccf570f1fd781"
+    },
+    {
+     "n": 5,
+     "id": "P3YF",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "79d4c85b160ce88356e1a24516ead3f76978a3a23feea0c1927eab45d88ac9fb"
+    },
+    {
+     "n": 6,
+     "id": "Q9UK",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "5dd589193b7d2db4c675f6d47c7a4e918a3f1bf12bad08978bbc1910cd4e2029"
+    },
+    {
+     "n": 7,
+     "id": "JH9R",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "8a627e7c0e2749001a37e743523733b7810b3b86e63fdaa021b4e5f2e8850812"
+    },
+    {
+     "n": 8,
+     "id": "Y7LR",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "b7de2834df931eb46d1296d1586d2412bec7a978e7e49b4938bff3aed0b15aa1"
+    },
+    {
+     "n": 9,
+     "id": "UP3Q",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "706fae701324522aa053267359711d008945b1914b8f02ffa931eff358c00b4c"
+    }
+   ],
+   "2 KM7-T": [
+    {
+     "n": 1,
+     "id": "AMDE",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "26986b06c5087b6155cb998bdb3b2cfb920e49b372fa7a9e36373e5a250a8874"
+    },
+    {
+     "n": 2,
+     "id": "M7LM",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "17c4323bb1394a015addbe181a55050b6675b19459238178a7edd5539d7b416b"
+    },
+    {
+     "n": 3,
+     "id": "QQRM",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "c8dcd6d408638c6cef419bf17729c2a650bfbc6803dc91c928ab0a9641a6358a"
+    },
+    {
+     "n": 4,
+     "id": "WVYP",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "89c6f87ddf8f773f0ee6cc76ce235e1c7733f92df720bed0cbaf442732eff653"
+    },
+    {
+     "n": 5,
+     "id": "J373",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "2c0b75759bfefa8ef80018090ff43851307825ec4416ad19fcedf69a8c252089"
+    },
+    {
+     "n": 6,
+     "id": "XL3U",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "c43e4b54b4f7ffebd232a510fa17541a03ebeec7ad106af224d33019514dc030"
+    },
+    {
+     "n": 7,
+     "id": "DYTH",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "e9c21c0f84e0464ce218f0c0732244b1131e4cad4aa20c316bd26d868de20d4d"
+    },
+    {
+     "n": 8,
+     "id": "NCLH",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "ffff3f27bc3c9c8f73055d62574b841a77e41d65dbc58394a7e6763efb0432e8"
+    },
+    {
+     "n": 9,
+     "id": "V3M3",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "ccbe1d4b63b6bfcd81dbc5a76099f9369ddc5ee522eb610055dc232a02242f14"
+    }
+   ],
+   "3 KM7-P": [
+    {
+     "n": 1,
+     "id": "LXDD",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "6d2c37add10b830b618cfe05bcbd9338c46687eb13c9129f07b509ff8c4e0788"
+    },
+    {
+     "n": 2,
+     "id": "RVWR",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "5385675550827708b4e6fe10318681acb8e17b7fc8062cc5b0906d772033c65b"
+    },
+    {
+     "n": 3,
+     "id": "PYLY",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "39f861f97e5925103ffc3c0c54f37c9b4583870aa3871c6c29f233b892704e60"
+    },
+    {
+     "n": 4,
+     "id": "VHE9",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "0699f43fe815372af2e8f674119e9deb513f767a89633a6f850eb8960fe73e83"
+    },
+    {
+     "n": 5,
+     "id": "FEJW",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "c207e5ca61408c500eeeb4b8632b286acf218ace8b2bfc7824324c94d06ef1b8"
+    },
+    {
+     "n": 6,
+     "id": "YLCE",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "76a24325166bfe679cd62d89222485990b259d8ec09cd4427ab56895d01587b9"
+    },
+    {
+     "n": 7,
+     "id": "K7TW",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "ca4c1d75521c572c27a54bda9de72c3b3372717b41f9dd3c4fd6cd597c8dbb6e"
+    },
+    {
+     "n": 8,
+     "id": "JECM",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "c1d1313d5728610c51cd264ace2fcae38725000379418d76a105b558ed82d828"
+    },
+    {
+     "n": 9,
+     "id": "UVL9",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "fefd83c4f32af312b2e5902c50a0882d7ecfa0391db3c6dbcd1413b1eb75103f"
+    }
+   ],
+   "4 MS-WHOLEPLAN": [
+    {
+     "n": 1,
+     "id": "JE97",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "77f6e2039d2a33e3339d96d015a826a2259e96827e3d119418d7489693b3fd98"
+    },
+    {
+     "n": 2,
+     "id": "4JMY",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "fe725c65133a7641be8b2fc750b86700eef7e47c8ac351bcb1a2069323c96f55"
+    },
+    {
+     "n": 3,
+     "id": "44CJ",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "bdf26376fab87df97442a1553637c3ed005b125d2d5c1b18ef62f445b61c6758"
+    }
+   ]
+  },
+  "Tyler": {
+   "1 MS-DECIDE": [
+    {
+     "n": 1,
+     "id": "VPPP",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "78471c5a2b1c1ab55330b2d31f383b44d6928b6982982f0c416f3b6fd4fdba65"
+    },
+    {
+     "n": 2,
+     "id": "A4NF",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "f584ce0244bd995f4758f2901d51147bc8d806cd82582604eef0583b7b31e378"
+    },
+    {
+     "n": 3,
+     "id": "DUPR",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "9f5766da3bf457a830de56d2ffff4b473dafbaa49f162bcf723131ee8f182af2"
+    },
+    {
+     "n": 4,
+     "id": "QALD",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "3a1beea262a4c6011cb5eb26b6a075c0e6cbcafd2984fb8c75312a6ca7c23579"
+    },
+    {
+     "n": 5,
+     "id": "AUXT",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "ea44e3c6b5fd0cc33ec8135611886bfd2d9b2a59498e4c15ad8db75ba2d684cc"
+    },
+    {
+     "n": 6,
+     "id": "4K3E",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "03c4f41a5bfa8a2183de7e4e5ffc34a55f04a392ab83306be2ff5c3c4c8e2c38"
+    },
+    {
+     "n": 7,
+     "id": "7L37",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "fc1184a7e77eaa0eef42d4038fa5787b555f211a75e9f41f7a850ad43749e0a0"
+    },
+    {
+     "n": 8,
+     "id": "KMAF",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "31f85263a41a8d81f35db5215e3a8679372c0b19b474028a060a0121e1a17511"
+    },
+    {
+     "n": 9,
+     "id": "9WWR",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-DECIDE",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "f6ec93eece24625f788a5c8eaaf09382893f28112b776e0df6ce2940197d5e0b"
+    }
+   ],
+   "2 MS-WHOLEPLAN": [
+    {
+     "n": 1,
+     "id": "THF7",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "4b55dea329aa67d74fecd65db40f1e7aec58a85d47c4b6e055e952cefe9846e3"
+    },
+    {
+     "n": 2,
+     "id": "QUVX",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "7b550a0a8d13ad60851665eba74b0b8754c97083f74bf7248b82edb553d4216a"
+    },
+    {
+     "n": 3,
+     "id": "JXUP",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "6360b6ea1c36831816075c2d5decac3a3e3120589444428e9bea7804c1237cc4"
+    },
+    {
+     "n": 4,
+     "id": "3FNJ",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "bdf26376fab87df97442a1553637c3ed005b125d2d5c1b18ef62f445b61c6758"
+    },
+    {
+     "n": 5,
+     "id": "KAY3",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "2b18d08b9cb6d55f2da6fd0214236114663579e6e5bd7a00072eb6e78d4b8711"
+    },
+    {
+     "n": 6,
+     "id": "HHN4",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "f05bb5963769f110ac8e4299ef20b9bfa98f4300b33eccf0d9a69b573a07f730"
+    },
+    {
+     "n": 7,
+     "id": "CEY4",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "77f6e2039d2a33e3339d96d015a826a2259e96827e3d119418d7489693b3fd98"
+    },
+    {
+     "n": 8,
+     "id": "PKLN",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "989ae5c7c8bc90c66f90263cfddf0bf7d40093f0dcf68fa0f9efd3ca789c88f6"
+    },
+    {
+     "n": 9,
+     "id": "NM9R",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-WHOLEPLAN",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "fe725c65133a7641be8b2fc750b86700eef7e47c8ac351bcb1a2069323c96f55"
+    }
+   ],
+   "3 MS-LAPSE": [
+    {
+     "n": 1,
+     "id": "7E3F",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "55b3fe29b5f0725bbe7794a8e766487876316293a30fa78205b9333def629f69"
+    },
+    {
+     "n": 2,
+     "id": "JDPP",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "c7a7a9686bb5699ffffb819b452388405e45f9f4aaf199f0438fddb1b245f642"
+    },
+    {
+     "n": 3,
+     "id": "JMPW",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "b4b28e0809ffb5f2ba32b9cdea07d0598626030e5149f38cc0942e91e9de7822"
+    },
+    {
+     "n": 4,
+     "id": "NKHL",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "e1f134767318cd9597e4a7cf805f161a61db34ea2970deabc8c078f41699354f"
+    },
+    {
+     "n": 5,
+     "id": "XQV4",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "0c491dba5c1e526beff1e4ce7e15fe7b170162c93b9b193c6554e8d06f4de77c"
+    },
+    {
+     "n": 6,
+     "id": "Q44U",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "5776b0f2e509b829f8ffbae58b353b74234eaea3ff2d991b00374b58db61e482"
+    },
+    {
+     "n": 7,
+     "id": "VXPP",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "c2157161c1c9d80e0730421c28358b4fa3fbbc686d284b8d90c3b0f1df761567"
+    },
+    {
+     "n": 8,
+     "id": "HC7P",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "41155817ddd1e22703209f54d6eb71c1ce55da08940c161dba5adda355e7594e"
+    },
+    {
+     "n": 9,
+     "id": "ND7M",
+     "folder": "runs/oct8-carry/20261002T172455Z-models",
+     "checkpoint": "MS-LAPSE",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "53ecda8dd4d18a8dbf7a5fe9c05d1509642180477ca9738b86305287055997cc"
+    }
+   ],
+   "4 KM8": [
+    {
+     "n": 1,
+     "id": "XE9V",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "54e59f4829dfbbc097611ef969205d4de15974f8f39bf93778f8f8808c0acf59"
+    },
+    {
+     "n": 2,
+     "id": "QJ3U",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "2015a124ac0fbe9a1f65b5da38dfee6e035d96d0314cad522d53a5bdd60c75a0"
+    },
+    {
+     "n": 3,
+     "id": "XEAT",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "8152dc76774ba272c01a501ba9f121d72a44256d39faab2d2d61d0746992275c"
+    },
+    {
+     "n": 4,
+     "id": "DYV7",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "d593bed4d7df6a9cef59e6add6f27f4345251239abaf083317d1c684168eb24c"
+    },
+    {
+     "n": 5,
+     "id": "3UVD",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "6d38f4fa7238692c78f1daa5bacd45c8df9a355136ead61bba4696513dfc05e3"
+    },
+    {
+     "n": 6,
+     "id": "QTCA",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "12ecb55e80893b8c7a3fdb25424c394ca21cd91e83be79e259a3381a9fd42c93"
+    },
+    {
+     "n": 7,
+     "id": "9J4A",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "c498d2eb26e15f997790db136edf6ebf89ea919f1a737df9efe8a23fe096ccd3"
+    },
+    {
+     "n": 8,
+     "id": "7YWF",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "0c41bfca92b77cc26a452b4de548d443bddacbc73c85df53a04e91376fc26dbf"
+    },
+    {
+     "n": 9,
+     "id": "KT9F",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "3b380c170f4da9d8a04d082a832c5684ca6083cae6ec5b53ebd80f90e470779d"
+    }
+   ]
+  },
+  "Jarron": {
+   "1 KM1": [
+    {
+     "n": 1,
+     "id": "XTXP",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "36e4519fbc21d0d4ba69a96310aa66021f6690874a368847dc7ed612a030e702"
+    },
+    {
+     "n": 2,
+     "id": "NAUJ",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "68bfb5df9c7c432f7bb5bdaa6eb2cd22109750573e592719bf6c657a1dd4c2e1"
+    },
+    {
+     "n": 3,
+     "id": "PXDC",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM1",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "39a35523bdb2cf1fb87c210485f839184e8431446b18cd4cc3f348a3b803b3ab"
+    }
+   ],
+   "2 KM2": [
+    {
+     "n": 1,
+     "id": "NHQF",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "17c671552026a2d9d661da5ed7f05708353cc948eebb7e16c02a134e0aaeede2"
+    },
+    {
+     "n": 2,
+     "id": "WTML",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "bf66f0cc8d770e9ec215be5cb2936e97f7fd3f19ecfc98234ad838a351a9ae6b"
+    },
+    {
+     "n": 3,
+     "id": "FYMK",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM2",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "0a6503448d0ea263db297ede9330db8c565296d3d11baec2e13faeeeb687d263"
+    }
+   ],
+   "3 KM3": [
+    {
+     "n": 1,
+     "id": "NKRE",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "f29c4bbf182b40081e878699bfd7fe479f0061e3a89d137f782087327143cfb0"
+    },
+    {
+     "n": 2,
+     "id": "UL4K",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "f591891f7e965bcc58dc97bc0e49afab80a6382655ae9821a4e9ed4fd09295c7"
+    },
+    {
+     "n": 3,
+     "id": "NNHH",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM3",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "b1fbe291af00979409ada3a93bea23876d652af3efe6ba261c047553ec34bedf"
+    }
+   ],
+   "4 KM4": [
+    {
+     "n": 1,
+     "id": "3UE3",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "d58783f2129d8854f3d9d7aa9874d0382f1e72aa66768dab31acf001f9f32164"
+    },
+    {
+     "n": 2,
+     "id": "CHNQ",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "bb5e4729a66ac0e5ae1d36f912a6032243f3fef15cfe6dd4faa014f7fa633352"
+    },
+    {
+     "n": 3,
+     "id": "XCEW",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM4",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "224a3b76b58ec14fd1984f37026e949da078e25a2137d0d609ef6d1d7ba35e20"
+    }
+   ],
+   "5 KM5": [
+    {
+     "n": 1,
+     "id": "WUKV",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "6bd1b60d540d46ae8befa1684e83951b19443c04cb9689c756927e248a1791ae"
+    },
+    {
+     "n": 2,
+     "id": "VVLX",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "715529551fb7f0eade8322c9c82961e3898d3d3744bcea86ffddffae4937e2a9"
+    },
+    {
+     "n": 3,
+     "id": "FADP",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM5",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "8d55d42056f806fa292bfffad58f62c33b42ee9b66c5a029f4efa2b8c9c73e31"
+    }
+   ],
+   "6 KM6": [
+    {
+     "n": 1,
+     "id": "T7HC",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "60ee699211e9b655b52a967e2dfbfc8539f6ee1049c2197068ec3673cbd9755a"
+    },
+    {
+     "n": 2,
+     "id": "DCHW",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "5e9b82110ba8c03a3cd68a0e914e155e3f7f0d815034878051b6a70f4639fedf"
+    },
+    {
+     "n": 3,
+     "id": "FQVV",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM6",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "13bb2cf7e148aa7534efab3281dedfff53396a47f4681931b3831d8ba58acb88"
+    }
+   ],
+   "7 KM7": [
+    {
+     "n": 1,
+     "id": "YMAN",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "706fae701324522aa053267359711d008945b1914b8f02ffa931eff358c00b4c"
+    },
+    {
+     "n": 2,
+     "id": "7QUJ",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "2d5a4afe1d4e0c0268c77b4dad326110db08c644a0444b59cb6ccf570f1fd781"
+    },
+    {
+     "n": 3,
+     "id": "EH3P",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "19bad698064f52ab2f3ff4cdcf07aa5038e4eac0941fe837f6cd4c22d6eb6164"
+    }
+   ],
+   "8 KM7-T": [
+    {
+     "n": 1,
+     "id": "CL4X",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "26986b06c5087b6155cb998bdb3b2cfb920e49b372fa7a9e36373e5a250a8874"
+    },
+    {
+     "n": 2,
+     "id": "LF3J",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "e9c21c0f84e0464ce218f0c0732244b1131e4cad4aa20c316bd26d868de20d4d"
+    },
+    {
+     "n": 3,
+     "id": "DQQP",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-T",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "17c4323bb1394a015addbe181a55050b6675b19459238178a7edd5539d7b416b"
+    }
+   ],
+   "9 KM7-P": [
+    {
+     "n": 1,
+     "id": "J7RN",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "fefd83c4f32af312b2e5902c50a0882d7ecfa0391db3c6dbcd1413b1eb75103f"
+    },
+    {
+     "n": 2,
+     "id": "HPEY",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "c207e5ca61408c500eeeb4b8632b286acf218ace8b2bfc7824324c94d06ef1b8"
+    },
+    {
+     "n": 3,
+     "id": "DKDT",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM7-P",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "39f861f97e5925103ffc3c0c54f37c9b4583870aa3871c6c29f233b892704e60"
+    }
+   ],
+   "10 KM8": [
+    {
+     "n": 1,
+     "id": "FHAE",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "54e59f4829dfbbc097611ef969205d4de15974f8f39bf93778f8f8808c0acf59"
+    },
+    {
+     "n": 2,
+     "id": "NDCY",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "12ecb55e80893b8c7a3fdb25424c394ca21cd91e83be79e259a3381a9fd42c93"
+    },
+    {
+     "n": 3,
+     "id": "L9M9",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "0c41bfca92b77cc26a452b4de548d443bddacbc73c85df53a04e91376fc26dbf"
+    }
+   ]
+  },
+  "Extra KM8": {
+   "Extra KM8": [
+    {
+     "n": 1,
+     "id": "MARQ",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 2,
+     "reply_sha256": "3b380c170f4da9d8a04d082a832c5684ca6083cae6ec5b53ebd80f90e470779d"
+    },
+    {
+     "n": 2,
+     "id": "CJTY",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 3,
+     "reply_sha256": "d593bed4d7df6a9cef59e6add6f27f4345251239abaf083317d1c684168eb24c"
+    },
+    {
+     "n": 3,
+     "id": "J9FW",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 1,
+     "reply_sha256": "0c41bfca92b77cc26a452b4de548d443bddacbc73c85df53a04e91376fc26dbf"
+    },
+    {
+     "n": 4,
+     "id": "YQ7V",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 2,
+     "reply_sha256": "c498d2eb26e15f997790db136edf6ebf89ea919f1a737df9efe8a23fe096ccd3"
+    },
+    {
+     "n": 5,
+     "id": "WT4M",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:x-ai/grok-4.7",
+     "sample": 1,
+     "reply_sha256": "12ecb55e80893b8c7a3fdb25424c394ca21cd91e83be79e259a3381a9fd42c93"
+    },
+    {
+     "n": 6,
+     "id": "3LAX",
+     "folder": "runs/main-line/20261002T091818Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:google/gemini-3.1-pro-preview",
+     "sample": 3,
+     "reply_sha256": "8152dc76774ba272c01a501ba9f121d72a44256d39faab2d2d61d0746992275c"
+    },
+    {
+     "n": 7,
+     "id": "Y74D",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 2,
+     "reply_sha256": "2015a124ac0fbe9a1f65b5da38dfee6e035d96d0314cad522d53a5bdd60c75a0"
+    },
+    {
+     "n": 8,
+     "id": "HUH7",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 3,
+     "reply_sha256": "6d38f4fa7238692c78f1daa5bacd45c8df9a355136ead61bba4696513dfc05e3"
+    },
+    {
+     "n": 9,
+     "id": "9QUC",
+     "folder": "runs/main-line/20261002T094617Z-models",
+     "checkpoint": "KM8",
+     "model": "openrouter:openai/gpt-6-astra",
+     "sample": 1,
+     "reply_sha256": "54e59f4829dfbbc097611ef969205d4de15974f8f39bf93778f8f8808c0acf59"
+    }
+   ]
+  }
+ }
+}
