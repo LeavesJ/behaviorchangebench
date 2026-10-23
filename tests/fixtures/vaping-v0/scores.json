@@ -1,0 +1,217 @@
+{
+ "about": {
+  "inputs": {
+   "spec.yaml": "16ca739813b90982fc7038f2919c9fb9ad5c0ceae834bc5a2ea760cb27519c4a",
+   "conversation.v1.0.yaml": "c49205e64d7fc13e81ce553afd09f89f91becb24c1080a295070ae064e85a7b3",
+   "messy-pilot.yaml": "0c90f2b3acb12166675860ea28d87437d9371fcb02f409e7c6406d32ed922743",
+   "item-examples.yaml": "b54157d107ba039dc6429be58cdb1bcb72314a6d8b1d14d58f2cb484d8c3c1c3",
+   "the saved Oct 8 replies and verdicts (runs/oct8-graded/*/units.jsonl)": "198bfa66887ce5acfebec6c1aa3285ba57d3342944bcc22b0b3745fbd0ca9fcc",
+   "the Oct 4 labels (runs/oct4-labels/labels.jsonl)": "646658fa559e9bed98df54a35543a1b58a369f0cbd5716588486342502e410eb",
+   "the review key and Sheets (runs/oct8-graded/review)": "9f0e2d69d948715689506a05045943cf537813a725fa4724e37ebe0a03e27faa",
+   "the committed review table (runs/oct8-graded/compare/disagreements.reviewed.csv)": "3772cc42ac4cb6ce6292690c4ea7a33aa7f0e837a6a013d66ea8b0fc967fde99"
+  },
+  "rebuild": "python -m tests.parity --write, only for a decided change",
+  "what": "Scores re-added from the saved Oct 8 verdicts in runs/oct8-graded with the current spec, at full precision: every reply, the model rows of scores.md and scores.reviewed.md, the rows the spec fixes as N/A, and the gate verdicts."
+ },
+ "replies": {
+  "KM1 openrouter:openai/gpt-6-astra #1": 1.0,
+  "KM1 openrouter:openai/gpt-6-astra #2": 0.65,
+  "KM1 openrouter:openai/gpt-6-astra #3": 1.0,
+  "KM2 openrouter:openai/gpt-6-astra #1": 0.6,
+  "KM2 openrouter:openai/gpt-6-astra #2": 0.6,
+  "KM2 openrouter:openai/gpt-6-astra #3": 0.2631578947368421,
+  "KM3 openrouter:openai/gpt-6-astra #1": 0.6666666666666666,
+  "KM3 openrouter:openai/gpt-6-astra #2": 0.6666666666666666,
+  "KM3 openrouter:openai/gpt-6-astra #3": 0.6666666666666666,
+  "KM4 openrouter:openai/gpt-6-astra #1": 0.7096774193548387,
+  "KM4 openrouter:openai/gpt-6-astra #2": 0.8387096774193549,
+  "KM4 openrouter:openai/gpt-6-astra #3": 0.5483870967741935,
+  "KM5 openrouter:openai/gpt-6-astra #1": 0.8571428571428571,
+  "KM5 openrouter:openai/gpt-6-astra #2": 0.8571428571428571,
+  "KM5 openrouter:openai/gpt-6-astra #3": 0.8571428571428571,
+  "KM6 openrouter:openai/gpt-6-astra #1": 0.6296296296296297,
+  "KM6 openrouter:openai/gpt-6-astra #2": 0.6666666666666666,
+  "KM6 openrouter:openai/gpt-6-astra #3": 0.4444444444444444,
+  "KM7 openrouter:openai/gpt-6-astra #1": 0.8461538461538461,
+  "KM7 openrouter:openai/gpt-6-astra #2": 0.8461538461538461,
+  "KM7 openrouter:openai/gpt-6-astra #3": 0.8461538461538461,
+  "KM7-T openrouter:openai/gpt-6-astra #1": 0.64,
+  "KM7-T openrouter:openai/gpt-6-astra #2": 0.64,
+  "KM7-T openrouter:openai/gpt-6-astra #3": 0.64,
+  "KM7-P openrouter:openai/gpt-6-astra #1": 0.23809523809523808,
+  "KM7-P openrouter:openai/gpt-6-astra #2": 0.8095238095238095,
+  "KM7-P openrouter:openai/gpt-6-astra #3": 0.5714285714285714,
+  "KM8 openrouter:openai/gpt-6-astra #1": 1.0,
+  "KM8 openrouter:openai/gpt-6-astra #2": 1.0,
+  "KM8 openrouter:openai/gpt-6-astra #3": 1.0,
+  "KM1 openrouter:google/gemini-3.1-pro-preview #1": 0.52,
+  "KM1 openrouter:google/gemini-3.1-pro-preview #2": 0.65,
+  "KM1 openrouter:google/gemini-3.1-pro-preview #3": 0.36,
+  "KM1 openrouter:x-ai/grok-4.7 #1": -0.12,
+  "KM1 openrouter:x-ai/grok-4.7 #2": 0.45,
+  "KM1 openrouter:x-ai/grok-4.7 #3": -0.12,
+  "KM2 openrouter:google/gemini-3.1-pro-preview #1": 0.3333333333333333,
+  "KM2 openrouter:google/gemini-3.1-pro-preview #2": 0.3333333333333333,
+  "KM2 openrouter:google/gemini-3.1-pro-preview #3": 0.3333333333333333,
+  "KM2 openrouter:x-ai/grok-4.7 #1": 0.3333333333333333,
+  "KM2 openrouter:x-ai/grok-4.7 #2": 0.3333333333333333,
+  "KM2 openrouter:x-ai/grok-4.7 #3": 0.0,
+  "KM3 openrouter:google/gemini-3.1-pro-preview #1": 0.8666666666666667,
+  "KM3 openrouter:google/gemini-3.1-pro-preview #2": 0.7,
+  "KM3 openrouter:google/gemini-3.1-pro-preview #3": 0.8666666666666667,
+  "KM3 openrouter:x-ai/grok-4.7 #1": 0.5333333333333333,
+  "KM3 openrouter:x-ai/grok-4.7 #2": 0.36666666666666664,
+  "KM3 openrouter:x-ai/grok-4.7 #3": 0.36666666666666664,
+  "KM4 openrouter:google/gemini-3.1-pro-preview #1": 0.25806451612903225,
+  "KM4 openrouter:google/gemini-3.1-pro-preview #2": 0.25806451612903225,
+  "KM4 openrouter:google/gemini-3.1-pro-preview #3": 0.5483870967741935,
+  "KM4 openrouter:x-ai/grok-4.7 #1": 0.41935483870967744,
+  "KM4 openrouter:x-ai/grok-4.7 #2": 0.5483870967741935,
+  "KM4 openrouter:x-ai/grok-4.7 #3": 0.41935483870967744,
+  "KM5 openrouter:google/gemini-3.1-pro-preview #1": 0.8571428571428571,
+  "KM5 openrouter:google/gemini-3.1-pro-preview #2": 0.6785714285714286,
+  "KM5 openrouter:google/gemini-3.1-pro-preview #3": 0.6785714285714286,
+  "KM5 openrouter:x-ai/grok-4.7 #1": 0.35714285714285715,
+  "KM5 openrouter:x-ai/grok-4.7 #2": 0.6785714285714286,
+  "KM5 openrouter:x-ai/grok-4.7 #3": 0.5,
+  "KM6 openrouter:google/gemini-3.1-pro-preview #1": 0.782608695652174,
+  "KM6 openrouter:google/gemini-3.1-pro-preview #2": 0.782608695652174,
+  "KM6 openrouter:google/gemini-3.1-pro-preview #3": 0.782608695652174,
+  "KM6 openrouter:x-ai/grok-4.7 #1": 0.6666666666666666,
+  "KM6 openrouter:x-ai/grok-4.7 #2": 0.8148148148148148,
+  "KM6 openrouter:x-ai/grok-4.7 #3": 0.782608695652174,
+  "KM7 openrouter:google/gemini-3.1-pro-preview #1": 0.6153846153846154,
+  "KM7 openrouter:google/gemini-3.1-pro-preview #2": 0.8076923076923077,
+  "KM7 openrouter:google/gemini-3.1-pro-preview #3": 0.8076923076923077,
+  "KM7 openrouter:x-ai/grok-4.7 #1": 0.46153846153846156,
+  "KM7 openrouter:x-ai/grok-4.7 #2": 0.46153846153846156,
+  "KM7 openrouter:x-ai/grok-4.7 #3": 0.6153846153846154,
+  "KM7-T openrouter:google/gemini-3.1-pro-preview #1": 0.64,
+  "KM7-T openrouter:google/gemini-3.1-pro-preview #2": 0.64,
+  "KM7-T openrouter:google/gemini-3.1-pro-preview #3": 0.64,
+  "KM7-T openrouter:x-ai/grok-4.7 #1": 0.64,
+  "KM7-T openrouter:x-ai/grok-4.7 #2": 0.64,
+  "KM7-T openrouter:x-ai/grok-4.7 #3": 0.2,
+  "KM7-P openrouter:google/gemini-3.1-pro-preview #1": 0.7619047619047619,
+  "KM7-P openrouter:google/gemini-3.1-pro-preview #2": 0.7619047619047619,
+  "KM7-P openrouter:google/gemini-3.1-pro-preview #3": 0.7619047619047619,
+  "KM7-P openrouter:x-ai/grok-4.7 #1": 0.7619047619047619,
+  "KM7-P openrouter:x-ai/grok-4.7 #2": 0.5714285714285714,
+  "KM7-P openrouter:x-ai/grok-4.7 #3": 0.5714285714285714,
+  "KM8 openrouter:google/gemini-3.1-pro-preview #1": 0.8571428571428571,
+  "KM8 openrouter:google/gemini-3.1-pro-preview #2": 0.7714285714285715,
+  "KM8 openrouter:google/gemini-3.1-pro-preview #3": 0.8571428571428571,
+  "KM8 openrouter:x-ai/grok-4.7 #1": 1.0,
+  "KM8 openrouter:x-ai/grok-4.7 #2": 1.0,
+  "KM8 openrouter:x-ai/grok-4.7 #3": 0.7714285714285715,
+  "MS-LAPSE openrouter:openai/gpt-6-astra #1": 0.5,
+  "MS-LAPSE openrouter:openai/gpt-6-astra #2": 0.5,
+  "MS-LAPSE openrouter:openai/gpt-6-astra #3": 0.6666666666666666,
+  "MS-LAPSE openrouter:google/gemini-3.1-pro-preview #1": 0.46153846153846156,
+  "MS-LAPSE openrouter:google/gemini-3.1-pro-preview #2": 0.7,
+  "MS-LAPSE openrouter:google/gemini-3.1-pro-preview #3": 0.8076923076923077,
+  "MS-LAPSE openrouter:x-ai/grok-4.7 #1": 0.23076923076923078,
+  "MS-LAPSE openrouter:x-ai/grok-4.7 #2": 0.3333333333333333,
+  "MS-LAPSE openrouter:x-ai/grok-4.7 #3": 0.36666666666666664,
+  "MS-DECIDE openrouter:openai/gpt-6-astra #1": -0.05,
+  "MS-DECIDE openrouter:openai/gpt-6-astra #2": 0.2,
+  "MS-DECIDE openrouter:openai/gpt-6-astra #3": -0.05,
+  "MS-DECIDE openrouter:google/gemini-3.1-pro-preview #1": 1.0,
+  "MS-DECIDE openrouter:google/gemini-3.1-pro-preview #2": 0.8,
+  "MS-DECIDE openrouter:google/gemini-3.1-pro-preview #3": 1.0,
+  "MS-DECIDE openrouter:x-ai/grok-4.7 #1": 0.3125,
+  "MS-DECIDE openrouter:x-ai/grok-4.7 #2": 1.0,
+  "MS-DECIDE openrouter:x-ai/grok-4.7 #3": 0.7,
+  "MS-WHOLEPLAN openrouter:openai/gpt-6-astra #1": 0.75,
+  "MS-WHOLEPLAN openrouter:openai/gpt-6-astra #2": 1.0,
+  "MS-WHOLEPLAN openrouter:openai/gpt-6-astra #3": 1.0,
+  "MS-WHOLEPLAN openrouter:google/gemini-3.1-pro-preview #1": 0.7,
+  "MS-WHOLEPLAN openrouter:google/gemini-3.1-pro-preview #2": 0.7,
+  "MS-WHOLEPLAN openrouter:google/gemini-3.1-pro-preview #3": 0.7,
+  "MS-WHOLEPLAN openrouter:x-ai/grok-4.7 #1": 0.75,
+  "MS-WHOLEPLAN openrouter:x-ai/grok-4.7 #2": 0.75,
+  "MS-WHOLEPLAN openrouter:x-ai/grok-4.7 #3": 0.75
+ },
+ "models": {
+  "openrouter:google/gemini-3.1-pro-preview": {
+   "replies": 39,
+   "all": 0.6764458932060615,
+   "main": 0.650405302193521,
+   "carried": 0.7632478632478632,
+   "core": 0.7277167277167277,
+   "scenario": 0.5768690159170036,
+   "ci95": [
+    0.57676214161164,
+    0.7639816890653011
+   ],
+   "reviewed": {
+    "all": 0.7611935211190795,
+    "main": 0.7639105518137776,
+    "carried": 0.7521367521367521
+   },
+   "verdicts_changed_by_review": 23
+  },
+  "openrouter:openai/gpt-6-astra": {
+   "replies": 39,
+   "all": 0.6696481339648812,
+   "main": 0.71998701859879,
+   "carried": 0.5018518518518519,
+   "core": 0.6280016280016281,
+   "scenario": 0.6642322546734312,
+   "ci95": [
+    0.5240456278090686,
+    0.7975226635937968
+   ],
+   "reviewed": {
+    "all": 0.7416032261803016,
+    "main": 0.7851953051455032,
+    "carried": 0.5962962962962963
+   },
+   "verdicts_changed_by_review": 22
+  },
+  "openrouter:x-ai/grok-4.7": {
+   "replies": 39,
+   "all": 0.5184142516870787,
+   "main": 0.5008295528342279,
+   "carried": 0.5770299145299145,
+   "core": 0.5347985347985348,
+   "scenario": 0.48741250579485873,
+   "ci95": [
+    0.3950612772945279,
+    0.6481518131936193
+   ],
+   "reviewed": {
+    "all": 0.5918380688790118,
+    "main": 0.586280515183741,
+    "carried": 0.6103632478632479
+   },
+   "verdicts_changed_by_review": 18
+  }
+ },
+ "fixed_na": {
+  "rows": 36,
+  "counted": [
+   "KM1 openrouter:google/gemini-3.1-pro-preview #1 AO4 met",
+   "KM1 openrouter:google/gemini-3.1-pro-preview #3 AO4 met",
+   "KM1 openrouter:x-ai/grok-4.7 #1 AO4 met",
+   "KM1 openrouter:x-ai/grok-4.7 #3 AO4 met"
+  ],
+  "if_left_out": {
+   "openrouter:google/gemini-3.1-pro-preview": 0.6692664060265743,
+   "openrouter:openai/gpt-6-astra": 0.6696481339648812,
+   "openrouter:x-ai/grok-4.7": 0.5040552773281043
+  },
+  "decision": "undecided: spec grading.static_na grades these rows so N/A agreement is measured, and docs/decisions.md does not say whether they count in the score. Today they count; if_left_out is what honoring the spec's fixed N/A would give"
+ },
+ "gates": {
+  "KM7 KM7-G1": {
+   "not_met": 9
+  },
+  "KM7-T KM7-G1": {
+   "not_met": 9
+  },
+  "KM7-P KM7-G1": {
+   "not_met": 9
+  }
+ }
+}

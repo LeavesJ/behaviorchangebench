@@ -57,6 +57,13 @@ class ChatTest(unittest.TestCase):
         sent, _ = capture("deepseek:deepseek-flash", json_mode=True)
         self.assertEqual(sent["body"]["response_format"], {"type": "json_object"})
 
+    def test_max_tokens_left_to_the_vendor_is_not_sent(self):
+        """A models config's max_tokens: vendor_default arrives as None, and the key is left out rather than sent as null."""
+        sent, _ = capture("openrouter:some/model", max_tokens=None)
+        self.assertNotIn("max_tokens", sent["body"])
+        sent, _ = capture("openrouter:some/model", max_tokens=16000)
+        self.assertEqual(sent["body"]["max_tokens"], 16000)
+
     def test_result_records_the_served_model_and_never_the_key(self):
         sent, result = capture("deepseek:deepseek-flash")
         self.assertEqual(sent["auth"], "Bearer sk-test-key")

@@ -124,6 +124,27 @@ class MainTest(unittest.TestCase):
                 manifest = json.loads((next(p for p in Path(d).iterdir() if p.is_dir()) / "manifest.json").read_text())
                 self.assertEqual(manifest["sampling"]["thinking"], thinking)
 
+    def test_without_a_grader_named_the_models_configs_primary_grades_with_its_own_settings(self):
+        with tempfile.TemporaryDirectory() as d:
+            config = Path(d) / "models.yaml"
+            config.write_text("models: [{id: one, provider: openrouter, model: a/one, family: a}]\n"
+                              "graders: {primary: {provider: deepseek, model: deepseek-flash, family: deepseek,\n"
+                              "  sampling: {temperature: 0, max_tokens: 2000, reasoning: off, json: true}}}\n")
+            seen = []
+            inner = fake([{"verdict": "not_met", "quote": "", "reasoning": ""},
+                          {"verdict": "met", "quote": "harms your developing brain", "reasoning": ""}])
+
+            def call(target, messages, **kw):
+                seen.append((target, kw))
+                return inner(target, messages, **kw)
+            args = ["--examples", str(self._examples_file(d)), "--models-config", str(config), "--out", d]
+            self.assertEqual(item_tests.main(args, call=call), 0)
+            sent = {"temperature": 0.0, "max_tokens": 2000, "json_mode": True, "thinking": False}
+            self.assertEqual(seen, [("deepseek:deepseek-flash", sent)] * 2)
+            manifest = json.loads((next(p for p in Path(d).iterdir() if p.is_dir()) / "manifest.json").read_text())
+            self.assertEqual((manifest["grader"], manifest["grader_name"], manifest["sampling"]),
+                             ("deepseek:deepseek-flash", "primary", sent))
+
     def test_a_wrong_verdict_fails_the_run(self):
         with tempfile.TemporaryDirectory() as d:
             call = fake([{"verdict": "met", "quote": "you feel you should stop", "reasoning": ""},

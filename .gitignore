@@ -5,6 +5,10 @@
 # Harbor run output
 jobs/
 
+# the private split: a scenario whose conversation says split: private lives in a folder named private, at any depth
+# (for example scenarios/private/<scenario>/), so git never commits it; bcb/scenario.py refuses one anywhere else
+private/
+
 # python
 __pycache__/
 *.pyc

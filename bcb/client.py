@@ -60,12 +60,15 @@ def chat(target: str, messages: list[dict], *, temperature=0.0, max_tokens=1000,
          timeout=120) -> dict:
     """One completion. Returns {'text', 'model', 'usage', 'latency_s', 'finish_reason'}; raises CallError.
 
-    temperature=None sends none, so the vendor default applies (spec run.sampling; some models refuse one).
+    temperature=None sends none, so the vendor default applies (spec run.sampling; some models refuse one), and so
+    does max_tokens=None (a models config's vendor_default).
     thinking=None leaves reasoning at the vendor default, except on DeepSeek, where it stays off unless asked.
     """
     provider, model = parse_target(target)
     base, var = PROVIDERS[provider]
-    body = {"model": model, "messages": messages, "max_tokens": max_tokens}
+    body = {"model": model, "messages": messages}
+    if max_tokens is not None:
+        body["max_tokens"] = max_tokens
     if temperature is not None:
         body["temperature"] = temperature
     if provider == "openrouter":

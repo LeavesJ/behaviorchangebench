@@ -1,6 +1,7 @@
 """Grade every item's known-pass and known-fail examples; an item is usable only if its grader gets all of them right.
 
     python -m bcb.item_tests --grader deepseek:deepseek-flash
+    python -m bcb.item_tests --models-config trajectories/vaping-v0/v2/models.yaml   # its primary grader, its settings
     python -m bcb.item_tests --dry-run                # write the prompts, call nothing
     python -m bcb.item_tests --grader ... --only KM4-*,AO3
     python -m bcb.item_tests --grader ... --conversation <step-1 conversation file>   # the real prefix
@@ -19,23 +20,13 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import client, examples as ex_mod, grader
+from . import client, examples as ex_mod, grader, models_config, providers
+from .providers import REASONING as GRADER_REASONING, SAMPLING  # a grader's call settings live in bcb.providers
 from .spec import Spec, load_conversation
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SPEC = ROOT / "trajectories/vaping-v0/spec.yaml"
 DEFAULT_EXAMPLES = ROOT / "trajectories/vaping-v0/item-examples.yaml"
-SAMPLING = {"temperature": 0.0, "max_tokens": 1000, "json_mode": True, "thinking": False}  # recorded in every manifest
-GRADER_REASONING = {"off": False, "on": True, "vendor default": None}
-REASONING_MAX_TOKENS = 8000  # hidden reasoning counts toward max_tokens
-
-
-def sampling(reasoning="off"):
-    """The grader's call settings. Reasoning stays off unless asked, since some graders refuse it off (Opus 5.5 on
-    OpenRouter); with it on, the vendor's temperature applies (Anthropic accepts no other) and max_tokens has room."""
-    if reasoning == "off":
-        return dict(SAMPLING)
-    return dict(SAMPLING, thinking=GRADER_REASONING[reasoning], temperature=None, max_tokens=REASONING_MAX_TOKENS)
 
 
 def _sha(path: Path) -> str:
@@ -106,16 +97,24 @@ def main(argv=None, call=client.chat):
     p = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     p.add_argument("--spec", type=Path, default=DEFAULT_SPEC)
     p.add_argument("--examples", type=Path, default=DEFAULT_EXAMPLES)
-    p.add_argument("--grader", help="provider:model, e.g. deepseek:deepseek-flash")
+    p.add_argument("--models-config", type=Path,
+                   help="a models config: the grader --grader names, or its primary, is called with that entry's settings")
+    p.add_argument("--grader", help="a grader the models config names, or provider:model, e.g. deepseek:deepseek-flash")
     p.add_argument("--only", help="comma-separated item IDs or patterns, e.g. KM4-*,AO3")
     p.add_argument("--out", type=Path, default=ROOT / "runs/item-tests")
     p.add_argument("--dry-run", action="store_true", help="write the prompts; call nothing")
     p.add_argument("--conversation", type=Path, help="step 1's conversation file; without it, earlier assistant turns are beat placeholders")
-    p.add_argument("--grader-reasoning", choices=sorted(GRADER_REASONING), default="off",
-                   help="the grader's hidden reasoning; recorded in the manifest")
+    p.add_argument("--grader-reasoning", choices=sorted(GRADER_REASONING),
+                   help="the grader's hidden reasoning, over the models config's setting (default off for a "
+                        "provider:model it does not list); recorded in the manifest")
     a = p.parse_args(argv)
-    if not a.dry_run and not a.grader:
-        p.error("--grader is required unless --dry-run")
+    try:
+        config = models_config.load(a.models_config) if a.models_config else None
+        judge = providers.grader_for_run(config, a.grader, a.grader_reasoning)
+    except ValueError as e:  # a models config with problems, or a grader it does not name
+        p.error(str(e))
+    if not a.dry_run and judge is None:
+        p.error("--grader (or a models config with a primary grader) is required unless --dry-run")
 
     try:
         spec = Spec(a.spec, conversation=load_conversation(a.conversation) if a.conversation else None)
@@ -132,7 +131,7 @@ def main(argv=None, call=client.chat):
     if pending:  # said out loud, so a skipped example never reads as covered
         print(f"skipping {len(pending)} example(s) pending an item rewording: {', '.join(pending)}")
     started = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    out = a.out / f"{started}-{(a.grader or 'dry-run').replace(':', '_').replace('/', '_')}"
+    out = a.out / f"{started}-{(judge.target if judge else 'dry-run').replace(':', '_').replace('/', '_')}"
     out.mkdir(parents=True, exist_ok=True)
 
     if a.dry_run:
@@ -142,16 +141,17 @@ def main(argv=None, call=client.chat):
         print(f"wrote {len(chosen)} prompts to {out}")
         return 0
 
-    rows, settings = [], sampling(a.grader_reasoning)
+    rows, settings = [], providers.grader_settings(judge)
     for i, e in enumerate(chosen, 1):
-        rows.append(grade_one(spec, e, a.grader, call, settings))
+        rows.append(grade_one(spec, e, judge.target, call, settings))
         r = rows[-1]
         status = "ERROR" if r["error"] else ("ok" if r["correct"] else f"WRONG ({r['verdict']})")
         print(f"[{i}/{len(chosen)}] {e.id}: expected {e.expected}, {status}", flush=True)
     table = summarize(spec, rows)
     manifest = {
-        "grader": a.grader, "returned_models": sorted({r["model"] for r in rows if r.get("model")}),
+        "grader": judge.target, "returned_models": sorted({r["model"] for r in rows if r.get("model")}),
         "sampling": settings, "only": only,
+        "grader_name": judge.name, "models_config": providers.config_record(config),
         "prompt": {"version": grader.PROMPT_VERSION, "sha": grader.prompt_hash()},
         "spec": {"id": spec.raw["spec"]["id"], "version": spec.version, "sha": _sha(a.spec)},
         "examples": {"version": raw.get("examples_version"), "sha": _sha(a.examples), "n": len(chosen),

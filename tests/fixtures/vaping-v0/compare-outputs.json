@@ -1,0 +1,25 @@
+{
+ "about": {
+  "inputs": {
+   "spec.yaml": "16ca739813b90982fc7038f2919c9fb9ad5c0ceae834bc5a2ea760cb27519c4a",
+   "conversation.v1.0.yaml": "c49205e64d7fc13e81ce553afd09f89f91becb24c1080a295070ae064e85a7b3",
+   "messy-pilot.yaml": "0c90f2b3acb12166675860ea28d87437d9371fcb02f409e7c6406d32ed922743",
+   "item-examples.yaml": "b54157d107ba039dc6429be58cdb1bcb72314a6d8b1d14d58f2cb484d8c3c1c3",
+   "the saved Oct 8 replies and verdicts (runs/oct8-graded/*/units.jsonl)": "198bfa66887ce5acfebec6c1aa3285ba57d3342944bcc22b0b3745fbd0ca9fcc",
+   "the Oct 4 labels (runs/oct4-labels/labels.jsonl)": "646658fa559e9bed98df54a35543a1b58a369f0cbd5716588486342502e410eb",
+   "the review key and Sheets (runs/oct8-graded/review)": "9f0e2d69d948715689506a05045943cf537813a725fa4724e37ebe0a03e27faa",
+   "the committed review table (runs/oct8-graded/compare/disagreements.reviewed.csv)": "3772cc42ac4cb6ce6292690c4ea7a33aa7f0e837a6a013d66ea8b0fc967fde99"
+  },
+  "rebuild": "python -m tests.parity --write, only for a decided change",
+  "what": "sha256 of each file bcb.compare and bcb.review_import write from the committed labels, graded folders and locked review Sheets; the committed copies are in runs/oct8-graded/compare."
+ },
+ "files": {
+  "per_item.csv": "da07441384784e99d822562683cecd39803104dd4cf0b6f54e113b0e239672ec",
+  "disagreements.primary.csv": "df66e1f9b7a8f044311c47ad6a834068b5b72a214dda0deee2f135ebb7828730",
+  "people_disagreements.csv": "7057b1dbb40bd8d96922a930af586b0d3521fb7b491885ba1e7b7df376aca3a7",
+  "summary.md": "bad20f58fa5aaaa4e2382929349188809d7feee3056ab48dcf08a61427014cb2",
+  "scores.md": "8cf5656179a06a78cfb6ba832276a267499f5d66d8732a565d35213746aab336",
+  "disagreements.reviewed.csv": "3772cc42ac4cb6ce6292690c4ea7a33aa7f0e837a6a013d66ea8b0fc967fde99",
+  "scores.reviewed.md": "015caa08b94decbfc8ce1bf32cfd50d955e303b2e0ec85494afb73e035feca0f"
+ }
+}

@@ -112,6 +112,24 @@ class FamilyTest(unittest.TestCase):
             with tempfile.TemporaryDirectory() as d, self.assertRaises(SystemExit, msg=argv):
                 quietly(generate.main, argv + ["--out", d], call=boom)
 
+    def test_every_grader_a_models_config_names_counts(self):
+        def boom(*a, **k):
+            raise AssertionError("a refused generator must not be called")
+        # qwen is a family only the models config names as a grader's: by the vendor its model name shows, and by
+        # the family the entry declares when the name shows another vendor
+        for judge in ("{provider: openrouter, model: qwen/qwen3-judge, family: qwen}",
+                      "{provider: openrouter, model: alibaba/judge-1, family: qwen}"):
+            with self.subTest(judge), tempfile.TemporaryDirectory() as d:
+                config = Path(d) / "models.yaml"
+                config.write_text(f"models: [{{id: one, provider: openrouter, model: a/one, family: a}}]\n"
+                                  f"graders: {{primary: {judge}}}\n")
+                err = io.StringIO()
+                with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(err), \
+                        self.assertRaises(SystemExit):
+                    generate.main(["--generator", "openrouter:qwen/qwen3", "--models-config", str(config),
+                                   "--out", d], call=boom)
+                self.assertIn("is in or derived from a grader's family (qwen)", err.getvalue())
+
     def test_a_returned_model_in_a_grader_family_fails_the_session(self):
         def served_by_deepseek(target, messages, **kw):
             return {"text": json.dumps(canned("S1")), "model": "deepseek/deepseek-chat", "usage": {}, "latency_s": 0}

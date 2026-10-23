@@ -1,0 +1,29 @@
+# vaping-v0 in the new file formats (infra audit 4.2), written by `python -m bcb.convert` from:
+#   runs/oct8-graded/main-astra-20261002T094617Z/manifest.json (sha256 7249cd141762c54e5e4233a53188e40506bdba836eb8d837a0d7210c2e3ad35a)
+#   runs/oct8-graded/main-gemini-grok-20261002T091818Z/manifest.json (sha256 198632ba34b1ddf6ea825f8012cdfcc200c8fa68378aaf6ebf6133e05550b330)
+#   runs/oct8-graded/carry-20261002T172455Z/manifest.json (sha256 4ab1a1a9ef26c46e9357b8866bc8743be5b358f500565536d887e3aac4678935)
+# Do not edit by hand: edit the sources and rerun. `python -m bcb.convert --check` says when this file is out of date.
+models:
+  - id: gpt-6-astra
+    provider: openrouter
+    model: openai/gpt-6-astra
+    family: openai
+    sampling: {temperature: vendor_default, max_tokens: 16000, reasoning: 'on'}
+  - id: gemini-3.1-pro-preview
+    provider: openrouter
+    model: google/gemini-3.1-pro-preview
+    family: google
+    sampling: {temperature: vendor_default, max_tokens: 16000, reasoning: 'on'}
+  - id: grok-4.7
+    provider: openrouter
+    model: x-ai/grok-4.7
+    family: x-ai
+    sampling: {temperature: vendor_default, max_tokens: 16000, reasoning: 'on'}
+graders:
+  primary:
+    provider: openrouter
+    model: anthropic/claude-opus-5.5
+    family: anthropic
+    prompt: grader-v0.3
+    sampling: {temperature: vendor_default, max_tokens: 8000, reasoning: 'on', json: true}
+rules: {grader_family_differs_from_every_model: true}

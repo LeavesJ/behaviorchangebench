@@ -1,0 +1,16 @@
+# vaping-v0 in the new file formats (infra audit 4.2), written by `python -m bcb.convert` from:
+#   runs/oct8-graded/main-astra-20261002T094617Z/manifest.json (sha256 7249cd141762c54e5e4233a53188e40506bdba836eb8d837a0d7210c2e3ad35a)
+#   runs/oct8-graded/main-gemini-grok-20261002T091818Z/manifest.json (sha256 198632ba34b1ddf6ea825f8012cdfcc200c8fa68378aaf6ebf6133e05550b330)
+#   runs/oct8-graded/carry-20261002T172455Z/manifest.json (sha256 4ab1a1a9ef26c46e9357b8866bc8743be5b358f500565536d887e3aac4678935)
+# Do not edit by hand: edit the sources and rerun. `python -m bcb.convert --check` says when this file is out of date.
+# Undecided, set as the Oct 8 numbers used them: static_na: count grades and counts rows a conversation fixes as not_applicable; gates.cap: none lets no gate cap a rank.
+run: {id: oct8-repro, out: runs/}
+scenarios: [trajectories/vaping-v0/v2]
+checkpoints: [vaping-v0/KM1, vaping-v0/KM2, vaping-v0/KM3, vaping-v0/KM4, vaping-v0/KM5, vaping-v0/KM6, vaping-v0/KM7,
+  vaping-v0/KM7-T, vaping-v0/KM7-P, vaping-v0/KM8, vaping-v0/MS-LAPSE, vaping-v0/MS-DECIDE, vaping-v0/MS-WHOLEPLAN]
+rubrics: [trajectories/vaping-v0/v2/core.yaml, trajectories/vaping-v0/v2/checks.yaml]
+models: trajectories/vaping-v0/v2/models.yaml
+samples: 3
+grade: {with: primary, read: normalized}
+gates: {rule: pass_k, k: 3, cap: none}
+static_na: count

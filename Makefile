@@ -11,18 +11,29 @@
 #                   branches file) also pass through. When grading a drawn run, GRADE_ONLY=1 stops before any call
 #                   if the resume would draw a reply, NORMALIZE=1 grades the text labelers saw, and RETRY_ERRORS=1
 #                   asks again for verdicts that errored.
+# MODELS_CONFIG=<models config> (e.g. trajectories/vaping-v0/v2/models.yaml) reads the models under test and the
+# graders from that file, each called with its own settings (bcb/providers.py); PILOT_MODELS and GRADER then pick
+# from it by name and default to all its models and its primary grader. Without it every target runs as before.
 .PHONY: setup check item-tests prompts preflight generate-prompts generate pilot-dry pilot-refs pilot draw
 
 PYTHON ?= .venv/bin/python
 # The grader is Opus 5.5 (decided Oct 2, provisional until the Oct 4 human labels); DeepSeek flash grades every
 # run a second time: make pilot RESUME=<copy of the run dir> GRADER=deepseek:deepseek-flash. Opus refuses calls
-# with reasoning off, so grader reasoning defaults on for it and off for any other grader.
-GRADER ?= openrouter:anthropic/claude-opus-5.5
-GRADER_REASONING ?= $(if $(findstring anthropic/claude-opus,$(GRADER)),on,off)
+# with reasoning off, so a GRADER given as provider:model gets reasoning on for Opus and off for any other grader;
+# one the models config names keeps the settings written there. The runner refuses a grader in the family of any
+# model under test (README rule 5). The v2 models config asks reasoning on for the models under test, as the Oct 8
+# draws did (REASONING=on); without it they get the vendor's default, as spec.yaml run.sampling says.
+MODELS_CONFIG ?=
+GRADER ?= $(if $(MODELS_CONFIG),,openrouter:anthropic/claude-opus-5.5)
+GRADER_REASONING ?= $(if $(findstring :,$(GRADER)),$(if $(findstring anthropic/claude-opus,$(GRADER)),on,off))
 GENERATOR ?=
 # Never a family the grader belongs to (README rule 5), so no Claude model is under test.
-PILOT_MODELS ?= openrouter:openai/gpt-6-astra,openrouter:google/gemini-3.1-pro-preview,openrouter:x-ai/grok-4.7
+OCT8_MODELS = openrouter:openai/gpt-6-astra,openrouter:google/gemini-3.1-pro-preview,openrouter:x-ai/grok-4.7
+PILOT_MODELS ?= $(if $(MODELS_CONFIG),,$(OCT8_MODELS))
 CONVERSATION ?=
+CONFIG_ARGS = $(if $(MODELS_CONFIG),--models-config $(MODELS_CONFIG))
+MODEL_ARGS = $(if $(PILOT_MODELS),--models $(PILOT_MODELS))
+GRADER_ARGS = $(CONFIG_ARGS) $(if $(GRADER),--grader $(GRADER))
 PILOT_ARGS = $(if $(CONVERSATION),--conversation $(CONVERSATION)) $(if $(ONLY),--only $(ONLY)) \
 	$(if $(SAMPLES),--samples $(SAMPLES)) $(if $(REASONING),--reasoning $(REASONING)) $(if $(GRADER_REASONING),--grader-reasoning "$(GRADER_REASONING)") $(if $(OUT),--out $(OUT)) \
 	$(if $(RESUME),--resume $(RESUME)) $(if $(BRANCHES),--branches $(BRANCHES)) $(if $(GRADE_ONLY),--grade-only) \
@@ -36,7 +47,7 @@ check:
 	@$(PYTHON) -m unittest discover -s tests -t . -q
 
 item-tests:
-	$(PYTHON) -m bcb.item_tests --grader $(GRADER) $(if $(ONLY),--only $(ONLY)) $(if $(GRADER_REASONING),--grader-reasoning "$(GRADER_REASONING)")
+	$(PYTHON) -m bcb.item_tests $(GRADER_ARGS) $(if $(ONLY),--only $(ONLY)) $(if $(GRADER_REASONING),--grader-reasoning "$(GRADER_REASONING)")
 
 prompts:
 	$(PYTHON) -m bcb.item_tests --dry-run
@@ -49,16 +60,17 @@ generate-prompts:
 
 generate:
 	@if [ -z "$(GENERATOR)" ]; then echo "generate: set GENERATOR=provider:model (chosen at Meeting 2; never the grader's family)" >&2; exit 2; fi
-	$(PYTHON) -m bcb.generate --generator $(GENERATOR) --grader $(GRADER)
+	$(PYTHON) -m bcb.generate --generator $(GENERATOR) $(GRADER_ARGS)
 
+# with a models config, the dry run also counts its replies and checks its grader's family (README rule 5)
 pilot-dry:
-	$(PYTHON) -m bcb.pilot --dry-run $(PILOT_ARGS)
+	$(PYTHON) -m bcb.pilot --dry-run $(if $(MODELS_CONFIG),$(CONFIG_ARGS) $(MODEL_ARGS) $(if $(GRADER),--grader $(GRADER))) $(PILOT_ARGS)
 
 pilot-refs:
-	$(PYTHON) -m bcb.pilot --references --grader $(GRADER) $(PILOT_ARGS)
+	$(PYTHON) -m bcb.pilot --references $(GRADER_ARGS) $(PILOT_ARGS)
 
 pilot:
-	$(PYTHON) -m bcb.pilot --models $(PILOT_MODELS) --grader $(GRADER) $(PILOT_ARGS)
+	$(PYTHON) -m bcb.pilot $(CONFIG_ARGS) $(MODEL_ARGS) $(if $(GRADER),--grader $(GRADER)) $(PILOT_ARGS)
 
 draw:
-	$(PYTHON) -m bcb.pilot --models $(PILOT_MODELS) --no-grade $(PILOT_ARGS)
+	$(PYTHON) -m bcb.pilot $(CONFIG_ARGS) $(MODEL_ARGS) --no-grade $(PILOT_ARGS)

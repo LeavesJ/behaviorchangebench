@@ -10,7 +10,8 @@ Pinned key-moment lines are shown to the generator as fixed context and inserted
 from the spec, never taken from the generator. Output is parsed strictly: a wrong or missing
 turn ID or an extra key is an error, retried once, both attempts recorded; turn text is never
 repaired in code. The generator is never in a grader's family (spec
-generation.generator.constraints): every --grader, and the spec's grading families once named.
+generation.generator.constraints): every --grader, every grader a --models-config names, and the
+spec's grading families once named.
 A fact clause that a must_not_preanswer rule forbids at a turn is held back from that turn.
 
 Writes under runs/generate/<UTC stamp>-<provider>_<model>/: conversation.v1.0-draft.yaml,
@@ -37,7 +38,7 @@ from pathlib import Path
 
 import yaml
 
-from . import checks, client, preflight, report
+from . import checks, client, models_config, preflight, providers, report
 from .item_tests import DEFAULT_SPEC, ROOT, _sha
 from .spec import _FACT_CITE, FACT_ID, PLACEHOLDER, Spec, load_conversation
 
@@ -336,6 +337,7 @@ def _refused(p, spec, a):
         gen, graders = family(a.generator), {family(g) for g in a.grader}
     except ValueError as e:
         p.error(str(e))
+    graders |= {f for g in (a.config.graders.values() if a.config else ()) for f in providers.families(g)}
     graders |= {f for f in (_slug(spec.raw["grading"][k].get("family")) for k in ("primary_grader", "second_grader")) if f}
     model = client.parse_target(a.generator)[1].lower()
     if model.startswith("openrouter/"):
@@ -383,14 +385,22 @@ def main(argv=None, call=client.chat):
     p = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     p.add_argument("--spec", type=Path, default=DEFAULT_SPEC)
     p.add_argument("--generator", help="provider:model; chosen at Meeting 2, never a grader's family")
-    p.add_argument("--grader", action="append", help="a grader this conversation will be graded by; repeat for each "
-                                                     "(default deepseek:deepseek-flash)")
+    p.add_argument("--grader", action="append", help="a grader this conversation will be graded by: provider:model or a "
+                                                     "name the models config gives; repeat for each (default "
+                                                     "deepseek:deepseek-flash, unless a models config names graders)")
+    p.add_argument("--models-config", type=Path, help="a models config: every grader it names counts as a --grader")
     p.add_argument("--sessions", help="comma-separated session IDs, e.g. S1,S2 (default: all)")
     p.add_argument("--conversation", type=Path, help="an earlier draft supplying sessions not generated in this run")
     p.add_argument("--out", type=Path, default=ROOT / "runs/generate")
     p.add_argument("--dry-run", action="store_true", help="write the prompts; call nothing")
     a = p.parse_args(argv)
-    a.grader = a.grader or ["deepseek:deepseek-flash"]
+    try:
+        a.config = models_config.load(a.models_config) if a.models_config else None
+        named = [providers.grader_for_run(a.config, g).target for g in a.grader or []]
+    except ValueError as e:  # a models config with problems, or a grader name it does not give
+        p.error(str(e))
+    listed = [g.target for g in (a.config.graders.values() if a.config else ()) if g.target not in named]
+    a.grader = named + listed or ["deepseek:deepseek-flash"]
     if not a.dry_run and not a.generator:
         p.error("--generator is required unless --dry-run (Meeting 2 chooses the generator)")
     spec = Spec(a.spec)

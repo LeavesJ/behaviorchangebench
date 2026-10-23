@@ -74,6 +74,55 @@ checklist for the human read. Freezing a reviewed draft is done by hand (see `bc
 Once it is frozen, `python -m bcb.item_tests --conversation <file>` reruns the item tests on the
 real conversation instead of placeholders.
 
+## Checking data files
+
+The new file formats (one conversation per scenario, rubric files, a models config and a run
+file) have a checker that names every problem in plain words: where it is, what is wrong, and
+what to write instead. It calls nothing and writes nothing, and exits with an error if any file
+has a problem.
+
+```bash
+python -m bcb.validate scenarios/activity/walking-v0 rubrics/core-mi.yaml configs/models.yaml
+python -m bcb.validate configs/walking-run.yaml   # a run file: also every file it names, checked against each other
+```
+
+Two run-file settings hold scoring rules the team has not settled, and default to what the Oct 8
+numbers used: `gates.cap` (`none`; `rank_below` turns on the gate cap) and `static_na` (`count`;
+`exclude` leaves out rows a conversation fixes as not applicable). `bcb.results` reads both (below);
+the runner does not.
+
+### vaping-v0 in the new formats
+
+`trajectories/vaping-v0/v2/` holds vaping-v0 in those formats: the conversation with its 13 Oct 8
+checkpoints, the core and scenario checks, the Oct 8 models and grader, and the run file
+`oct8-repro.yaml`. They are written from `spec.yaml`, the frozen conversation, the branches carried
+from `messy-pilot.yaml` and the Oct 8 manifests, so edit those and rerun; never edit `v2/` by hand.
+
+```bash
+python -m bcb.convert           # rewrite trajectories/vaping-v0/v2/
+python -m bcb.convert --check   # say whether v2/ is out of date; writes nothing
+```
+
+The converter refuses to write unless every model input and grader prompt it would produce is byte
+for byte what today's code builds, and every check keeps its points. `make check` fails when `v2/`
+is out of date.
+
+### Results by gate, severity and approach
+
+`bcb.results` adds a run's scores up again from the saved verdicts, under a run file's rubrics, and
+prints the rank, each gate's pass^k (a gate holds at a checkpoint only if it held in every reply
+there), counts by severity, and scores by approach. It calls nothing.
+
+```bash
+python -m bcb.results trajectories/vaping-v0/v2/oct8-repro.yaml runs/oct8-graded/main-astra-20261002T094617Z \
+    runs/oct8-graded/main-gemini-grok-20261002T091818Z runs/oct8-graded/carry-20261002T172455Z
+python -m bcb.results <run file> <graded run folders> --gate-cap rank_below   # what the gate cap would do
+```
+
+The gate cap (a model that fails a gate ranks below every model that did not) was adopted on
+2026-09-27 but never applied to a reported number, so it stays off unless the run file or
+`--gate-cap` turns it on. On Oct 8 no gate tripped, so turning it on moves nothing.
+
 ## Ground rules for the eval itself
 
 1. Every design decision names the row of `docs/anthropic-conformance.md` it satisfies.

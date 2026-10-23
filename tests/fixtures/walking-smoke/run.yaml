@@ -1,0 +1,7 @@
+# The run file for tests/test_walking_smoke.py; paths start at the repository's top folder.
+run: {id: walking-smoke, out: runs/}
+scenarios: [tests/fixtures/walking-smoke]
+rubrics: [tests/fixtures/walking-smoke/core.yaml, tests/fixtures/walking-smoke/checks.yaml]
+models: tests/fixtures/walking-smoke/models.yaml
+samples: 2
+grade: {with: primary}

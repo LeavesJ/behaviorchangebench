@@ -1,0 +1,10 @@
+# Two fake models and a fake grader for tests/test_walking_smoke.py. Nothing here is ever called: the test's client
+# is fake. fake-a keeps every vendor default; fake-b has settings of its own.
+models:
+  - {id: fake-a, provider: openrouter, model: fake-a/model-1, family: fake-a}
+  - {id: fake-b, provider: openrouter, model: fake-b/model-2, family: fake-b,
+     sampling: {temperature: 0.7, max_tokens: 600, reasoning: off}}
+graders:
+  primary: {provider: openrouter, model: fake-judge/judge-1, family: fake-judge,
+            sampling: {temperature: 0, max_tokens: 1000, reasoning: off, json: true}}
+rules: {grader_family_differs_from_every_model: true}
