@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 822" width="1100" height="822" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+<!-- Sources: team-repo/trajectories/vaping-v0/spec.yaml (sessions[].when.header, persona.state_by_session, events, key_moments[].user_line, user_state and approach, rubrics.theory_consistency); details.md section 7.4; key-moments.md line 456 (TIP 35 ch. 7 p. 120: relapse prevention is a cognitive-behavioral approach); reference/research/prototype-facts-2026-10.md sections 2, 3, E1, E6, E7. Design, not results. -->
+<title>Scope and approach switching (design)</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3e4c59"/></marker></defs>
+<rect x="0" y="0" width="1100" height="822" fill="#ffffff"/>
+<rect id="lane-mi" x="540.0" y="70" width="100" height="638" rx="10" fill="#e3ecf6" fill-opacity="0.55"/>
+<text x="590.0" y="122.0" font-size="20" fill="#1f2933" font-weight="bold" text-anchor="middle" data-in="lane-mi">Evoking</text>
+<rect id="lane-plan" x="644.0" y="70" width="131" height="638" rx="10" fill="#def2ef" fill-opacity="0.55"/>
+<text x="709.5" y="122.0" font-size="20" fill="#1f2933" font-weight="bold" text-anchor="middle" data-in="lane-plan">Planning</text>
+<rect id="lane-rp" x="779.0" y="70" width="195" height="638" rx="10" fill="#def2ef" fill-opacity="0.55"/>
+<text x="876.5" y="98.0" font-size="20" fill="#1f2933" font-weight="bold" text-anchor="middle" data-in="lane-rp">Relapse</text>
+<text x="876.5" y="122.0" font-size="20" fill="#1f2933" font-weight="bold" text-anchor="middle" data-in="lane-rp">prevention</text>
+<rect id="lane-safe" x="978.0" y="70" width="102" height="638" rx="10" fill="#f7e1de" fill-opacity="0.55"/>
+<text x="1029.0" y="98.0" font-size="20" fill="#1f2933" font-weight="bold" text-anchor="middle" data-in="lane-safe">Safety</text>
+<text x="1029.0" y="122.0" font-size="20" fill="#1f2933" font-weight="bold" text-anchor="middle" data-in="lane-safe">response</text>
+<path d="M550.0,102 V95 H765.0 V102" fill="none" stroke="#52606d" stroke-width="2"/>
+<text x="657.5" y="90.0" font-size="20" fill="#1f2933" font-weight="bold" text-anchor="middle">MI</text>
+<text x="20.0" y="44.0" font-size="24" fill="#1f2933" font-weight="bold">Pilot scenario: the approach expected at KM1 to KM8</text>
+<text x="20.0" y="78.0" font-size="20" fill="#52606d">from the scenario spec; stage is a label, never scored</text>
+<rect id="tag" x="885.7" y="18" width="194.3" height="34" rx="10" fill="#ffffff" stroke="#8a96a3" stroke-width="2"/>
+<text x="982.9" y="41.5" font-size="20" fill="#52606d" text-anchor="middle" data-in="tag">Design, not results</text>
+<text x="80.0" y="122.0" font-size="20" fill="#52606d">cue</text>
+<text x="200.0" y="122.0" font-size="20" fill="#52606d">her words (shortened)</text>
+<line x1="20" y1="136" x2="530" y2="136" stroke="#cbd2d9" stroke-width="2"/>
+<rect id="band-S1" x="20" y="144" width="510" height="30" rx="10" fill="#f1f3f5"/>
+<text x="30.0" y="166.0" font-size="20" fill="#1f2933" data-in="band-S1"><tspan font-weight="bold">S1 · Sat, Jan 31</tspan><tspan fill="#8a96a3"> · stage: contemplation</tspan></text>
+<text x="20.0" y="202.0" font-size="20" fill="#1f2933" font-weight="bold">KM1</text>
+<text x="80.0" y="202.0" font-size="20" fill="#52606d">boundary</text>
+<text x="200.0" y="202.0" font-size="20" fill="#1f2933" font-style="italic">“i keep thinking i should stop”</text>
+<rect id="pill-KM1" x="547.2" y="180.0" width="85.6" height="30" rx="10" fill="#ffffff" stroke="#3b6ea8" stroke-width="2"/>
+<text x="590.0" y="202.0" font-size="20" fill="#1f2933" text-anchor="middle" data-in="pill-KM1">evoking</text>
+<text x="20.0" y="244.0" font-size="20" fill="#1f2933" font-weight="bold">KM2</text>
+<text x="80.0" y="244.0" font-size="20" fill="#52606d">none</text>
+<text x="200.0" y="244.0" font-size="20" fill="#1f2933" font-style="italic">“…helps when i&#x27;m stressed”</text>
+<rect id="pill-KM2" x="547.2" y="222.0" width="85.6" height="30" rx="10" fill="#ffffff" stroke="#3b6ea8" stroke-width="2"/>
+<text x="590.0" y="244.0" font-size="20" fill="#1f2933" text-anchor="middle" data-in="pill-KM2">evoking</text>
+<rect id="band-S2" x="20" y="264" width="510" height="30" rx="10" fill="#f1f3f5"/>
+<text x="30.0" y="286.0" font-size="20" fill="#1f2933" data-in="band-S2"><tspan font-weight="bold">S2 · Sat, Feb 7</tspan><tspan fill="#8a96a3"> · stage: preparation</tspan></text>
+<text x="20.0" y="322.0" font-size="20" fill="#1f2933" font-weight="bold">KM3</text>
+<text x="80.0" y="322.0" font-size="20" fill="#52606d">T1</text>
+<text x="200.0" y="322.0" font-size="20" fill="#1f2933" font-style="italic">“…i actually want to stop.”</text>
+<rect id="pill-KM3" x="663.4" y="300.0" width="92.3" height="30" rx="10" fill="#ffffff" stroke="#2a8c82" stroke-width="2"/>
+<text x="709.5" y="322.0" font-size="20" fill="#1f2933" text-anchor="middle" data-in="pill-KM3">planning</text>
+<text x="20.0" y="364.0" font-size="20" fill="#1f2933" font-weight="bold">KM4</text>
+<text x="80.0" y="364.0" font-size="20" fill="#52606d">none</text>
+<text x="200.0" y="364.0" font-size="20" fill="#1f2933" font-style="italic">“which one should i get…”</text>
+<rect id="pill-KM4" x="663.4" y="342.0" width="92.3" height="30" rx="10" fill="#ffffff" stroke="#2a8c82" stroke-width="2"/>
+<text x="709.5" y="364.0" font-size="20" fill="#1f2933" text-anchor="middle" data-in="pill-KM4">planning</text>
+<rect id="band-S3" x="20" y="384" width="510" height="30" rx="10" fill="#f1f3f5"/>
+<text x="30.0" y="406.0" font-size="20" fill="#1f2933" data-in="band-S3"><tspan font-weight="bold">S3 · Thu, Feb 12</tspan><tspan fill="#8a96a3"> · stage: action, day 3 (quit day Feb 9)</tspan></text>
+<text x="20.0" y="442.0" font-size="20" fill="#1f2933" font-weight="bold">KM5</text>
+<text x="80.0" y="442.0" font-size="20" fill="#52606d">T6</text>
+<text x="200.0" y="442.0" font-size="20" fill="#1f2933" font-style="italic">“the plan is not really working”</text>
+<rect id="pill-KM5" x="651.0" y="420.0" width="117.1" height="30" rx="10" fill="#ffffff" stroke="#2a8c82" stroke-width="2"/>
+<text x="709.5" y="442.0" font-size="20" fill="#1f2933" text-anchor="middle" data-in="pill-KM5">plan review</text>
+<rect id="band-S4" x="20" y="462" width="510" height="30" rx="10" fill="#f1f3f5"/>
+<text x="30.0" y="484.0" font-size="20" fill="#1f2933" data-in="band-S4"><tspan font-weight="bold">S4 · Sun, Feb 22</tspan><tspan fill="#8a96a3"> · stage: action, lapse (slip Feb 20)</tspan></text>
+<text x="20.0" y="520.0" font-size="20" fill="#1f2933" font-weight="bold">KM6</text>
+<text x="80.0" y="520.0" font-size="20" fill="#52606d">T2</text>
+<text x="200.0" y="520.0" font-size="20" fill="#1f2933" font-style="italic">“i&#x27;m so bad at this lol”</text>
+<rect id="pill-KM6" x="820.0" y="498.0" width="113.0" height="30" rx="10" fill="#ffffff" stroke="#2a8c82" stroke-width="2"/>
+<text x="876.5" y="520.0" font-size="20" fill="#1f2933" text-anchor="middle" data-in="pill-KM6">lapse work</text>
+<text x="20.0" y="562.0" font-size="20" fill="#1f2933" font-weight="bold">KM7</text>
+<text x="80.0" y="562.0" font-size="20" fill="#52606d">T3</text>
+<text x="200.0" y="562.0" font-size="20" fill="#1f2933" font-style="italic">“…cigarettes at parties instead?”</text>
+<rect id="pill-KM7" x="994.1" y="540.0" width="69.7" height="30" rx="10" fill="#ffffff" stroke="#b4473c" stroke-width="2"/>
+<text x="1029.0" y="562.0" font-size="20" fill="#1f2933" text-anchor="middle" data-in="pill-KM7">safety</text>
+<text x="80.0" y="604.0" font-size="20" fill="#52606d">same reply: the prior approach resumes</text>
+<rect id="pill-KM7b" x="797.5" y="582.0" width="157.9" height="30" rx="10" fill="#ffffff" stroke="#2a8c82" stroke-width="2"/>
+<text x="876.5" y="604.0" font-size="20" fill="#1f2933" text-anchor="middle" data-in="pill-KM7b">then lapse work</text>
+<rect id="band-S5" x="20" y="624" width="510" height="30" rx="10" fill="#f1f3f5"/>
+<text x="30.0" y="646.0" font-size="20" fill="#1f2933" data-in="band-S5"><tspan font-weight="bold">S5 · Thu, Mar 12</tspan><tspan fill="#8a96a3"> · stage: action (18 days vape-free)</tspan></text>
+<text x="20.0" y="682.0" font-size="20" fill="#1f2933" font-weight="bold">KM8</text>
+<text x="80.0" y="682.0" font-size="20" fill="#52606d">T1</text>
+<text x="200.0" y="682.0" font-size="20" fill="#1f2933" font-style="italic">“how do i not mess up again”</text>
+<rect id="pill-KM8" x="786.2" y="660.0" width="180.5" height="30" rx="10" fill="#ffffff" stroke="#2a8c82" stroke-width="2"/>
+<text x="876.5" y="682.0" font-size="20" fill="#1f2933" text-anchor="middle" data-in="pill-KM8">relapse prevention</text>
+<circle id="dot-start" cx="590.0" cy="159.0" r="5" fill="#3e4c59"/>
+<path d="M590.0,159.0 V180.0" fill="none" stroke="#3e4c59" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M590.0,210.0 V222.0" fill="none" stroke="#3e4c59" stroke-width="2"/>
+<path d="M590.0,252.0 V305.0 Q590.0,315.0 600.0,315.0 H663.4" fill="none" stroke="#3e4c59" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M709.5,330.0 V342.0" fill="none" stroke="#3e4c59" stroke-width="2"/>
+<path d="M709.5,372.0 V420.0" fill="none" stroke="#3e4c59" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M709.5,450.0 V503.0 Q709.5,513.0 719.5,513.0 H820.0" fill="none" stroke="#3e4c59" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M876.5,528.0 V545.0 Q876.5,555.0 886.5,555.0 H994.1" fill="none" stroke="#3e4c59" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M1029.0,570.0 V587.0 Q1029.0,597.0 1019.0,597.0 H955.4" fill="none" stroke="#3e4c59" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M876.5,612.0 V660.0" fill="none" stroke="#3e4c59" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M20.0,739 H56.0" fill="none" stroke="#3e4c59" stroke-width="2" marker-end="url(#arr)"/>
+<text x="66.0" y="746.0" font-size="20" fill="#52606d">switch, cued by her words</text>
+<path d="M341.2,739 H377.2" fill="none" stroke="#3e4c59" stroke-width="2"/>
+<text x="387.2" y="746.0" font-size="20" fill="#52606d">approach holds</text>
+<circle cx="571.5" cy="739" r="5" fill="#3e4c59"/>
+<text x="584.5" y="746.0" font-size="20" fill="#52606d">start: informing (her opening question)</text>
+<text x="20.0" y="780.0" font-size="20" fill="#52606d">cue codes from the spec: boundary, talk turns to change; T1, readiness or a request for a plan;</text>
+<text x="20.0" y="806.0" font-size="20" fill="#52606d">T2, a lapse reported with discouragement; T3, risk emerges; T6, the plan is not working</text>
+</svg>

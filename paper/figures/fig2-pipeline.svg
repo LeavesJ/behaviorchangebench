@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 832" width="1100" height="832" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>Figure 2: the BehaviorChangeBench pipeline</title>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3e4c59"/>
+    </marker>
+    <style>
+      text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 20px; fill: #1f2933; }
+      .t { font-size: 24px; font-weight: 700; }
+      .s { fill: #52606d; }
+      .p { fill: #52606d; font-style: italic; }
+      .b { font-weight: 700; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .w { fill: #ffffff; }
+      .arrow { stroke: #3e4c59; stroke-width: 2; fill: none; marker-end: url(#arr); }
+      .people { fill: #ece6f5; stroke: #7a5aa6; stroke-width: 2; }
+      .planned { fill: #ece6f5; stroke: #7a5aa6; stroke-width: 2; stroke-dasharray: 7 5; }
+      .code { fill: #f1f3f5; stroke: #8a96a3; stroke-width: 2; }
+      .card { fill: #ffffff; stroke: #8a96a3; stroke-width: 2; }
+      .rule { stroke: #8a96a3; stroke-width: 2; stroke-linecap: round; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1100" height="832" fill="#ffffff"/>
+
+  <!-- Column headers: who supplies what -->
+  <text class="t" x="20" y="30">Expert-authored</text>
+  <text class="s" x="20" y="57">written per domain and scenario</text>
+  <line x1="20" y1="69" x2="320" y2="69" stroke="#7a5aa6" stroke-width="2"/>
+  <text class="t" x="358" y="30">Domain-general pipeline</text>
+  <text class="s" x="358" y="57">the same steps in every domain, by design</text>
+  <line x1="358" y1="69" x2="1080" y2="69" stroke="#8a96a3" stroke-width="2"/>
+
+  <!-- A1 Scenario spec -->
+  <g class="box" id="spec">
+    <rect x="20" y="86" width="300" height="286" rx="10" fill="#ffffff" stroke="#7a5aa6" stroke-width="2"/>
+    <text class="t" x="38" y="118">Scenario spec</text>
+    <text class="b" x="38" y="150">Persona</text>
+    <text x="38" y="176">background and hidden facts</text>
+    <text class="b" x="38" y="208">Sessions</text>
+    <text x="38" y="234">dated, days or weeks apart</text>
+    <text class="b" x="38" y="266">Checkpoints</text>
+    <text x="38" y="292">pinned user lines, each with</text>
+    <text x="38" y="318">an expected approach</text>
+    <text class="p" x="38" y="352">pilot: team draft, 5 sessions</text>
+  </g>
+
+  <!-- A2 Rubric -->
+  <g class="box" id="rubric">
+    <rect x="20" y="400" width="300" height="346" rx="10" fill="#ffffff" stroke="#7a5aa6" stroke-width="2"/>
+    <text class="t" x="38" y="432">Rubric</text>
+    <text class="p e" x="302" y="432">pilot: team draft</text>
+    <g class="box" id="chip-ao"><rect x="38" y="446" width="138" height="30" rx="10" fill="#e3ecf6" stroke="#3b6ea8" stroke-width="2"/><text class="c" x="107" y="468">always-on</text></g>
+    <g class="box" id="chip-mo"><rect x="184" y="446" width="118" height="30" rx="10" fill="#def2ef" stroke="#2a8c82" stroke-width="2"/><text class="c" x="243" y="468">moment</text></g>
+    <g class="box" id="chip-ga"><rect x="38" y="484" width="138" height="30" rx="10" fill="#f7e1de" stroke="#b4473c" stroke-width="2"/><text class="c" x="107" y="506">safety gate</text></g>
+    <g class="box" id="chip-or"><rect x="184" y="484" width="118" height="30" rx="10" fill="#fbefdc" stroke="#c27c1e" stroke-width="2"/><text class="c" x="243" y="506">overrefusal</text></g>
+    <!-- authoring loop: an expert reacts to replies, approves a drafted check, and the check must pass its item test -->
+    <g class="box" id="author"><rect x="38" y="528" width="224" height="30" rx="10" class="planned"/><text class="c" x="150" y="550">expert reacts to replies</text></g>
+    <path class="arrow" d="M150,558 V577"/>
+    <g class="box" id="approve"><rect x="38" y="578" width="224" height="30" rx="10" class="planned"/><text class="c" x="150" y="600">drafted, then approved</text></g>
+    <path class="arrow" d="M150,608 V627"/>
+    <g class="box" id="itemtest">
+      <rect x="38" y="628" width="224" height="86" rx="10" class="code"/>
+      <text x="52" y="652">grader item test</text>
+      <path d="M52,672 l6,6 l12,-13" stroke="#2a8c82" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="80" y="679">known-pass reply</text>
+      <path d="M54,690 l12,12 M66,690 l-12,12" stroke="#b4473c" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <text x="80" y="703">known-fail reply</text>
+    </g>
+    <path class="arrow" d="M262,671 H286 V543 H263"/>
+    <text class="c" x="0" y="0" transform="translate(308,607) rotate(-90)">miss</text>
+    <text class="p" x="38" y="738">pilot: 46 of 54 checks</text>
+  </g>
+
+  <!-- B1 Trajectory -->
+  <g class="box" id="traj">
+    <rect x="358" y="86" width="364" height="134" rx="10" class="code"/>
+    <text class="t" x="376" y="118">Trajectory</text>
+    <g class="box" id="s1"><rect x="376" y="132" width="60" height="30" rx="10" class="card"/><text class="c" x="406" y="154">S1</text></g>
+    <g class="box" id="s2"><rect x="443" y="132" width="60" height="30" rx="10" class="card"/><text class="c" x="473" y="154">S2</text></g>
+    <g class="box" id="s3"><rect x="510" y="132" width="60" height="30" rx="10" class="card"/><text class="c" x="540" y="154">S3</text></g>
+    <g class="box" id="s4"><rect x="577" y="132" width="60" height="30" rx="10" class="card"/><text class="c" x="607" y="154">S4</text></g>
+    <g class="box" id="s5"><rect x="644" y="132" width="60" height="30" rx="10" class="card"/><text class="c" x="674" y="154">S5</text></g>
+    <g class="box" id="draft"><rect x="376" y="174" width="103" height="30" rx="10" class="card"/><text class="c" x="427.5" y="196">LLM draft</text></g>
+    <path class="arrow" d="M483,189 H505"/>
+    <g class="box" id="edit"><rect x="509" y="174" width="191" height="30" rx="10" class="people"/><text class="c" x="604.5" y="196">hand-edited, frozen</text></g>
+  </g>
+
+  <!-- B2 Checkpoint prefixes -->
+  <g class="box" id="prefix">
+    <rect x="358" y="248" width="364" height="124" rx="10" class="code"/>
+    <text class="t" x="376" y="280">Checkpoint prefixes</text>
+    <g class="box" id="hist"><rect x="376" y="294" width="154" height="30" rx="10" class="card"/><text class="c" x="453" y="316">all earlier turns</text></g>
+    <g class="box" id="uturn"><rect x="536" y="294" width="96" height="30" rx="10" fill="#3e4c59" stroke="#3e4c59" stroke-width="2"/><text class="c w" x="584" y="316">user turn</text></g>
+    <text class="p" x="376" y="354">pilot: 13 checkpoints</text>
+  </g>
+
+  <!-- B3 Models under test: k replies per model, drawn as stacked cards -->
+  <g class="box" id="models">
+    <rect x="358" y="400" width="364" height="114" rx="10" class="code"/>
+    <text class="t" x="376" y="432">Models under test</text>
+    <text x="376" y="464">k replies per checkpoint</text>
+    <text class="p" x="376" y="494">pilot: 3 models, k = 3</text>
+    <text class="c s" x="622" y="430">M1</text>
+    <text class="c s" x="656" y="430">M2</text>
+    <text class="c s" x="690" y="430">M3</text>
+    <g id="stack1">
+      <rect x="616" y="452" width="20" height="26" rx="3" class="card"/>
+      <rect x="612" y="447" width="20" height="26" rx="3" class="card"/>
+      <rect x="608" y="442" width="20" height="26" rx="3" class="card"/>
+    </g>
+    <g id="stack2">
+      <rect x="650" y="452" width="20" height="26" rx="3" class="card"/>
+      <rect x="646" y="447" width="20" height="26" rx="3" class="card"/>
+      <rect x="642" y="442" width="20" height="26" rx="3" class="card"/>
+    </g>
+    <g id="stack3">
+      <rect x="684" y="452" width="20" height="26" rx="3" class="card"/>
+      <rect x="680" y="447" width="20" height="26" rx="3" class="card"/>
+      <rect x="676" y="442" width="20" height="26" rx="3" class="card"/>
+    </g>
+    <path class="rule" d="M612,450 h12 M612,456 h12 M612,462 h8 M646,450 h12 M646,456 h12 M646,462 h8 M680,450 h12 M680,456 h12 M680,462 h8"/>
+  </g>
+
+  <!-- B4 Grader -->
+  <g class="box" id="grader">
+    <rect x="358" y="542" width="364" height="204" rx="10" class="code"/>
+    <text class="t" x="376" y="574">Grader (LLM)</text>
+    <text x="376" y="610">one check per call</text>
+    <text x="376" y="640">verdict: met, not met or N/A</text>
+    <text x="376" y="670">gates also: cannot determine</text>
+    <text x="376" y="700">met needs a quote from the reply</text>
+    <text x="376" y="730">never sees points or the model</text>
+  </g>
+
+  <!-- C1 Scoring -->
+  <g class="box" id="scoring">
+    <rect x="760" y="86" width="320" height="244" rx="10" class="code"/>
+    <text class="t" x="778" y="118">Scoring</text>
+    <text class="s" x="778" y="150">per reply</text>
+    <text class="c" x="920" y="178">Σ points of met checks</text>
+    <line x1="796" y1="187" x2="1044" y2="187" stroke="#1f2933" stroke-width="2"/>
+    <text class="c" x="920" y="211">Σ applicable positive points</text>
+    <text x="778" y="242">model: mean, clipped to [0, 1]</text>
+    <g class="box" id="gaterule">
+      <rect x="772" y="256" width="296" height="60" rx="10" fill="#f7e1de" stroke="#b4473c" stroke-width="2" stroke-dasharray="7 5"/>
+      <text x="784" y="280">gate rule: a model that fails a</text>
+      <text x="784" y="305">gate ranks below all that pass</text>
+    </g>
+  </g>
+
+  <!-- C2 Reported results -->
+  <g class="box" id="results">
+    <rect x="760" y="356" width="320" height="128" rx="10" fill="#ffffff" stroke="#3e4c59" stroke-width="2"/>
+    <text class="t" x="778" y="388">Reported results</text>
+    <text x="778" y="416">scores as graded and reviewed</text>
+    <text x="778" y="442">per-check pass rates</text>
+    <text x="778" y="468">every disagreement and cause</text>
+  </g>
+
+  <!-- C3 Validation loop: team labels ran in the pilot; expert labels are planned -->
+  <g class="box" id="validation">
+    <rect x="760" y="510" width="320" height="236" rx="10" fill="#ffffff" stroke="#7a5aa6" stroke-width="2"/>
+    <text class="t" x="778" y="542">Validation loop</text>
+    <text x="778" y="572">labels blind to grader verdicts</text>
+    <g class="box" id="teamlabels"><rect x="778" y="588" width="130" height="30" rx="10" class="people"/><text class="c" x="843" y="610">team labels</text></g>
+    <g class="box" id="expertlabels"><rect x="920" y="588" width="142" height="30" rx="10" class="planned"/><text class="c" x="991" y="610">expert labels</text></g>
+    <path class="arrow" d="M843,618 V641"/>
+    <path class="arrow" d="M991,618 V641"/>
+    <g class="box" id="review"><rect x="778" y="642" width="284" height="30" rx="10" class="people"/><text x="792" y="664">disagreement review</text></g>
+    <text class="p" x="778" y="712">pilot: team labelers (rehearsal)</text>
+  </g>
+
+  <!-- Arrows between columns -->
+  <path class="arrow" d="M320,153 H357"/>
+  <path class="arrow" d="M320,309 H357"/>
+  <path class="arrow" d="M320,683 H357"/>
+  <path class="arrow" d="M540,220 V247"/>
+  <path class="arrow" d="M540,372 V399"/>
+  <path class="arrow" d="M540,514 V541"/>
+  <!-- grader verdicts go to the review and up to scoring -->
+  <path class="arrow" d="M722,657 H777"/>
+  <path class="arrow" d="M741,657 V198 H759"/>
+  <circle cx="741" cy="657" r="4" fill="#3e4c59"/>
+  <path class="arrow" d="M920,330 V355"/>
+  <path class="arrow" d="M920,510 V485"/>
+  <!-- feedback into the rubric -->
+  <path class="arrow" d="M920,746 V774 H170 V747"/>
+  <rect x="428" y="760" width="224" height="28" fill="#ffffff"/>
+  <text class="c" x="540" y="781">revise check wording</text>
+
+  <!-- Legend -->
+  <rect x="20" y="802" width="26" height="18" rx="4" class="people"/>
+  <text x="54" y="818">people (purple fill or outline)</text>
+  <rect x="332" y="802" width="26" height="18" rx="4" class="code"/>
+  <text x="366" y="818">code and LLMs</text>
+  <rect x="536" y="802" width="26" height="18" rx="4" fill="#ffffff" stroke="#52606d" stroke-width="2" stroke-dasharray="5 3"/>
+  <text x="570" y="818">not yet run in the pilot</text>
+</svg>
